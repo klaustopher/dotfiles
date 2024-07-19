@@ -1,0 +1,48 @@
+[hub]
+        protocol = https
+
+[alias]
+        co = checkout
+        upstream-name = !git remote | egrep -o '(upstream|origin)' | tail -1
+        head-branch = !git remote show $(git upstream-name) | awk '/HEAD branch/ {print $NF}'
+        remove-merged-branches = !git branch --delete $(git branch --format '%(refname:short)' --merged | grep --invert-match $(git head-branch))
+
+[color]
+        diff = auto
+        status = auto
+        branch = auto
+        ui = true
+[core]
+        excludesfile = ~/.gitignore
+        editor = nvim
+        quotepath = off
+        precomposeunicode = true
+
+[apply]
+        whitespace = nowarn
+
+[mergetool]
+        keepBackup = false
+
+[difftool]
+        prompt = false
+
+[help]
+        autocorrect = 1
+
+[push]
+        default = simple
+        autoSetupRemote = true
+
+[i18n]
+        logoutputencoding = utf8
+        commitencoding = utf8
+
+[include]
+        path=~/.git-user-config
+
+[init]
+        defaultBranch = main
+
+[column]
+        ui = auto

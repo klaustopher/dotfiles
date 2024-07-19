@@ -1,0 +1,37 @@
+[
+  {
+    "defaults": {
+      "link": {
+        "relink": true
+      }
+    }
+  },
+  {
+    "clean": [
+      "~"
+    ]
+  },
+  {
+    "create": [
+      "~/.config",
+      "~/Projects"
+    ]
+  },
+  {
+    "link": {
+      "~/.zshrc": "zsh/zshrc.symlink",
+      "~/.gitignore": "git/gitignore.symlink",
+      "~/.gitconfig": "git/gitconfig.symlink"
+    }
+  },
+  { "sudo": [
+      { "link": { "/etc/sudoers.d/klaustopher": "system/sudoers.klaustopher.symlink" } },
+      { "shell": [{ "command": "chown root:wheel /etc/sudoers.d/klaustopher", "description": "Make sudoers file owned by root", "stdout": true, "stderr": true }] }
+  ]
+  },
+  {
+    "shell": [
+        { "command":"sudo chsh -s $(brew --prefix)/bin/zsh $(whoami)", "description": "Switch shell to ZSH", "stdout": true, "stderr": true }
+    ]
+  }
+]
