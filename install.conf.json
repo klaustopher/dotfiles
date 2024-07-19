@@ -21,7 +21,8 @@
     "link": {
       "~/.zshrc": "zsh/zshrc.symlink",
       "~/.gitignore": "git/gitignore.symlink",
-      "~/.gitconfig": "git/gitconfig.symlink"
+      "~/.gitconfig": "git/gitconfig.symlink",
+      "~/.config/nvim": "nvim.symlink"
     }
   },
   { "sudo": [
