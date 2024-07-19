@@ -39,6 +39,8 @@
       "~/.gitignore": "git/gitignore.symlink",
       "~/.gitconfig": "git/gitconfig.symlink",
       "~/.config/nvim": "nvim/nvim.symlink",
+      "~/.irbrc": "ruby/irbrc.symlink",
+      "~/.gemrc": "ruby/gemrc.symlink",
       "~/Library/Keyboard Layouts/Deutsch (Programmieren).icns": "macos/keyboard-layout/Deutsch (Programmieren).icns",
       "~/Library/Keyboard Layouts/Deutsch (Programmieren).keylayout": "macos/keyboard-layout/Deutsch (Programmieren).keylayout"
     }
@@ -81,6 +83,12 @@
       {
         "command": "macos/set-defaults.sh",
         "description": "Set macOS defaults"
+      },
+      {
+        "command": "ruby/install-rvm.sh",
+        "description": "Install Ruby Version Manager",
+        "stdout": true,
+        "stderr": true
       },
       {
         "command": "source ~/.zshrc",
