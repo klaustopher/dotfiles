@@ -1,0 +1,23 @@
+#!/bin/zsh
+
+echo "\n>> Updating dotfiles repo"
+pushd ~/.dotfiles
+git pull origin main
+popd
+source ~/.zshrc
+
+if [[ `uname` == "Darwin" ]]; then
+  echo "\n>> Installing Apple Software Updates"
+  sudo softwareupdate -i -a
+
+  echo "\n>> Updating Mac App Store Apps"
+  mas outdated
+  mas upgrade
+
+  echo "\n>> Updating Homebrew Packages"
+  brew update
+  brew upgrade
+
+  echo "\n>> Cleaning Up old Homebrew Packages"
+  brew cleanup -s
+fi

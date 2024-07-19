@@ -1,0 +1,9 @@
+#!/usr/bin/env ruby
+
+require 'open-uri'
+require 'json'
+
+data = JSON.parse(URI.open('http://ipinfo.io').read)
+
+puts "Current IP \033[1;33m#{data['ip']}\033[0m, located in \033[1;33m#{[data['city'], data['region'], data['country']].compact.reject(&:empty?).join(', ')}\033[0m."
+
