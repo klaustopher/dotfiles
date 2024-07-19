@@ -10,3 +10,4 @@ I wanted to redo my dotfiles ... So here they are
 - [ ] Load color schemes and profiles into iterm using [dynamic profiles](https://iterm2.com/documentation-dynamic-profiles.html)
 - [x] Remove hard coded plugins in zsh config and use [zplug](https://github.com/zplug/zplug)
 - [ ] Install keyboard schema
+- [x] Do not use system clipboard in Nvim
