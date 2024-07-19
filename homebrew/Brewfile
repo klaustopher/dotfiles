@@ -1,0 +1,135 @@
+# Install fonts so that everything looks amazing
+cask "font-fantasque-sans-mono"
+cask "font-fantasque-sans-mono-nerd-font"
+
+# 1password
+tap "1password/tap"
+cask "1password-cli"
+cask "1password@beta"
+mas "1Password for Safari", id: 1569813296
+
+
+tap "homebrew/cask-drivers"
+tap "homebrew/services"
+brew "openssl@3"
+brew "ansible"
+brew "zstd"
+brew "llvm"
+brew "aria2"
+brew "autoconf"
+brew "automake"
+brew "caddy"
+brew "coreutils"
+brew "pkg-config"
+brew "direnv"
+brew "libsodium"
+brew "harfbuzz"
+brew "ffmpeg"
+brew "libksba"
+brew "gnupg"
+brew "libtool"
+brew "gdal"
+brew "gh"
+brew "git"
+brew "git-crypt"
+brew "gitui"
+brew "gobject-introspection"
+brew "gstreamer"
+brew "htop"
+brew "hugo"
+brew "libffi"
+brew "imagemagick"
+brew "ipcalc"
+brew "jq"
+brew "libressl"
+brew "lima"
+brew "lsusb"
+brew "mas"
+brew "zlib"
+brew "nmap"
+brew "tmux"
+brew "overmind"
+brew "poppler-qt5"
+brew "pwgen"
+brew "rsync"
+brew "speedtest-cli"
+brew "ssh-copy-id"
+brew "terminal-notifier"
+brew "the_silver_searcher"
+brew "tig"
+brew "tree"
+brew "watchman"
+brew "wget"
+brew "yt-dlp"
+brew "zsh"
+
+# Editors
+brew "neovim"
+
+# Programming languages
+brew "node"
+brew "yarn"
+
+brew "crystal"
+
+# Database tools for development
+# brew "redis", restart_service: true
+# brew "mysql", restart_service: true
+
+# postgis dependencies
+# brew "geos"
+# brew "proj"
+# tap "timescale/tap"
+# brew "timescale/tap/timescaledb"
+# brew "libpq", link: true
+# brew "check_postgres"
+
+# GUI Apps
+cask "chromedriver"
+cask "elgato-stream-deck"
+cask "monitorcontrol"
+cask "tidal"
+cask "vimr"
+cask "vlc"
+cask "postico"
+
+# Mac App Store Applications 
+mas "Apple Configurator", id: 1037126344
+mas "ForkLift", id: 412448059
+mas "GIPHY CAPTURE", id: 668208984
+mas "Marked", id: 448925439
+mas "Sequel Ace", id: 1518036000
+mas "Skitch", id: 425955336
+mas "Slack", id: 803453959
+
+# VS Code extensions
+# vscode "crystal-lang-tools.crystal-lang"
+# vscode "cschlosser.doxdocgen"
+# vscode "esbenp.prettier-vscode"
+# vscode "github.vscode-github-actions"
+# vscode "itarato.byesig"
+# vscode "jeff-hykin.better-cpp-syntax"
+# vscode "karunamurti.haml"
+# vscode "koichisasada.vscode-rdbg"
+# vscode "matthewmcgarvey.crystal-spec-vscode"
+# vscode "ms-azuretools.vscode-docker"
+# vscode "ms-ceintl.vscode-language-pack-de"
+# vscode "ms-vscode-remote.remote-containers"
+# vscode "ms-vscode-remote.remote-ssh"
+# vscode "ms-vscode-remote.remote-wsl"
+# vscode "ms-vscode.cmake-tools"
+# vscode "ms-vscode.cpptools"
+# vscode "ms-vscode.cpptools-extension-pack"
+# vscode "ms-vscode.cpptools-themes"
+# vscode "ms-vscode.remote-explorer"
+# vscode "ms-vscode.theme-tomorrowkit"
+# vscode "pkief.material-icon-theme"
+# vscode "platformio.platformio-ide"
+# vscode "redhat.vscode-yaml"
+# vscode "shopify.ruby-extensions-pack"
+# vscode "shopify.ruby-lsp"
+# vscode "shopify.vscode-shadowenv"
+# vscode "sorbet.sorbet-vscode-extension"
+# vscode "tamasfe.even-better-toml"
+# vscode "twxs.cmake"
+# vscode "vscodevim.vim"
