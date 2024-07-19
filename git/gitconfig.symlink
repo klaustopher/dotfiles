@@ -1,3 +1,4 @@
+# Intentionally, there is no [user] section in here. This will be added on dotfiles installation into ~/.git-user-config
 [hub]
         protocol = https
 
