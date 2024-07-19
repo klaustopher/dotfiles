@@ -11,9 +11,6 @@ fpath=($DOTFILES/zsh/functions $fpath)
 
 autoload -U $DOTFILES/zsh/functions/*(:t)
 
-source $DOTFILES/zsh/plugins/zsh-history-substring-search.zsh
-source $DOTFILES/zsh/plugins/zsh-syntax-highlighting.zsh
-
 HISTFILE=~/.zsh_history
 HISTSIZE=10000
 SAVEHIST=10000

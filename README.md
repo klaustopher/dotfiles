@@ -8,5 +8,5 @@ I wanted to redo my dotfiles ... So here they are
 
 ## TODO
 - [ ] Load color schemes and profiles into iterm using [dynamic profiles](https://iterm2.com/documentation-dynamic-profiles.html)
-- [ ] Remove hard coded plugins in zsh config and use [zplug](https://github.com/zplug/zplug)
+- [x] Remove hard coded plugins in zsh config and use [zplug](https://github.com/zplug/zplug)
 - [ ] Install keyboard schema

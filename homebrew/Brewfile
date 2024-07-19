@@ -61,7 +61,10 @@ brew "tree"
 brew "watchman"
 brew "wget"
 brew "yt-dlp"
+
+# ZSH and plugins
 brew "zsh"
+brew "zplug"
 
 # Editors
 brew "neovim"
