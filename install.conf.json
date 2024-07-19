@@ -38,7 +38,9 @@
       "~/.zshrc": "zsh/zshrc.symlink",
       "~/.gitignore": "git/gitignore.symlink",
       "~/.gitconfig": "git/gitconfig.symlink",
-      "~/.config/nvim": "nvim/nvim.symlink"
+      "~/.config/nvim": "nvim/nvim.symlink",
+      "~/Library/Keyboard Layouts/Deutsch (Programmieren).icns": "macos/keyboard-layout/Deutsch (Programmieren).icns",
+      "~/Library/Keyboard Layouts/Deutsch (Programmieren).keylayout": "macos/keyboard-layout/Deutsch (Programmieren).keylayout"
     }
   },
   {
@@ -75,6 +77,10 @@
       {
         "command": "iterm2/install-profile.sh",
         "description": "Make the profile available in iTerm2"
+      },
+      {
+        "command": "macos/set-defaults.sh",
+        "description": "Set macOS defaults"
       }
     ]
   }
