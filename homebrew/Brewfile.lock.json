@@ -132,6 +132,12 @@
         "options": {
           "full_name": "iterm2"
         }
+      },
+      "neovide": {
+        "version": "0.13.3",
+        "options": {
+          "full_name": "neovide"
+        }
       }
     },
     "tap": {

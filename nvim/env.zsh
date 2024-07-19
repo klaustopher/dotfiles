@@ -1,0 +1,1 @@
+export NEOVIDE_FORK=1

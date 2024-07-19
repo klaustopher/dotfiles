@@ -20,7 +20,7 @@ I wanted to redo my dotfiles ... So here they are
 
 - Vim/Neovim
   - [x] Do not use system clipboard in Nvim
-  - [ ] Setup font in neovim / VimR
+  - [x] Setup Neovide
 
 - Install script
   - [ ] Ask for git username and email and write `~/git-user-config` in install script

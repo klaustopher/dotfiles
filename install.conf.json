@@ -38,7 +38,7 @@
       "~/.zshrc": "zsh/zshrc.symlink",
       "~/.gitignore": "git/gitignore.symlink",
       "~/.gitconfig": "git/gitconfig.symlink",
-      "~/.config/nvim": "nvim.symlink"
+      "~/.config/nvim": "nvim/nvim.symlink"
     }
   },
   {
