@@ -126,6 +126,12 @@
         "options": {
           "full_name": "postico"
         }
+      },
+      "iterm2": {
+        "version": "3.5.3",
+        "options": {
+          "full_name": "iterm2"
+        }
       }
     },
     "tap": {
