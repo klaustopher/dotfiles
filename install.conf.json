@@ -67,6 +67,14 @@
         "description": "Switch shell to ZSH",
         "stdout": true,
         "stderr": true
+      },
+      {
+        "command": "iterm2/download-shell-integration.sh",
+        "description": "Install iTerm2 shell integration script"
+      },
+      {
+        "command": "iterm2/install-profile.sh",
+        "description": "Make the profile available in iTerm2"
       }
     ]
   }
