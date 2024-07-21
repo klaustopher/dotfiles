@@ -7,10 +7,6 @@
       "brewfile": {
         "stdout": true,
         "stderr": true
-      },
-      "brew": {
-        "stdout": true,
-        "stderr": true
       }
     }
   },
@@ -89,6 +85,13 @@
         "description": "Install Ruby Version Manager",
         "stdout": true,
         "stderr": true
+      },
+      {
+        "command": "git/create-user-config.sh",
+        "description": "Create user config for git",
+        "stdout": true,
+        "stderr:" true,
+        "stdin": true
       },
       {
         "command": "source ~/.zshrc",
