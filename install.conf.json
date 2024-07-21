@@ -3,10 +3,6 @@
     "defaults": {
       "link": {
         "relink": true
-      },
-      "brewfile": {
-        "stdout": true,
-        "stderr": true
       }
     }
   },
@@ -90,7 +86,7 @@
         "command": "git/create-user-config.sh",
         "description": "Create user config for git",
         "stdout": true,
-        "stderr:" true,
+        "stderr": true,
         "stdin": true
       },
       {
