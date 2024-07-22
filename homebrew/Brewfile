@@ -8,9 +8,11 @@ cask "1password-cli"
 cask "1password@beta"
 mas "1Password for Safari", id: 1569813296
 
-
-tap "homebrew/cask-drivers"
+# Other Taps
 tap "homebrew/services"
+
+# Install a bunch of packages
+# TODO: Add some grouping
 brew "openssl@3"
 brew "ansible"
 brew "zstd"
@@ -24,22 +26,15 @@ brew "pkg-config"
 brew "direnv"
 brew "libsodium"
 brew "harfbuzz"
-brew "ffmpeg"
 brew "libksba"
 brew "gnupg"
 brew "libtool"
 brew "gdal"
-brew "gh"
-brew "git"
-brew "git-crypt"
-brew "gitui"
 brew "gobject-introspection"
-brew "gstreamer"
 brew "htop"
 brew "hugo"
 brew "libffi"
 brew "imagemagick"
-brew "ipcalc"
 brew "jq"
 brew "libressl"
 brew "lima"
@@ -52,7 +47,6 @@ brew "overmind"
 brew "poppler-qt5"
 brew "pwgen"
 brew "rsync"
-brew "speedtest-cli"
 brew "ssh-copy-id"
 brew "terminal-notifier"
 brew "the_silver_searcher"
@@ -60,7 +54,22 @@ brew "tig"
 brew "tree"
 brew "watchman"
 brew "wget"
+
+# Media tools
 brew "yt-dlp"
+brew "gstreamer"
+brew "ffmpeg"
+
+# Git tools
+brew "gh"
+brew "git"
+brew "git-crypt"
+brew "gitui"
+
+# Network utilities
+brew "ipcalc"
+brew "speedtest-cli"
+
 
 # ZSH and plugins
 brew "zsh"
@@ -78,6 +87,7 @@ brew "crystal"
 # Database tools for development
 # brew "redis", restart_service: true
 # brew "mysql", restart_service: true
+# brew "postgresql@14", restart_service: true
 
 # postgis dependencies
 # brew "geos"
@@ -86,6 +96,7 @@ brew "crystal"
 # brew "timescale/tap/timescaledb"
 # brew "libpq", link: true
 # brew "check_postgres"
+# brew "postgis"
 
 # GUI Apps
 cask "chromedriver"
@@ -96,15 +107,19 @@ cask "neovide"
 cask "vlc"
 cask "postico"
 cask "iterm2"
+cask "flameshot"
 
 # Mac App Store Applications 
 mas "Apple Configurator", id: 1037126344
+mas "Dato", id: 1470584107
 mas "ForkLift", id: 412448059
 mas "GIPHY CAPTURE", id: 668208984
 mas "Marked", id: 448925439
 mas "Sequel Ace", id: 1518036000
 mas "Skitch", id: 425955336
 mas "Slack", id: 803453959
+mas "Tailscale", id: 1475387142
+mas "Sequel Ace", id: 1518036000
 
 # VS Code extensions
 # vscode "crystal-lang-tools.crystal-lang"
