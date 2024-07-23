@@ -1,36 +1,28 @@
 # klaustophers Dotfiles
 
-I wanted to redo my dotfiles ... So here they are
+This is my new 2024 stab of running my dotfiles. They are managed by [dotbot](https://github.com/anishathalye/dotbot) and are intended to be un on macOS.
 
-## List of tools used
+Files are split up into topic folders.
+
+## Homebrew
+
+We will install [homebrew](https://brew.sh) when it is not there. In `homebrew/Brewfile` we have a Brewfile that list all of the tools I want in my basic setup.
+
+## ZSH config
+
+The `.zshrc` looks at all of the other topic folders and evaluates all `*.zsh` files so we can add behavior to our shell
+
+We iterate alphabetically over all our topic folders and load `*.zsh` files in this order:
+
+1. `path.zsh` are all loaded very early in `.zshrc` and modify the `PATH` environment variable
+2. All other `*.zsh` files are executed between path and completion loading
+3. `completion.zsh` are loaded at the end of `.zshrc` and are used to install completions
+
+### Plugins
+
+Plugins are managed using [`zplug`](https://github.com/zplug/zplug). Plugins will be defined and loaded in `zsh/plugins.zsh`
+
+## Some helpful links I want to keep track off
 - https://github.com/anishathalye/dotbot
 - https://github.com/d12frosted/dotbot-brew
-
-## TODO
-- iTerm 2
-  - [x] Load color schemes and profiles into iterm using [dynamic profiles](https://iterm2.com/documentation-dynamic-profiles.html)
-  - [x] iTerm2 Shell integration still needeed?
-
-- ZSH
-  - [x] Remove hard coded plugins in zsh config and use [zplug](https://github.com/zplug/zplug)
-
-- General macOS Setup
-  - [x] Install keyboard schema
-  - [x] Set some sane macOS defaults (research what is en vogue these days)
-
-- Vim/Neovim
-  - [x] Do not use system clipboard in Nvim
-  - [x] Setup Neovide
-
-- Install script
-  - [ ] Ask for git username and email and write `~/.git-user-config` in install script
-
-- Moving stuff from old repo
-  - [ ] Copy scripts from `bin` directory here that I still want to use
-
-- ASDF / Ruby / Node
-  - [ ] Use `asdf` to set up ruby and node
-  - [ ] Link `.gemrc`
-  - [ ] Setup `.irbrc`
-
-- [ ] Setup VSCode (potentially skip)
+- https://github.com/DrDynamic/dotbot-sudo
