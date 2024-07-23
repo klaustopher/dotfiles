@@ -160,7 +160,7 @@
         "revision": "f062033b264109fcdde69596d34036fe1a9e227d"
       },
       "homebrew/services": {
-        "revision": "672f42b41246409c66b29bac9c39b641dcf4bbe6"
+        "revision": "afe323972f83740524655b530026eea55d466124"
       },
       "puma/puma": {
         "revision": "5960519de5e559a6326626643c0a7e4b2fd9832d"
@@ -172,7 +172,7 @@
     "mas": {
       "1Password for Safari": {
         "id": "1569813296",
-        "version": "2.25.1"
+        "version": "2.26.1"
       },
       "Apple Configurator": {
         "id": "1037126344",
@@ -210,17 +210,14 @@
         "id": "1518036000",
         "version": "4.0.17"
       },
-      "Skitch": {
-        "id": "425955336",
-        "version": "2.9"
-      },
+      "Skitch": null,
       "Slack": {
         "id": "803453959",
         "version": "4.39.90"
       },
       "Dato": {
         "id": "1470584107",
-        "version": "5.3.1"
+        "version": "5.3.3"
       },
       "Tailscale": {
         "id": "1475387142",
@@ -3088,7 +3085,7 @@
         }
       },
       "yt-dlp": {
-        "version": "2024.7.16",
+        "version": "HEAD-37c2335",
         "bottle": {
           "rebuild": 0,
           "root_url": "https://ghcr.io/v2/homebrew/core",
