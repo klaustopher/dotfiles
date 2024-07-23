@@ -31,7 +31,7 @@ git_dirty() {
 git_prompt_info () {
  ref=$($git symbolic-ref HEAD 2>/dev/null) || return
 # echo "(%{\e[0;33m%}${ref#refs/heads/}%{\e[0m%})"
- echo "${ref#refs/heads/}"
+ echo "\ue0a0 ${ref#refs/heads/}"
 }
 
 unpushed () {
@@ -50,10 +50,10 @@ need_push () {
 ruby_version() {
   if (( $+commands[rvm-prompt] ))
   then
-    echo "$(rvm-prompt | awk '{print $1}')"
+    echo "$(rvm-prompt | awk '{print $1}' | cut -d"-" -f2)"
   elif [ ! -z ruby ]
   then
-    echo "$(ruby -v | cut -d" " -f2)"
+    echo "$(ruby -v | cut -d" " -f2 | cut -d"-" -f2)"
   fi
 }
 
@@ -70,7 +70,7 @@ node_version() {
 rb_prompt() {
   if ! [[ -z "$(ruby_version)" ]]
   then
-    echo "%{$fg_bold[yellow]%}$(ruby_version)%{$reset_color%} "
+    echo "%{$fg_bold[yellow]%}\ue739 $(ruby_version)%{$reset_color%} "
   else
     echo ""
   fi
@@ -79,7 +79,7 @@ rb_prompt() {
 node_prompt() {
   if ! [[ -z "$(node_version)" ]]
   then
-    echo "%{$fg_bold[magenta]%}$(node_version)%{$reset_color%} "
+    echo "%{$fg_bold[magenta]%}\ued0d $(node_version)%{$reset_color%} "
   else
     echo ""
   fi
