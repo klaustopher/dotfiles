@@ -79,6 +79,7 @@ brew "zplug"
 brew "neovim"
 brew "rg"
 brew "fd"
+brew "lazygit"
 
 # Programming languages
 # brew "node"
