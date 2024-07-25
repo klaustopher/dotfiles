@@ -77,10 +77,12 @@ brew "zplug"
 
 # Editors
 brew "neovim"
+brew "rg"
+brew "fd"
 
 # Programming languages
-brew "node"
-brew "yarn"
+# brew "node"
+# brew "yarn"
 
 brew "crystal"
 
