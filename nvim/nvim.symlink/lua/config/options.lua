@@ -3,3 +3,7 @@
 -- Add any additional options here
 
 vim.opt.clipboard = ""
+
+-- LSP Server to use for Ruby.
+vim.g.lazyvim_ruby_lsp = "ruby_lsp"
+vim.g.lazyvim_ruby_formatter = "rubocop"
