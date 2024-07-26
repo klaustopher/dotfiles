@@ -8,7 +8,8 @@
   },
   {
     "clean": [
-      "~"
+      "~",
+      "~/.config"
     ]
   },
   {
@@ -33,6 +34,7 @@
       "~/.config/nvim": "nvim/nvim.symlink",
       "~/.irbrc": "ruby/irbrc.symlink",
       "~/.gemrc": "ruby/gemrc.symlink",
+      "~/.rvmrc": "ruby/rvmrc.symlink",
       "~/.ssh/config": "openssh/config.symlink",
       "~/Library/Keyboard Layouts/Deutsch (Programmieren).icns": "macos/keyboard-layout/Deutsch (Programmieren).icns",
       "~/Library/Keyboard Layouts/Deutsch (Programmieren).keylayout": "macos/keyboard-layout/Deutsch (Programmieren).keylayout"
