@@ -8,3 +8,6 @@
 [submodule "dotbot-sudo"]
 	path = dotbot-sudo
 	url = https://github.com/DrDynamic/dotbot-sudo.git
+[submodule "ruby/rbenv.symlink/plugins/rbenv-default-gems"]
+	path = ruby/rbenv.symlink/plugins/rbenv-default-gems
+	url = https://github.com/rbenv/rbenv-default-gems.git

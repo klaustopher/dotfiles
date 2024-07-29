@@ -86,6 +86,14 @@ brew "lazygit"
 # brew "yarn"
 
 brew "crystal"
+brew "rbenv"
+brew "ruby-build"
+
+# Build depencencies for Rubye
+brew "openssl@3"
+brew "readline"
+brew "libyaml"
+brew "gmp"
 
 # Database tools for development
 # brew "redis", restart_service: true

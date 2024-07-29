@@ -33,7 +33,7 @@ fi
 if type nvim > /dev/null; then
   echo "\n>> Updating LazyVim Plugins"
   nvim --headless "+Lazy! sync" +qa
-end
+fi
 
 pushd ~/.dotfiles
 git add nvim/nvim.symlink && git commit -m 'Updated LazyVim'
