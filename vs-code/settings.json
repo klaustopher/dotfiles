@@ -1,0 +1,105 @@
+{
+  // No telemetry
+  "telemetry.enableTelemetry": false,
+  "telemetry.enableCrashReporter": false,
+  "telemetry.telemetryLevel": "off",
+  // Use the amazing Font everybody loves
+  "editor.fontFamily": "'FantasqueSansM Nerd Font', Menlo, Monaco, 'Courier New', monospace",
+  "editor.fontSize": 14,
+  "editor.fontLigatures": true,
+  "workbench.colorTheme": "Spinel",
+  "editor.tabSize": 2,
+  "files.trimTrailingWhitespace": true,
+  "editor.rulers": [
+    120
+  ],
+  "editor.formatOnSave": true,
+  "workbench.startupEditor": "newUntitledFile",
+  "editor.dragAndDrop": false,
+  "explorer.confirmDelete": false,
+  "editor.minimap.enabled": false,
+  "explorer.confirmDragAndDrop": false,
+  "workbench.editor.enablePreviewFromQuickOpen": false,
+  "editor.suggest.filterGraceful": false,
+  "editor.largeFileOptimizations": false,
+  "security.workspace.trust.untrustedFiles": "open",
+  "editor.guides.indentation": true,
+  "files.insertFinalNewline": true,
+  "git.confirmSync": false,
+  "terminal.integrated.scrollback": 10000,
+  "terminal.integrated.enableMultiLinePasteWarning": "never",
+  "workbench.preferredDarkColorTheme": "Base16 Tomorrow Dark",
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "explicit"
+  },
+  "git.openRepositoryInParentFolders": "always",
+  "workbench.settings.editor": "json",
+  // Markdown
+  "markdown.styles": [
+    "https://cdn.jsdelivr.net/gh/dhdhagar/vscode-md-preview-light/style.min.css"
+  ],
+  // Ruby Settings
+  "ruby-spec-runner.rubyDebugger": "Ruby LSP",
+  "ruby-spec-runner.rspecDebugButton": false,
+  "ruby-spec-runner.rspecRunButton": false,
+  "ruby-spec-runner.rspecCodeLensDebugPrompts": false,
+  "[ruby]": {
+    "editor.tabSize": 2,
+    "editor.defaultFormatter": "Shopify.ruby-lsp",
+    "editor.insertSpaces": true,
+    "editor.semanticHighlighting.enabled": true,
+    "editor.formatOnType": true,
+    "files.trimFinalNewlines": true
+  },
+  // Plugin TODO Tree
+  "todo-tree.highlights.defaultHighlight": {
+    "foreground": "#2e872e",
+    "type": "none"
+  },
+  "byesig.enabled": true,
+  "byesig.fold": false,
+  "byesig.opacity": 0.5,
+  "byesig.showIcon": false,
+  "rubyLsp.enableExperimentalFeatures": true,
+  "rubyLsp.enabledFeatures": {
+    "codeActions": true,
+    "diagnostics": true,
+    "documentHighlights": true,
+    "documentLink": true,
+    "documentSymbols": true,
+    "foldingRanges": true,
+    "formatting": true,
+    "hover": true,
+    "inlayHint": true,
+    "onTypeFormatting": true,
+    "selectionRanges": true,
+    "semanticHighlighting": true,
+    "completion": true,
+    "codeLens": false
+  },
+  // YAML Settings
+  "yaml.format.singleQuote": false,
+  "yaml.format.enable": true,
+  "[yaml]": {
+    "editor.defaultFormatter": "redhat.vscode-yaml"
+  },
+  // JavaScript & ESLint
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "eslint.validate": [
+    "typescript",
+    "typescriptreact"
+  ],
+  "eslint.format.enable": true,
+  "github.copilot.enable": {
+    "*": true,
+    "plaintext": false,
+    "markdown": true,
+    "scminput": false
+  },
+  "diffEditor.ignoreTrimWhitespace": false,
+  "update.showReleaseNotes": false,
+  "[typescript]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  "github.copilot.editor.enableAutoCompletions": true
+}

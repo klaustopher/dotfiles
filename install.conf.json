@@ -15,7 +15,8 @@
   {
     "create": [
       "~/.config",
-      "~/Projects"
+      "~/Projects",
+      "~/Library/Application Support/Code/User/"
     ]
   },
   {
@@ -37,7 +38,8 @@
       "~/.rbenv/": "ruby/rbenv.symlink/",
       "~/.ssh/config": "openssh/config.symlink",
       "~/Library/Keyboard Layouts/Deutsch (Programmieren).icns": "macos/keyboard-layout/Deutsch (Programmieren).icns",
-      "~/Library/Keyboard Layouts/Deutsch (Programmieren).keylayout": "macos/keyboard-layout/Deutsch (Programmieren).keylayout"
+      "~/Library/Keyboard Layouts/Deutsch (Programmieren).keylayout": "macos/keyboard-layout/Deutsch (Programmieren).keylayout",
+      "~/Library/Application Support/Code/User/settings.json": "vs-code/settings.json"
     }
   },
   {
