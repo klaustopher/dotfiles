@@ -120,7 +120,7 @@ cask "postico"
 cask "iterm2"
 cask "flameshot"
 
-# Mac App Store Applications 
+# Mac App Store Applications
 mas "Apple Configurator", id: 1037126344
 mas "Dato", id: 1470584107
 mas "ForkLift", id: 412448059
@@ -131,6 +131,8 @@ mas "Skitch", id: 425955336
 mas "Slack", id: 803453959
 mas "Tailscale", id: 1475387142
 mas "Sequel Ace", id: 1518036000
+mas "AusweisApp", id: 948660805
+mas "Xcode", id: 497799835
 
 # VS Code extensions
 # vscode "crystal-lang-tools.crystal-lang"
