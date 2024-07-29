@@ -21,3 +21,21 @@ if [[ `uname` == "Darwin" ]]; then
   echo "\n>> Cleaning Up old Homebrew Packages"
   brew cleanup -s
 fi
+
+echo "\n>> Updating Rubygems"
+gem update --system
+
+if type code > /dev/null; then
+    echo "\n>> Updating VS Code Extensions"
+    code --list-extensions | xargs -I{} code --install-extension {} --force
+fi
+
+if type nvim > /dev/null; then
+  echo "\n>> Updating LazyVim Plugins"
+  nvim --headless "+Lazy! sync" +qa
+end
+
+pushd ~/.dotfiles
+git add nvim/nvim.symlink && git commit -m 'Updated LazyVim'
+git push origin main
+popd
