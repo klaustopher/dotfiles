@@ -16,13 +16,18 @@ if [[ `uname` == "Darwin" ]]; then
 
   echo "\n>> Updating Homebrew Packages"
   brew update
+
+  echo "\n>> Install everything from the Brewfile"
+  brew bundle --file=~/.dotfiles/homebrew/Brewfile
+
+  echo "\n>> Upgrade Homebrew Packages"
   brew upgrade
 
   echo "\n>> Cleaning Up old Homebrew Packages"
   brew cleanup -s
 fi
 
-echo "\n>> Updating Rubygems"
+echo "\n>> Updating Rubygems for $(ruby --version)"
 gem update --system
 
 if type code > /dev/null; then
@@ -36,6 +41,6 @@ if type nvim > /dev/null; then
 fi
 
 pushd ~/.dotfiles
-git add nvim/nvim.symlink && git commit -m 'Updated LazyVim'
+git add nvim/nvim.symlink homebrew/Brewfile.lock.json && git commit -m 'Updated LazyVim & Brewfile'
 git push origin main
 popd
