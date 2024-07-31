@@ -1,45 +1,51 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
+autoload -Uz colors && colors
 
-echo "\n>> Updating dotfiles repo"
+headline() {
+  print -- "\n\n$bg[blue]$fg_bold[yellow]❖ $*$reset_color"
+}
+
+headline "Updating .dotfiles \uf1d3  repo"
 pushd ~/.dotfiles
 git pull origin main
 popd
 source ~/.zshrc
 
 if [[ `uname` == "Darwin" ]]; then
-  echo "\n>> Installing Apple Software Updates"
+  headline "Installing \ue711 Software Updates"
   sudo softwareupdate -i -a
 
-  echo "\n>> Updating Mac App Store Apps"
+  headline "Updating Mac App Store Apps"
   mas outdated
   mas upgrade
 
-  echo "\n>> Updating Homebrew Packages"
+  headline "Updating Homebrew Packages"
   brew update
 
-  echo "\n>> Install everything from the Brewfile"
+  headline "Install everything from the Brewfile"
   brew bundle --file=~/.dotfiles/homebrew/Brewfile
 
-  echo "\n>> Upgrade Homebrew Packages"
+  headline "Upgrade Homebrew Packages"
   brew upgrade
 
-  echo "\n>> Cleaning Up old Homebrew Packages"
+  headline "Cleaning Up old Homebrew Packages"
   brew cleanup -s
 fi
 
-echo "\n>> Updating Rubygems for $(ruby --version)"
+headline "Updating Rubygems for \ue739 $(ruby --version | cut -d" " -f2)"
 gem update --system
 
 if type code > /dev/null; then
-    echo "\n>> Updating VS Code Extensions"
+    headline "Updating \udb82\ude1e VS Code Extensions"
     code --list-extensions | xargs -I{} code --install-extension {} --force
 fi
 
 if type nvim > /dev/null; then
-  echo "\n>> Updating LazyVim Plugins"
+  headline "Updating \ue6ae LazyVim Plugins"
   nvim --headless "+Lazy! sync" +qa
 fi
 
+headline "Pushing lockiles to .dotfiles \uf1d3  repo"
 pushd ~/.dotfiles
 git add nvim/nvim.symlink homebrew/Brewfile.lock.json && git commit -m 'Updated LazyVim & Brewfile'
 git push origin main
