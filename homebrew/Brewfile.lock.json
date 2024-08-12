@@ -172,7 +172,7 @@
     "mas": {
       "1Password for Safari": {
         "id": "1569813296",
-        "version": "2.26.1"
+        "version": "2.27.1"
       },
       "Apple Configurator": {
         "id": "1037126344",
@@ -208,12 +208,12 @@
       },
       "Sequel Ace": {
         "id": "1518036000",
-        "version": "4.0.17"
+        "version": "4.1.0"
       },
       "Skitch": null,
       "Slack": {
         "id": "803453959",
-        "version": "4.39.90"
+        "version": "4.39.95"
       },
       "Dato": {
         "id": "1470584107",
@@ -3711,8 +3711,8 @@
         "HOMEBREW_VERSION": "4.3.14",
         "HOMEBREW_PREFIX": "/opt/homebrew",
         "Homebrew/homebrew-core": "api",
-        "CLT": "16.0.0.0.1.1720323432",
-        "Xcode": "16.0",
+        "CLT": "16.0.0.0.1.1722497825",
+        "Xcode": "15.4",
         "macOS": "15.0"
       },
       "sonoma": {
