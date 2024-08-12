@@ -1,3 +1,14 @@
 Host *
   AddKeysToAgent yes
   UseKeychain yes
+
+# When we want to use special accounts for GitHub, we can do it this way...
+# Host * !github-special
+#   IdentitiesOnly yes
+#   IdentityFile ~/.ssh/id_ed25519
+#
+# Host github-special
+#   IdentitiesOnly yes
+#   IdentityFile ~/.ssh/id_ed25519-special
+#   Hostname github.com
+#   User git
