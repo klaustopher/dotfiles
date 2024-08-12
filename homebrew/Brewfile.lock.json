@@ -3712,7 +3712,7 @@
         "HOMEBREW_PREFIX": "/opt/homebrew",
         "Homebrew/homebrew-core": "api",
         "CLT": "16.0.0.0.1.1722497825",
-        "Xcode": "15.4",
+        "Xcode": "16.0",
         "macOS": "15.0"
       },
       "sonoma": {
