@@ -3123,7 +3123,7 @@
         }
       },
       "yt-dlp": {
-        "version": "HEAD-a065086",
+        "version": "2024.8.6",
         "bottle": {
           "rebuild": 0,
           "root_url": "https://ghcr.io/v2/homebrew/core",
