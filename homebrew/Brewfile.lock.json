@@ -38,7 +38,7 @@
         }
       },
       "chromedriver": {
-        "version": "127.0.6533.99",
+        "version": "127.0.6533.119",
         "options": {
           "full_name": "chromedriver"
         }
@@ -160,7 +160,7 @@
         "revision": "f062033b264109fcdde69596d34036fe1a9e227d"
       },
       "homebrew/services": {
-        "revision": "0ace77fdc67a59ec62cfca11948d52fa2cbe3484"
+        "revision": "3002ac3a0523f3fdcfe4f545182fcae5cd027f38"
       },
       "puma/puma": {
         "revision": "5960519de5e559a6326626643c0a7e4b2fd9832d"
