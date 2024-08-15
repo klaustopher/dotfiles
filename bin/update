@@ -47,6 +47,6 @@ fi
 
 headline "Pushing lockiles to .dotfiles \uf1d3  repo"
 pushd ~/.dotfiles
-git add nvim/nvim.symlink homebrew/Brewfile.lock.json && git commit -m 'Updated LazyVim & Brewfile'
+git add nvim/nvim.symlink && git commit -m 'Updated LazyVim lockfile'
 git push origin main
 popd
