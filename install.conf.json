@@ -37,8 +37,6 @@
       "~/.gemrc": "ruby/gemrc.symlink",
       "~/.rbenv/": "ruby/rbenv.symlink/",
       "~/.ssh/config": "openssh/config.symlink",
-      "~/Library/Keyboard Layouts/Deutsch (Programmieren).icns": "macos/keyboard-layout/Deutsch (Programmieren).icns",
-      "~/Library/Keyboard Layouts/Deutsch (Programmieren).keylayout": "macos/keyboard-layout/Deutsch (Programmieren).keylayout",
       "~/Library/Application Support/Code/User/settings.json": "vs-code/settings.json"
     }
   },
@@ -80,6 +78,10 @@
       {
         "command": "macos/set-defaults.sh",
         "description": "Set macOS defaults"
+      },
+      {
+        "command": "macos/install-layout.sh",
+        "description": "Install custom keyboard layout"
       },
       {
         "command": "git/create-user-config.sh",
