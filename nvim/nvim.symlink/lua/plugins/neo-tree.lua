@@ -12,6 +12,11 @@ return {
   config = function()
       require("neo-tree").setup({
           filesystem = {
+			  bind_to_cwd = true,
+			  follow_current_file = { 
+				  enabled = true,
+			  	leave_dirs_open = false
+			  },
               filtered_items = {
                   visible = true,
                   show_hidden_count = false,
@@ -28,6 +33,12 @@ return {
                   never_show = { '.git' },
               },
           },
+		  buffers = { 
+			  follow_current_file = { 
+				  enabled = true,
+			  	leave_dirs_open = false
+			  }
+		  }
       })
       vim.keymap.set("n", "<C-n>", ":Neotree filesystem toggle left<CR>", {})
   end,
