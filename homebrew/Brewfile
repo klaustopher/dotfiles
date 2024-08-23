@@ -79,6 +79,7 @@ cask "neovide"
 # Programming languages
 brew "node"
 brew "yarn"
+brew "nvm"
 # brew "crystal"
 brew "rbenv"
 brew "ruby-build"
