@@ -104,7 +104,6 @@ brew "gmp"
 # brew "postgis"
 
 # GUI Apps
-cask "chromedriver"
 cask "elgato-stream-deck"
 cask "monitorcontrol"
 cask "tidal"
