@@ -2,3 +2,4 @@ bundler
 ruby-lsp
 awesome_print
 executable-hooks
+rubocop
