@@ -1,0 +1,3 @@
+allow-execute() {
+ xattr -d com.apple.quarantine $1
+}
