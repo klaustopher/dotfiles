@@ -7,10 +7,7 @@
     }
   },
   {
-    "clean": [
-      "~",
-      "~/.config"
-    ]
+    "clean": ["~", "~/.config"]
   },
   {
     "create": [
@@ -23,15 +20,14 @@
     "install-brew": true
   },
   {
-    "brewfile": [
-      "homebrew/Brewfile"
-    ]
+    "brewfile": ["homebrew/Brewfile"]
   },
   {
     "link": {
       "~/.zshrc": "zsh/zshrc.symlink",
       "~/.gitignore": "git/gitignore.symlink",
       "~/.gitconfig": "git/gitconfig.symlink",
+      "~/.gitattributes": "git/gitattributes.symlink",
       "~/.config/nvim": "nvim/nvim.symlink",
       "~/.irbrc": "ruby/irbrc.symlink",
       "~/.gemrc": "ruby/gemrc.symlink",
