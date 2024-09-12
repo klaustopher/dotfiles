@@ -93,33 +93,37 @@ brew "gmp"
 # Database tools for development
 # brew "redis", restart_service: true
 # brew "mysql", restart_service: true
+# mas "Sequel Ace", id: 1518036000
 
 # Postgres
 # brew "postgresql@16", restart_service: true
+# brew "check_postgres"
+# cask "postico"
+# brew "libpq", link: true
+
+# PostGIS
 # brew "geos"
 # brew "proj"
+# brew "postgis"
+
+# Postgres TimescaleDB
 # tap "timescale/tap"
 # brew "timescale/tap/timescaledb"
-# brew "libpq", link: true
-# brew "check_postgres"
-# brew "postgis"
 
 # GUI Apps
 cask "elgato-stream-deck"
-cask "monitorcontrol"
 cask "tidal"
 cask "vlc"
-# cask "postico"
 cask "iterm2"
 cask "flameshot"
 cask "Slack"
 cask "Alfred"
+cask "istat-menus"
 
 # Mac App Store Applications
 mas "Apple Configurator", id: 1037126344
 mas "Dato", id: 1470584107
 mas "GIPHY CAPTURE", id: 668208984
-# mas "Sequel Ace", id: 1518036000
 # mas "Tailscale", id: 1475387142
 # mas "AusweisApp", id: 948660805
 
