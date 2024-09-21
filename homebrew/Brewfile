@@ -78,7 +78,7 @@ cask "neovide"
 
 # Programming languages
 brew "node"
-brew "yarn"
+brew "corepack"
 brew "nvm"
 # brew "crystal"
 brew "rbenv"
