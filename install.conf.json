@@ -7,11 +7,15 @@
     }
   },
   {
-    "clean": ["~", "~/.config"]
+    "clean": [
+      "~",
+      "~/.config"
+    ]
   },
   {
     "create": [
       "~/.config",
+      "~/.config/zed",
       "~/Projects",
       "~/Library/Application Support/Code/User/"
     ]
@@ -20,7 +24,9 @@
     "install-brew": true
   },
   {
-    "brewfile": ["homebrew/Brewfile"]
+    "brewfile": [
+      "homebrew/Brewfile"
+    ]
   },
   {
     "link": {
@@ -33,7 +39,8 @@
       "~/.gemrc": "ruby/gemrc.symlink",
       "~/.rbenv/": "ruby/rbenv.symlink/",
       "~/.ssh/config": "openssh/config.symlink",
-      "~/Library/Application Support/Code/User/settings.json": "vs-code/settings.json"
+      "~/Library/Application Support/Code/User/settings.json": "vs-code/settings.json",
+      "~/.config/zed/settings.json": "zed/settings.json"
     }
   },
   {
