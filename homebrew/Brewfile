@@ -75,6 +75,7 @@ brew "rg"
 brew "fd"
 brew "lazygit"
 cask "neovide"
+cask "zed"
 
 # Programming languages
 brew "node"
@@ -98,7 +99,7 @@ brew "gmp"
 # Postgres
 # brew "postgresql@16", restart_service: true
 # brew "check_postgres"
-# cask "postico"
+cask "postico"
 # brew "libpq", link: true
 
 # PostGIS
@@ -119,6 +120,7 @@ cask "flameshot"
 cask "Slack"
 cask "Alfred"
 cask "istat-menus"
+cask "forklift"
 
 # Mac App Store Applications
 mas "Apple Configurator", id: 1037126344
@@ -127,10 +129,7 @@ mas "GIPHY CAPTURE", id: 668208984
 # mas "Tailscale", id: 1475387142
 # mas "AusweisApp", id: 948660805
 
-# Only install Xcode when not running beta version, because we need the beta
-if OS.mac? && MacOS.version < 15
-  mas "Xcode", id: 497799835
-end
+mas "Xcode", id: 497799835
 
 # Apps have been removed from the store
 # mas "Skitch", id: 425955336
