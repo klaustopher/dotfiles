@@ -52,3 +52,6 @@
 
 [diff "image"]
 	command = ~/.dotfiles/bin/git-img-diff
+
+[diff "sqldiff"]
+  command = ~/.dotfiles/bin/git-sqldiff

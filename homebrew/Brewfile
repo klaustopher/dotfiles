@@ -95,6 +95,8 @@ brew "gmp"
 # brew "redis", restart_service: true
 # brew "mysql", restart_service: true
 # mas "Sequel Ace", id: 1518036000
+brew "sqlfluff"
+brew "sqldiff"
 
 # Postgres
 # brew "postgresql@16", restart_service: true

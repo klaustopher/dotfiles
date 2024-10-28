@@ -2,3 +2,4 @@
 *.jpg diff=image
 *.jpeg diff=image
 *.png diff=image
+*.sqlite diff=sqldiff
