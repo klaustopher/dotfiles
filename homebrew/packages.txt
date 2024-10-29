@@ -1,0 +1,11 @@
+Ruby
+Crystal
+Node
+MySQL
+PostgreSQL
+PostGIS
+TimescaleDB
+Redis
+Home Network Connection
+VSCode
+Video Encoding

@@ -1,3 +1,5 @@
+CRATES = File.read("#{Dir.home}/.selected-homebrew-crates").split(",").inspect
+
 # Install fonts so that everything looks amazing
 cask "font-fantasque-sans-mono"
 cask "font-fantasque-sans-mono-nerd-font"
@@ -52,8 +54,10 @@ brew "wget"
 
 # Media tools
 brew "yt-dlp"
-# brew "gstreamer"
-# brew "ffmpeg"
+if CRATES.include?("Video Encoding")
+  brew "ffmpeg"
+  brew "gstreamer"
+end
 
 # Git tools
 brew "gh"
@@ -78,40 +82,56 @@ cask "neovide"
 cask "zed"
 
 # Programming languages
-brew "node"
-brew "corepack"
-brew "nvm"
-# brew "crystal"
-brew "rbenv"
-brew "ruby-build"
+if CRATES.include?("Crystal")
+  brew "crystal"
+end
 
-# Build depencencies for Rubye
-brew "openssl@3"
-brew "readline"
-brew "libyaml"
-brew "gmp"
+if CRATES.include?("Node")
+  brew "nvm"
+end
+
+if CRATES.include?("Ruby")
+  brew "rbenv"
+  brew "ruby-build"
+
+  # Build depencencies for Ruby
+  brew "openssl@3"
+  brew "readline"
+  brew "libyaml"
+  brew "gmp"
+end
 
 # Database tools for development
-# brew "redis", restart_service: true
-# brew "mysql", restart_service: true
-# mas "Sequel Ace", id: 1518036000
+if CRATES.include?("Redis")
+  brew "redis", restart_service: true
+end
+
+if CRATES.include?("MySQL")
+  brew "mysql", restart_service: true
+  mas "Sequel Ace", id: 1518036000
+end
+
 brew "sqlfluff"
 brew "sqldiff"
 
-# Postgres
-# brew "postgresql@16", restart_service: true
-# brew "check_postgres"
-cask "postico"
-# brew "libpq", link: true
+if CRATES.include?("PostgreSQL")
+  brew "postgresql@16", restart_service: true
+  brew "check_postgres"
+  cask "postico"
+  brew "libpq", link: true
+end
 
-# PostGIS
-# brew "geos"
-# brew "proj"
-# brew "postgis"
+if CRATES.include?("PostGIS")
+  brew "geos"
+  brew "proj"
+  brew "postgis"
+end
 
 # Postgres TimescaleDB
-# tap "timescale/tap"
-# brew "timescale/tap/timescaledb"
+if CRATES.include?("TimescaleDB")
+  tap "timescale/tap"
+  brew "timescaledb"
+end
 
 # GUI Apps
 cask "elgato-stream-deck"
@@ -128,7 +148,10 @@ cask "forklift"
 mas "Apple Configurator", id: 1037126344
 mas "Dato", id: 1470584107
 mas "GIPHY CAPTURE", id: 668208984
-# mas "Tailscale", id: 1475387142
+if CRATES.include?("Home Network Connection")
+  mas "Tailscale", id: 1475387142
+end
+
 # mas "AusweisApp", id: 948660805
 
 mas "Xcode", id: 497799835
@@ -139,33 +162,36 @@ mas "Xcode", id: 497799835
 # mas "Marked", id: 448925439
 
 # VS Code extensions
-# vscode "crystal-lang-tools.crystal-lang"
-# vscode "cschlosser.doxdocgen"
-# vscode "esbenp.prettier-vscode"
-# vscode "github.vscode-github-actions"
-# vscode "itarato.byesig"
-# vscode "jeff-hykin.better-cpp-syntax"
-# vscode "karunamurti.haml"
-# vscode "koichisasada.vscode-rdbg"
-# vscode "matthewmcgarvey.crystal-spec-vscode"
-# vscode "ms-azuretools.vscode-docker"
-# vscode "ms-ceintl.vscode-language-pack-de"
-# vscode "ms-vscode-remote.remote-containers"
-# vscode "ms-vscode-remote.remote-ssh"
-# vscode "ms-vscode-remote.remote-wsl"
-# vscode "ms-vscode.cmake-tools"
-# vscode "ms-vscode.cpptools"
-# vscode "ms-vscode.cpptools-extension-pack"
-# vscode "ms-vscode.cpptools-themes"
-# vscode "ms-vscode.remote-explorer"
-# vscode "ms-vscode.theme-tomorrowkit"
-# vscode "pkief.material-icon-theme"
-# vscode "platformio.platformio-ide"
-# vscode "redhat.vscode-yaml"
-# vscode "shopify.ruby-extensions-pack"
-# vscode "shopify.ruby-lsp"
-# vscode "shopify.vscode-shadowenv"
-# vscode "sorbet.sorbet-vscode-extension"
-# vscode "tamasfe.even-better-toml"
-# vscode "twxs.cmake"
-# vscode "vscodevim.vim"
+if CRATES.include?("VSCode")
+  cask "visual-studio-code"
+  vscode "crystal-lang-tools.crystal-lang"
+  vscode "cschlosser.doxdocgen"
+  vscode "esbenp.prettier-vscode"
+  vscode "github.vscode-github-actions"
+  vscode "itarato.byesig"
+  vscode "jeff-hykin.better-cpp-syntax"
+  vscode "karunamurti.haml"
+  vscode "koichisasada.vscode-rdbg"
+  vscode "matthewmcgarvey.crystal-spec-vscode"
+  vscode "ms-azuretools.vscode-docker"
+  vscode "ms-ceintl.vscode-language-pack-de"
+  vscode "ms-vscode-remote.remote-containers"
+  vscode "ms-vscode-remote.remote-ssh"
+  vscode "ms-vscode-remote.remote-wsl"
+  vscode "ms-vscode.cmake-tools"
+  vscode "ms-vscode.cpptools"
+  vscode "ms-vscode.cpptools-extension-pack"
+  vscode "ms-vscode.cpptools-themes"
+  vscode "ms-vscode.remote-explorer"
+  vscode "ms-vscode.theme-tomorrowkit"
+  vscode "pkief.material-icon-theme"
+  vscode "platformio.platformio-ide"
+  vscode "redhat.vscode-yaml"
+  vscode "shopify.ruby-extensions-pack"
+  vscode "shopify.ruby-lsp"
+  vscode "shopify.vscode-shadowenv"
+  vscode "sorbet.sorbet-vscode-extension"
+  vscode "tamasfe.even-better-toml"
+  vscode "twxs.cmake"
+  vscode "vscodevim.vim"
+end

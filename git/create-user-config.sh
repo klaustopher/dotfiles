@@ -1,3 +1,5 @@
+#!/bin/bash
+
 if [ -f $HOME/.git-user-config ]
 then
   echo "~/.git-user-config exists already, skipping"

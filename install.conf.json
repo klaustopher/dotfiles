@@ -7,10 +7,7 @@
     }
   },
   {
-    "clean": [
-      "~",
-      "~/.config"
-    ]
+    "clean": ["~", "~/.config"]
   },
   {
     "create": [
@@ -24,9 +21,18 @@
     "install-brew": true
   },
   {
-    "brewfile": [
-      "homebrew/Brewfile"
+    "shell": [
+      {
+        "command": "homebrew/select-packages.sh && source ~/.localrc",
+        "description": "Select homebrew packages to install",
+        "stdout": true,
+        "stderr": true,
+        "stdin": true
+      }
     ]
+  },
+  {
+    "brewfile": ["homebrew/Brewfile"]
   },
   {
     "link": {
