@@ -1,4 +1,5 @@
-CRATES = File.read("#{Dir.home}/.selected-homebrew-crates").split(",").inspect
+CRATE_FILE = "#{Dir.home}/.selected-homebrew-crates"
+CRATES = (File.exist?(CRATE_FILE) ? File.read(CRATE_FILE) : "").split(",").inspect
 
 # Install fonts so that everything looks amazing
 cask "font-fantasque-sans-mono"
