@@ -9,3 +9,6 @@ Redis
 Home Network Connection
 VSCode
 Video Encoding
+SQLite
+Desk Setup
+Private Communication

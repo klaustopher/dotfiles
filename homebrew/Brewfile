@@ -1,161 +1,168 @@
 CRATE_FILE = "#{Dir.home}/.selected-homebrew-crates"
-CRATES = (File.exist?(CRATE_FILE) ? File.read(CRATE_FILE) : "").split(",").inspect
+CRATES = (File.exist?(CRATE_FILE) ? File.read(CRATE_FILE) : '').split(',').inspect
 
 # Install fonts so that everything looks amazing
-cask "font-fantasque-sans-mono"
-cask "font-fantasque-sans-mono-nerd-font"
+cask 'font-fantasque-sans-mono'
+cask 'font-fantasque-sans-mono-nerd-font'
 
 # 1password
-tap "1password/tap"
-cask "1password-cli"
-cask "1password"
-mas "1Password for Safari", id: 1569813296
+tap '1password/tap'
+cask '1password-cli'
+cask '1password'
+mas '1Password for Safari', id: 1_569_813_296
 
 # Other Taps
-tap "homebrew/services"
+tap 'homebrew/services'
 
 # Install a bunch of packages
 # TODO: Add some grouping
-brew "zstd"
-brew "llvm"
-brew "aria2"
-brew "autoconf"
-brew "automake"
-brew "coreutils"
-brew "pkg-config"
-brew "direnv"
-brew "libsodium"
-brew "harfbuzz"
-brew "libksba"
-brew "gnupg"
-brew "libtool"
-brew "gdal"
-brew "gobject-introspection"
-brew "htop"
-brew "libffi"
-brew "imagemagick"
-brew "jq"
-brew "libressl"
-brew "lima"
-brew "lsusb"
-brew "mas"
-brew "zlib"
-brew "nmap"
-brew "tmux"
-brew "overmind"
-brew "poppler-qt5"
-brew "pwgen"
-brew "rsync"
-brew "ssh-copy-id"
-brew "terminal-notifier"
-brew "tig"
-brew "tree"
-brew "watchman"
-brew "wget"
+brew 'zstd'
+brew 'llvm'
+brew 'aria2'
+brew 'autoconf'
+brew 'automake'
+brew 'coreutils'
+brew 'pkg-config'
+brew 'direnv'
+brew 'libsodium'
+brew 'harfbuzz'
+brew 'libksba'
+brew 'gnupg'
+brew 'libtool'
+brew 'gdal'
+brew 'gobject-introspection'
+brew 'htop'
+brew 'libffi'
+brew 'imagemagick'
+brew 'jq'
+brew 'libressl'
+brew 'lima'
+brew 'lsusb'
+brew 'mas'
+brew 'zlib'
+brew 'nmap'
+brew 'tmux'
+brew 'overmind'
+brew 'poppler-qt5'
+brew 'pwgen'
+brew 'rsync'
+brew 'ssh-copy-id'
+brew 'terminal-notifier'
+brew 'tig'
+brew 'tree'
+brew 'watchman'
+brew 'wget'
 
 # Media tools
-brew "yt-dlp"
-if CRATES.include?("Video Encoding")
-  brew "ffmpeg"
-  brew "gstreamer"
+brew 'yt-dlp'
+if CRATES.include?('Video Encoding')
+  brew 'ffmpeg'
+  brew 'gstreamer'
 end
 
 # Git tools
-brew "gh"
-brew "git"
-brew "git-crypt"
-brew "gitui"
+brew 'gh'
+brew 'git'
+brew 'git-crypt'
+brew 'gitui'
 
 # Network utilities
-brew "ipcalc"
-brew "speedtest-cli"
+brew 'ipcalc'
+brew 'speedtest-cli'
 
 # ZSH and plugins
-brew "zsh"
-brew "zplug"
+brew 'zsh'
+brew 'zplug'
 
 # Editors
-brew "neovim"
-brew "rg"
-brew "fd"
-brew "lazygit"
-cask "neovide"
-cask "zed"
+brew 'neovim'
+brew 'rg'
+brew 'fd'
+brew 'lazygit'
+cask 'neovide'
+cask 'zed'
 
 # Programming languages
-if CRATES.include?("Crystal")
-  brew "crystal"
-end
+brew 'crystal' if CRATES.include?('Crystal')
 
-if CRATES.include?("Node")
-  brew "nvm"
-end
+brew 'nvm' if CRATES.include?('Node')
 
-if CRATES.include?("Ruby")
-  brew "rbenv"
-  brew "ruby-build"
+if CRATES.include?('Ruby')
+  brew 'rbenv'
+  brew 'ruby-build'
 
   # Build depencencies for Ruby
-  brew "openssl@3"
-  brew "readline"
-  brew "libyaml"
-  brew "gmp"
+  brew 'openssl@3'
+  brew 'readline'
+  brew 'libyaml'
+  brew 'gmp'
 end
 
 # Database tools for development
-if CRATES.include?("Redis")
-  brew "redis", restart_service: true
+brew 'redis', restart_service: true if CRATES.include?('Redis')
+
+if CRATES.include?('MySQL')
+  brew 'mysql', restart_service: true
+  mas 'Sequel Ace', id: 1_518_036_000
 end
 
-if CRATES.include?("MySQL")
-  brew "mysql", restart_service: true
-  mas "Sequel Ace", id: 1518036000
+brew 'sqlfluff'
+brew 'sqldiff'
+
+if CRATES.include?('PostgreSQL')
+  brew 'postgresql@16', restart_service: true
+  brew 'check_postgres'
+  cask 'postico'
+  brew 'libpq', link: true
 end
 
-brew "sqlfluff"
-brew "sqldiff"
-
-if CRATES.include?("PostgreSQL")
-  brew "postgresql@16", restart_service: true
-  brew "check_postgres"
-  cask "postico"
-  brew "libpq", link: true
-end
-
-if CRATES.include?("PostGIS")
-  brew "geos"
-  brew "proj"
-  brew "postgis"
+if CRATES.include?('PostGIS')
+  brew 'geos'
+  brew 'proj'
+  brew 'postgis'
 end
 
 # Postgres TimescaleDB
-if CRATES.include?("TimescaleDB")
-  tap "timescale/tap"
-  brew "timescaledb"
+if CRATES.include?('TimescaleDB')
+  tap 'timescale/tap'
+  brew 'timescaledb'
 end
+
+cask 'db-browser-for-sqlite' if CRATES.include?('SQLite')
 
 # GUI Apps
-cask "elgato-stream-deck"
-cask "tidal"
-cask "vlc"
-cask "iterm2"
-cask "flameshot"
-cask "Slack"
-cask "Alfred"
-cask "istat-menus"
-cask "forklift"
+cask 'tidal'
+cask 'vlc'
+cask 'iterm2'
+cask 'Alfred'
+cask 'istat-menus'
+cask 'forklift'
+cask 'dash'
+cask 'firefox'
+cask 'gpg-suite'
+cask 'textmate'
+
+if CRATES.include?('Desk Setup')
+  cask 'displaylink'
+  cask 'ankerwork'
+  cask 'elgato-stream-deck'
+end
+
+if CRATES.include?('Private Communication')
+  cask 'threema'
+  cask 'whatsapp'
+end
 
 # Mac App Store Applications
-mas "Apple Configurator", id: 1037126344
-mas "Dato", id: 1470584107
-mas "GIPHY CAPTURE", id: 668208984
-if CRATES.include?("Home Network Connection")
-  mas "Tailscale", id: 1475387142
-end
+mas 'Apple Configurator', id: 1_037_126_344
+mas 'Dato', id: 1_470_584_107
+mas 'GIPHY CAPTURE', id: 668_208_984
+mas 'Tailscale', id: 1_475_387_142 if CRATES.include?('Home Network Connection')
+mas 'Monosnap', id: 540_348_655
 
 # mas "AusweisApp", id: 948660805
 
-mas "Xcode", id: 497799835
+mas 'Xcode', id: 497_799_835
 
 # Apps have been removed from the store
 # mas "Skitch", id: 425955336
@@ -163,36 +170,36 @@ mas "Xcode", id: 497799835
 # mas "Marked", id: 448925439
 
 # VS Code extensions
-if CRATES.include?("VSCode")
-  cask "visual-studio-code"
-  vscode "crystal-lang-tools.crystal-lang"
-  vscode "cschlosser.doxdocgen"
-  vscode "esbenp.prettier-vscode"
-  vscode "github.vscode-github-actions"
-  vscode "itarato.byesig"
-  vscode "jeff-hykin.better-cpp-syntax"
-  vscode "karunamurti.haml"
-  vscode "koichisasada.vscode-rdbg"
-  vscode "matthewmcgarvey.crystal-spec-vscode"
-  vscode "ms-azuretools.vscode-docker"
-  vscode "ms-ceintl.vscode-language-pack-de"
-  vscode "ms-vscode-remote.remote-containers"
-  vscode "ms-vscode-remote.remote-ssh"
-  vscode "ms-vscode-remote.remote-wsl"
-  vscode "ms-vscode.cmake-tools"
-  vscode "ms-vscode.cpptools"
-  vscode "ms-vscode.cpptools-extension-pack"
-  vscode "ms-vscode.cpptools-themes"
-  vscode "ms-vscode.remote-explorer"
-  vscode "ms-vscode.theme-tomorrowkit"
-  vscode "pkief.material-icon-theme"
-  vscode "platformio.platformio-ide"
-  vscode "redhat.vscode-yaml"
-  vscode "shopify.ruby-extensions-pack"
-  vscode "shopify.ruby-lsp"
-  vscode "shopify.vscode-shadowenv"
-  vscode "sorbet.sorbet-vscode-extension"
-  vscode "tamasfe.even-better-toml"
-  vscode "twxs.cmake"
-  vscode "vscodevim.vim"
+if CRATES.include?('VSCode')
+  cask 'visual-studio-code'
+  vscode 'crystal-lang-tools.crystal-lang'
+  vscode 'cschlosser.doxdocgen'
+  vscode 'esbenp.prettier-vscode'
+  vscode 'github.vscode-github-actions'
+  vscode 'itarato.byesig'
+  vscode 'jeff-hykin.better-cpp-syntax'
+  vscode 'karunamurti.haml'
+  vscode 'koichisasada.vscode-rdbg'
+  vscode 'matthewmcgarvey.crystal-spec-vscode'
+  vscode 'ms-azuretools.vscode-docker'
+  vscode 'ms-ceintl.vscode-language-pack-de'
+  vscode 'ms-vscode-remote.remote-containers'
+  vscode 'ms-vscode-remote.remote-ssh'
+  vscode 'ms-vscode-remote.remote-wsl'
+  vscode 'ms-vscode.cmake-tools'
+  vscode 'ms-vscode.cpptools'
+  vscode 'ms-vscode.cpptools-extension-pack'
+  vscode 'ms-vscode.cpptools-themes'
+  vscode 'ms-vscode.remote-explorer'
+  vscode 'ms-vscode.theme-tomorrowkit'
+  vscode 'pkief.material-icon-theme'
+  vscode 'platformio.platformio-ide'
+  vscode 'redhat.vscode-yaml'
+  vscode 'shopify.ruby-extensions-pack'
+  vscode 'shopify.ruby-lsp'
+  vscode 'shopify.vscode-shadowenv'
+  vscode 'sorbet.sorbet-vscode-extension'
+  vscode 'tamasfe.even-better-toml'
+  vscode 'twxs.cmake'
+  vscode 'vscodevim.vim'
 end
