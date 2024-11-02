@@ -91,7 +91,7 @@ if CRATES.include?('Ruby')
   brew 'rbenv'
   brew 'ruby-build'
 
-  # Build depencencies for Ruby
+  # Build dependencies for Ruby
   brew 'openssl@3'
   brew 'readline'
   brew 'libyaml'
@@ -110,22 +110,16 @@ brew 'sqlfluff'
 brew 'sqldiff'
 
 if CRATES.include?('PostgreSQL')
-  brew 'postgresql@16', restart_service: true
-  brew 'check_postgres'
-  cask 'postico'
-  brew 'libpq', link: true
-end
-
-if CRATES.include?('PostGIS')
   brew 'geos'
   brew 'proj'
-  brew 'postgis'
+  brew 'ozeias/postgresql/postgis@16', restart_service: true
+  brew 'check_postgres'
+  cask 'postico'
 end
 
 # Postgres TimescaleDB
 if CRATES.include?('TimescaleDB')
-  tap 'timescale/tap'
-  brew 'timescaledb'
+  brew 'timescale/tap/timescaledb'
 end
 
 cask 'db-browser-for-sqlite' if CRATES.include?('SQLite')

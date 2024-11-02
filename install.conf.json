@@ -10,12 +10,7 @@
     "clean": ["~", "~/.config"]
   },
   {
-    "create": [
-      "~/.config",
-      "~/.config/zed",
-      "~/Projects",
-      "~/Library/Application Support/Code/User/"
-    ]
+    "create": ["~/.config", "~/.config/zed", "~/Projects", "~/Library/Application Support/Code/User/"]
   },
   {
     "install-brew": true
@@ -23,7 +18,7 @@
   {
     "shell": [
       {
-        "command": "homebrew/select-packages.sh && source ~/.localrc",
+        "command": "homebrew/select-packages.sh",
         "description": "Select homebrew packages to install",
         "stdout": true,
         "stderr": true,
