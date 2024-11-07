@@ -112,8 +112,8 @@ brew 'sqldiff'
 if CRATES.include?('PostgreSQL')
   brew 'geos'
   brew 'proj'
-  brew 'ozeias/postgresql/postgis@16', restart_service: true
-  brew 'check_postgres'
+  brew 'postgresql@16', restart_service: true
+  brew 'postgis'
   cask 'postico'
 end
 
