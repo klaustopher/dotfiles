@@ -145,6 +145,7 @@ end
 if CRATES.include?('Private Communication')
   cask 'threema'
   cask 'whatsapp'
+  cask 'signal'
 end
 
 # Mac App Store Applications
