@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if ! [ -x "$(command -v gum)" ]; then
-    brew install gum
+    /opt/homebrew/bin/brew install gum
 fi
 
 pushd "$(dirname "$(realpath -- "$0")")"
