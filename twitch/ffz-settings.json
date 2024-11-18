@@ -2,14 +2,15 @@
   "version": 2,
   "type": "full",
   "values": {
-    "p:0:metadata.player-stats": true,
-    "p:0:chat.points.auto-rewards": true,
+    "p:0:chat.scrollback-length": 5000,
+    "p:0:player.compressor.default": true,
     "addons.enabled": [
       "7tv-emotes",
       "ffzap-core",
       "ffzap-bttv"
     ],
-    "p:0:chat.filtering.display-mod-action": 2,
+    "p:0:chat.filtering.process-own": true,
+    "p:0:metadata.player-stats": true,
     "cfg-seen": [
       "i18n.debug.capture",
       "i18n.debug.transform",
@@ -147,6 +148,7 @@
       "metadata.viewers",
       "metadata.viewers.no-native",
       "metadata.uptime.no-native",
+      "metadata.featured-follow",
       "channel.auto-click-off-featured",
       "channel.auto-skip-trailer",
       "channel.auto-click-chat",
@@ -252,6 +254,7 @@
       "theme.font.size",
       "directory.hidden.style",
       "directory.hidden.reveal",
+      "directory.hide-costream-border",
       "directory.uptime",
       "directory.show-flags",
       "directory.hide-live",
@@ -320,8 +323,6 @@
       "theme.color.chat-accent",
       "chat.video-chat.timestamps",
       "chat.video-chat.enabled",
-      "add-ons",
-      "addons.dev.server",
       "experiments",
       "i18n.debug.open",
       "socket.info",
@@ -337,6 +338,7 @@
       "feedback",
       "feedback.log",
       "changelog",
+      "add-ons",
       "addon-changelog",
       "legal",
       "debug.chat-test",
@@ -371,17 +373,32 @@
       "addon-changelog.chatterino-badges",
       "addon-changelog.brcm",
       "addon-changelog.better-minecraft-badge",
-      "addon-changelog.aplatypuss-emotes",
+      "addon-changelog.aplatypuss",
       "addon-changelog.ModTools",
       "addon-changelog.7tv-emotes",
-      "metadata.featured-follow",
-      "directory.hide-costream-border"
-    ],
-    "p:0:chat.filtering.highlight-mentions": true,
-    "p:0:chat.filtering.display-deleted": "DETAILED",
-    "cfg-collapsed": [
-      "chat.actions",
-      "data_management.authentication"
+      "addon.seventv_emotes.animated_avatars",
+      "addon.seventv_emotes.badges",
+      "addon.seventv_emotes.nametag_paints",
+      "addon.seventv_emotes.nametag_paints_drop_shadows",
+      "addon.seventv_emotes.global_emotes",
+      "addon.seventv_emotes.channel_emotes",
+      "addon.seventv_emotes.emote_format",
+      "addon.seventv_emotes.personal_emotes",
+      "addon.seventv_emotes.unlisted_emotes",
+      "addon.seventv_emotes.update_messages",
+      "ffzap.core.remove_spaces",
+      "ffzap.core.message_deletion",
+      "ffzap.core.enable_highlight_sound",
+      "ffzap.core.highlight_sound",
+      "ffzap.core.highlight_sound_volume",
+      "ffzap.core.highlight_sound_prevent_own_channel",
+      "ffzap.core.highlight_sound_types",
+      "ffzap.betterttv.global_emoticons",
+      "ffzap.betterttv.arbitrary_emoticons",
+      "ffzap.betterttv.channel_emoticons",
+      "ffzap.betterttv.update_messages",
+      "ffzap.betterttv.pro_badges",
+      "ffzap.betterttv.pro_emoticons"
     ],
     "p:0:chat.filtering.highlight-basic-users": [
       {
@@ -398,10 +415,6 @@
         "id": "1731586045362-0.7094735513961717-3"
       }
     ],
-    "p:0:chat.filtering.process-own": true,
-    "p:0:chat.filtering.ignore-clear": true,
-    "p:0:chat.filtering.remove-deleted": 0,
-    "p:0:chat.scrollback-length": 5000,
     "p:0:chat.filtering.highlight-basic-terms": [
       {
         "v": {
@@ -416,8 +429,27 @@
         }
       }
     ],
-    "p:0:player.compressor.default": true,
+    "p:0:chat.filtering.display-deleted": "DETAILED",
     "p:0:player.gain.enable": true,
-    "p:0:player.gain.no-volume": true
+    "p:0:chat.points.auto-rewards": true,
+    "cfg-collapsed": [
+      "chat.actions",
+      "add_ons"
+    ],
+    "p:0:chat.filtering.remove-deleted": 0,
+    "p:0:chat.filtering.ignore-clear": true,
+    "p:0:player.gain.no-volume": true,
+    "p:0:chat.filtering.display-mod-action": 2,
+    "p:0:chat.filtering.highlight-mentions": true,
+    "p:0:layout.side-nav.show": 1,
+    "p:0:layout.side-nav.hide-stories": false,
+    "p:0:layout.side-nav.hide-viewers": false,
+    "p:0:layout.side-nav.rerun-style": 2,
+    "p:0:layout.swap-sidebars": false,
+    "p:0:layout.minimal-navigation": true,
+    "p:0:layout.theatre-navigation": true,
+    "p:0:theme.disable-auto-dark": true,
+    "p:0:chat.lines.borders": 2,
+    "p:0:chat.lines.alternate": true
   }
 }
