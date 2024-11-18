@@ -133,8 +133,11 @@ cask 'istat-menus'
 cask 'forklift'
 cask 'dash'
 cask 'firefox'
-cask 'gpg-suite'
 cask 'textmate'
+
+if MacOS.version < :sequoia
+  cask 'gpg-suite'
+end
 
 if CRATES.include?('Desk Setup')
   cask 'displaylink'
