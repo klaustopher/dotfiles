@@ -138,6 +138,7 @@ cask 'textmate'
 if MacOS.version < :sequoia
   cask 'gpg-suite'
 end
+brew "pinentry-mac"
 
 if CRATES.include?('Desk Setup')
   cask 'displaylink'

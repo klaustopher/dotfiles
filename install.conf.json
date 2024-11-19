@@ -10,7 +10,7 @@
     "clean": ["~", "~/.config"]
   },
   {
-    "create": ["~/.config", "~/.config/zed", "~/Projects", "~/Library/Application Support/Code/User/"]
+    "create": ["~/.config", "~/.config/zed", "~/Projects", "~/Library/Application Support/Code/User/", "~/.gnupg/"]
   },
   {
     "install-brew": true
@@ -41,7 +41,8 @@
       "~/.rbenv/": "ruby/rbenv.symlink/",
       "~/.ssh/config": "openssh/config.symlink",
       "~/Library/Application Support/Code/User/settings.json": "vs-code/settings.json",
-      "~/.config/zed/settings.json": "zed/settings.json"
+      "~/.config/zed/settings.json": "zed/settings.json",
+      "~/.gnupg/gpg-agent.conf": "gpg/gpg-agent.conf"
     }
   },
   {
@@ -65,6 +66,10 @@
   },
   {
     "shell": [
+      {
+        "command": "gpgconf --kill gpg-agent",
+        "description": "Reload GPG agent"
+      },
       {
         "command": "sudo chsh -s $(brew --prefix)/bin/zsh $(whoami)",
         "description": "Switch shell to ZSH",
