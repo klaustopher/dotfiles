@@ -2,15 +2,19 @@
   "version": 2,
   "type": "full",
   "values": {
+    "p:0:chat.lines.borders": 2,
     "p:0:chat.scrollback-length": 5000,
-    "p:0:player.compressor.default": true,
-    "addons.enabled": [
-      "7tv-emotes",
-      "ffzap-core",
-      "ffzap-bttv"
-    ],
-    "p:0:chat.filtering.process-own": true,
+    "p:0:chat.lines.alternate": true,
+    "p:0:chat.points.auto-rewards": true,
     "p:0:metadata.player-stats": true,
+    "addons.enabled": [
+      "ffzap-core"
+    ],
+    "p:0:theme.disable-auto-dark": true,
+    "p:0:layout.side-nav.show": 1,
+    "p:0:player.compressor.default": true,
+    "p:0:layout.side-nav.rerun-style": 2,
+    "p:0:chat.filtering.display-mod-action": 2,
     "cfg-seen": [
       "i18n.debug.capture",
       "i18n.debug.transform",
@@ -400,6 +404,20 @@
       "ffzap.betterttv.pro_badges",
       "ffzap.betterttv.pro_emoticons"
     ],
+    "p:0:layout.minimal-navigation": true,
+    "p:0:chat.filtering.highlight-mentions": true,
+    "p:0:chat.filtering.display-deleted": "DETAILED",
+    "p:0:player.gain.enable": true,
+    "cfg-collapsed": [
+      "chat.actions",
+      "add_ons"
+    ],
+    "p:0:chat.filtering.process-own": true,
+    "p:0:layout.side-nav.hide-viewers": false,
+    "p:0:chat.filtering.remove-deleted": 0,
+    "p:0:chat.filtering.ignore-clear": true,
+    "p:0:layout.side-nav.hide-stories": false,
+    "p:0:layout.theatre-navigation": true,
     "p:0:chat.filtering.highlight-basic-users": [
       {
         "v": {
@@ -415,41 +433,22 @@
         "id": "1731586045362-0.7094735513961717-3"
       }
     ],
+    "p:0:player.gain.no-volume": true,
     "p:0:chat.filtering.highlight-basic-terms": [
       {
         "v": {
+          "remove": false,
           "v": "klaus",
           "t": "text",
-          "c": "#E63131",
+          "c": "#6B1212",
           "s": false,
           "h": false,
           "w": false,
-          "p": 0,
-          "remove": false
-        }
+          "p": 0
+        },
+        "id": "1732524794224-0.4083883990904521-0"
       }
     ],
-    "p:0:chat.filtering.display-deleted": "DETAILED",
-    "p:0:player.gain.enable": true,
-    "p:0:chat.points.auto-rewards": true,
-    "cfg-collapsed": [
-      "chat.actions",
-      "add_ons"
-    ],
-    "p:0:chat.filtering.remove-deleted": 0,
-    "p:0:chat.filtering.ignore-clear": true,
-    "p:0:player.gain.no-volume": true,
-    "p:0:chat.filtering.display-mod-action": 2,
-    "p:0:chat.filtering.highlight-mentions": true,
-    "p:0:layout.side-nav.show": 1,
-    "p:0:layout.side-nav.hide-stories": false,
-    "p:0:layout.side-nav.hide-viewers": false,
-    "p:0:layout.side-nav.rerun-style": 2,
-    "p:0:layout.swap-sidebars": false,
-    "p:0:layout.minimal-navigation": true,
-    "p:0:layout.theatre-navigation": true,
-    "p:0:theme.disable-auto-dark": true,
-    "p:0:chat.lines.borders": 2,
-    "p:0:chat.lines.alternate": true
+    "p:0:layout.swap-sidebars": false
   }
 }
