@@ -1,6 +1,6 @@
 # klaustophers Dotfiles
 
-This is my new 2024 stab of running my dotfiles. They are managed by [dotbot](https://github.com/anishathalye/dotbot) and are intended to be un on macOS.
+This is my new 2024 stab of running my dotfiles. They are managed by [dotbot](https://github.com/anishathalye/dotbot) and are intended to be run on macOS.
 
 Files are split up into topic folders.
 
@@ -14,7 +14,7 @@ cd ~/.dotfiles
 
 ## Homebrew
 
-We will install [homebrew](https://brew.sh) when it is not there. In `homebrew/Brewfile` we have a Brewfile that list all of the tools I want in my basic setup.
+We will install [homebrew](https://brew.sh) when it is not there. In `homebrew/Brewfile` we have a Brewfile that list all of the tools I want in my basic setup. There's also a little shell utility that asks for what setups you want to have on the machine and installs stuff dependent on this.
 
 ## ZSH config
 
