@@ -1,4 +1,6 @@
-CRATE_FILE = "#{Dir.home}/.selected-homebrew-crates"
+# frozen_string_literal: true
+
+CRATE_FILE = "#{Dir.home}/.selected-homebrew-crates".freeze
 CRATES = (File.exist?(CRATE_FILE) ? File.read(CRATE_FILE) : '').split(',').inspect
 
 # Install fonts so that everything looks amazing
@@ -83,7 +85,10 @@ cask 'neovide'
 cask 'zed'
 
 # Programming languages
-brew 'crystal' if CRATES.include?('Crystal')
+if CRATES.include?('Crystal')
+  brew 'crystal'
+  brew 'crystalline'
+end
 
 brew 'nvm' if CRATES.include?('Node')
 
@@ -118,9 +123,7 @@ if CRATES.include?('PostgreSQL')
 end
 
 # Postgres TimescaleDB
-if CRATES.include?('TimescaleDB')
-  brew 'timescale/tap/timescaledb'
-end
+brew 'timescale/tap/timescaledb' if CRATES.include?('TimescaleDB')
 
 cask 'db-browser-for-sqlite' if CRATES.include?('SQLite')
 
@@ -135,10 +138,8 @@ cask 'dash'
 cask 'firefox'
 cask 'textmate'
 
-if MacOS.version < :sequoia
-  cask 'gpg-suite'
-end
-brew "pinentry-mac"
+cask 'gpg-suite' if MacOS.version < :sequoia
+brew 'pinentry-mac'
 
 if CRATES.include?('Desk Setup')
   cask 'displaylink'
@@ -158,6 +159,7 @@ mas 'Dato', id: 1_470_584_107
 mas 'GIPHY CAPTURE', id: 668_208_984
 mas 'Tailscale', id: 1_475_387_142 if CRATES.include?('Home Network Connection')
 mas 'Monosnap', id: 540_348_655
+# mas 'DWD WarnWetter', id: 986420993
 
 # mas "AusweisApp", id: 948660805
 
