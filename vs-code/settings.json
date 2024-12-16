@@ -10,9 +10,7 @@
   "workbench.colorTheme": "Spinel",
   "editor.tabSize": 2,
   "files.trimTrailingWhitespace": true,
-  "editor.rulers": [
-    120
-  ],
+  "editor.rulers": [120],
   "editor.formatOnSave": true,
   "workbench.startupEditor": "newUntitledFile",
   "editor.dragAndDrop": false,
@@ -60,7 +58,6 @@
   "byesig.fold": false,
   "byesig.opacity": 0.5,
   "byesig.showIcon": false,
-  "rubyLsp.enableExperimentalFeatures": true,
   "rubyLsp.enabledFeatures": {
     "codeActions": true,
     "diagnostics": true,
@@ -85,10 +82,7 @@
   },
   // JavaScript & ESLint
   "javascript.updateImportsOnFileMove.enabled": "always",
-  "eslint.validate": [
-    "typescript",
-    "typescriptreact"
-  ],
+  "eslint.validate": ["typescript", "typescriptreact"],
   "eslint.format.enable": true,
   "github.copilot.enable": {
     "*": true,
@@ -101,5 +95,8 @@
   "[typescript]": {
     "editor.defaultFormatter": "dbaeumer.vscode-eslint"
   },
-  "github.copilot.editor.enableAutoCompletions": true
+  "github.copilot.editor.enableAutoCompletions": true,
+  "rubyLsp.featureFlags": {
+    "all": true
+  }
 }
