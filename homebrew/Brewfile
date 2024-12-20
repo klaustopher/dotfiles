@@ -118,7 +118,8 @@ brew 'sqldiff'
 if CRATES.include?('PostgreSQL')
   brew 'geos'
   brew 'proj'
-  brew 'postgresql@16', restart_service: true, link: true, conflicts_with: ['postgresql']
+  # when updating the version, make sure to also replace the path in homebrew/path.zsh
+  brew 'postgresql@16', restart_service: true
   brew 'postgis'
   cask 'postico'
 end
