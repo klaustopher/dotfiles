@@ -10,7 +10,9 @@
   "workbench.colorTheme": "Spinel",
   "editor.tabSize": 2,
   "files.trimTrailingWhitespace": true,
-  "editor.rulers": [120],
+  "editor.rulers": [
+    120
+  ],
   "editor.formatOnSave": true,
   "workbench.startupEditor": "newUntitledFile",
   "editor.dragAndDrop": false,
@@ -37,10 +39,6 @@
     "https://cdn.jsdelivr.net/gh/dhdhagar/vscode-md-preview-light/style.min.css"
   ],
   // Ruby Settings
-  "ruby-spec-runner.rubyDebugger": "Ruby LSP",
-  "ruby-spec-runner.rspecDebugButton": false,
-  "ruby-spec-runner.rspecRunButton": false,
-  "ruby-spec-runner.rspecCodeLensDebugPrompts": false,
   "[ruby]": {
     "editor.tabSize": 2,
     "editor.defaultFormatter": "Shopify.ruby-lsp",
@@ -82,7 +80,10 @@
   },
   // JavaScript & ESLint
   "javascript.updateImportsOnFileMove.enabled": "always",
-  "eslint.validate": ["typescript", "typescriptreact"],
+  "eslint.validate": [
+    "typescript",
+    "typescriptreact"
+  ],
   "eslint.format.enable": true,
   "github.copilot.enable": {
     "*": true,
