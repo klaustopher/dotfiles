@@ -10,7 +10,14 @@
     "clean": ["~", "~/.config"]
   },
   {
-    "create": ["~/.config", "~/.config/zed", "~/Projects", "~/Library/Application Support/Code/User/", "~/.gnupg/"]
+    "create": [
+      "~/.config",
+      "~/.config/zed",
+      "~/.config/ghostty",
+      "~/Projects",
+      "~/Library/Application Support/Code/User/",
+      "~/.gnupg/"
+    ]
   },
   {
     "install-brew": true
@@ -42,6 +49,7 @@
       "~/.ssh/config": "openssh/config.symlink",
       "~/Library/Application Support/Code/User/settings.json": "vs-code/settings.json",
       "~/.config/zed/settings.json": "zed/settings.json",
+      "~/.config/ghostty/config": "ghostty/config",
       "~/.gnupg/gpg-agent.conf": "gpg/gpg-agent.conf"
     }
   },
