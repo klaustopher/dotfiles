@@ -132,7 +132,10 @@ cask 'db-browser-for-sqlite' if CRATES.include?('SQLite')
 # GUI Apps
 cask 'tidal'
 cask 'vlc'
+
+# let's see which terminal survives
 cask 'iterm2'
+cask 'ghostty'
 cask 'Alfred'
 cask 'istat-menus'
 cask 'forklift'
