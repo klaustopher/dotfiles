@@ -54,6 +54,7 @@ brew 'tig'
 brew 'tree'
 brew 'watchman'
 brew 'wget'
+brew 'bat'
 
 # Media tools
 brew 'yt-dlp'

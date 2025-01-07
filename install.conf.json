@@ -14,6 +14,7 @@
       "~/.config",
       "~/.config/zed",
       "~/.config/ghostty",
+      "~/.config/bat",
       "~/Projects",
       "~/Library/Application Support/Code/User/",
       "~/.gnupg/"
@@ -50,6 +51,7 @@
       "~/Library/Application Support/Code/User/settings.json": "vs-code/settings.json",
       "~/.config/zed/settings.json": "zed/settings.json",
       "~/.config/ghostty/config": "ghostty/config",
+      "~/.config/bat/config": "bat/config",
       "~/.gnupg/gpg-agent.conf": "gpg/gpg-agent.conf"
     }
   },
