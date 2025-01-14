@@ -154,7 +154,7 @@ if CRATES.include?('Desk Setup')
 end
 
 if CRATES.include?('Private Communication')
-  cask 'threema'
+  cask 'threema@beta'
   cask 'whatsapp'
   cask 'signal'
 end
