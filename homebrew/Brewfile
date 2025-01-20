@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-CRATE_FILE = "#{Dir.home}/.selected-homebrew-crates".freeze
+CRATE_FILE = "#{Dir.home}/.selected-homebrew-crates"
 CRATES = (File.exist?(CRATE_FILE) ? File.read(CRATE_FILE) : '').split(',').inspect
 
 # Install fonts so that everything looks amazing
@@ -72,6 +72,11 @@ brew 'gitui'
 # Network utilities
 brew 'ipcalc'
 brew 'speedtest-cli'
+
+# Fish Shell
+if CRATES.include?('Fish Shell')
+  brew 'fish', args: ['HEAD'] # until V4 is released
+end
 
 # ZSH and plugins
 brew 'zsh'

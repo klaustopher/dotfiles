@@ -7,7 +7,10 @@
     }
   },
   {
-    "clean": ["~", "~/.config"]
+    "clean": [
+      "~",
+      "~/.config"
+    ]
   },
   {
     "create": [
@@ -35,7 +38,17 @@
     ]
   },
   {
-    "brewfile": ["homebrew/Brewfile"]
+    "brewfile": [
+      "homebrew/Brewfile"
+    ]
+  },
+  {
+    "shell": [
+      {
+        "command": "[ -d \"$HOME/.config/fish\" ] && [ ! -L \"$HOME/.config/fish\" ] && rm -rf \"$HOME/.config/fish\" || true",
+        "description": "Delete fish config folder to symlink our own"
+      }
+    ]
   },
   {
     "link": {
@@ -52,7 +65,8 @@
       "~/.config/zed/settings.json": "zed/settings.json",
       "~/.config/ghostty/config": "ghostty/config",
       "~/.config/bat/config": "bat/config",
-      "~/.gnupg/gpg-agent.conf": "gpg/gpg-agent.conf"
+      "~/.gnupg/gpg-agent.conf": "gpg/gpg-agent.conf",
+      "~/.config/fish/": "fish/fish.symlink/"
     }
   },
   {
@@ -77,12 +91,12 @@
   {
     "shell": [
       {
-        "command": "gpgconf --kill gpg-agent",
+        "command": "/opt/homebrew/bin/gpgconf --kill gpg-agent",
         "description": "Reload GPG agent"
       },
       {
-        "command": "sudo chsh -s $(brew --prefix)/bin/zsh $(whoami)",
-        "description": "Switch shell to ZSH",
+        "command": "sudo chsh -s $(/opt/homebrew/bin/brew --prefix)/bin/$(grep -q \"Fish Shell\" \"$HOME/.selected-homebrew-crates\" && echo \"fish\" || echo \"/zsh\") $(whoami)",
+        "description": "Switch shell to ZSH/Fish",
         "stdout": true,
         "stderr": true
       },
@@ -110,8 +124,8 @@
         "stdin": true
       },
       {
-        "command": "source ~/.zshrc",
-        "description": "Reload ZSH config"
+        "command": "[ \"$SHELL\" = \"/opt/homebrew/bin/zsh\" -o \"$SHELL\" = \"/usr/bin/zsh\" ] && source ~/.zshrc || source ~/.config/fish/config.fish",
+        "description": "Reload Shell config"
       }
     ]
   }

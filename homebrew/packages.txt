@@ -11,3 +11,4 @@ Video Encoding
 SQLite
 Desk Setup
 Private Communication
+Fish Shell
