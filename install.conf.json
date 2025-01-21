@@ -124,7 +124,7 @@
         "stdin": true
       },
       {
-        "command": "[ \"$SHELL\" = \"/opt/homebrew/bin/zsh\" -o \"$SHELL\" = \"/usr/bin/zsh\" ] && source ~/.zshrc || source ~/.config/fish/config.fish",
+        "command": "[ \"$SHELL\" = \"/opt/homebrew/bin/zsh\" -o \"$SHELL\" = \"/bin/zsh\" ] && source ~/.zshrc || source ~/.config/fish/config.fish",
         "description": "Reload Shell config"
       }
     ]
