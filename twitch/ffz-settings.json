@@ -7,9 +7,7 @@
     "p:0:chat.lines.alternate": true,
     "p:0:chat.points.auto-rewards": true,
     "p:0:metadata.player-stats": true,
-    "addons.enabled": [
-      "ffzap-core"
-    ],
+    "addons.enabled": ["ffzap-core", "7tv-emotes", "ffzap-bttv"],
     "p:0:theme.disable-auto-dark": true,
     "p:0:layout.side-nav.show": 1,
     "p:0:player.compressor.default": true,
@@ -402,16 +400,21 @@
       "ffzap.betterttv.channel_emoticons",
       "ffzap.betterttv.update_messages",
       "ffzap.betterttv.pro_badges",
-      "ffzap.betterttv.pro_emoticons"
+      "ffzap.betterttv.pro_emoticons",
+      "player.cast-button.hide",
+      "player.clip-button.custom",
+      "player.clip-button.hide-native",
+      "player.button.pip",
+      "chat.callouts.clip",
+      "chat.emotes.source-priorities",
+      "chat.filtering.blocked-callouts",
+      "pubsub.enabled"
     ],
-    "p:0:layout.minimal-navigation": true,
+    "p:0:layout.minimal-navigation": false,
     "p:0:chat.filtering.highlight-mentions": true,
     "p:0:chat.filtering.display-deleted": "DETAILED",
     "p:0:player.gain.enable": true,
-    "cfg-collapsed": [
-      "chat.actions",
-      "add_ons"
-    ],
+    "cfg-collapsed": ["chat.actions"],
     "p:0:chat.filtering.process-own": true,
     "p:0:layout.side-nav.hide-viewers": false,
     "p:0:chat.filtering.remove-deleted": 0,
@@ -436,19 +439,17 @@
     "p:0:player.gain.no-volume": true,
     "p:0:chat.filtering.highlight-basic-terms": [
       {
-        "v": {
-          "remove": false,
-          "v": "klaus",
-          "t": "text",
-          "c": "#6B1212",
-          "s": false,
-          "h": false,
-          "w": false,
-          "p": 0
-        },
+        "v": { "remove": false, "v": "klaus", "t": "text", "c": "#6B1212", "s": false, "h": false, "w": false, "p": 0 },
         "id": "1732524794224-0.4083883990904521-0"
       }
     ],
-    "p:0:layout.swap-sidebars": false
+    "p:0:layout.swap-sidebars": false,
+    "p:0:ffz.search.matches-only": false,
+    "p:0:layout.portrait": false,
+    "p:0:layout.side-nav.show-rec-channels": 1,
+    "p:0:layout.prime-offers": false,
+    "p:0:i18n.format.date": "DD.MM.YYYY",
+    "p:0:i18n.format.time": "HH:mm",
+    "p:0:chat.timestamp-format": "HH:mm"
   }
 }
