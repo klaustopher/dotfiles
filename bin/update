@@ -22,11 +22,11 @@ if [[ `uname` == "Darwin" ]]; then
   headline "Updating Homebrew Packages"
   brew update
 
-  headline "Install everything from the Brewfile"
-  brew bundle --file=~/.dotfiles/homebrew/Brewfile
-
   headline "Upgrade Homebrew Packages"
   brew upgrade
+
+  headline "Install everything from the Brewfile"
+  brew bundle --file=~/.dotfiles/homebrew/Brewfile
 
   headline "Cleaning Up old Homebrew Packages"
   brew cleanup -s
