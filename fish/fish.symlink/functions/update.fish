@@ -1,40 +1,40 @@
 function update --description 'Updates everything relevant on the system'
-    echo "Updating .dotfiles \uf1d3  repo"
+    printf "Updating .dotfiles \uf1d3 repo\n"
     pushd ~/.dotfiles
     git pull origin main
     popd
 
     if test (uname) = "Darwin"
-      echo "Installing \ue711 Software Updates"
+      printf "Installing \ue711 Software Updates\n"
       sudo softwareupdate -i -a
 
-      echo "Updating Mac App Store Apps"
+      printf "Updating Mac App Store Apps\n"
       mas outdated
       mas upgrade
 
-      echo "Updating Homebrew Packages"
+      printf "Updating Homebrew Packages\n"
       brew update
 
-      echo "Install everything from the Brewfile"
+      printf "Install everything from the Brewfile\n"
       brew bundle --file=~/.dotfiles/homebrew/Brewfile
 
-      echo "Upgrade Homebrew Packages"
+      printf "Upgrade Homebrew Packages\n"
       brew upgrade
 
-      echo "Cleaning Up old Homebrew Packages"
+      printf "Cleaning Up old Homebrew Packages\n"
       brew cleanup -s
     end
 
-    echo "Updating Rubygems for \ue739 $(ruby --version | cut -d" " -f2)"
+    printf "Updating Rubygems for \ue739 $(ruby --version | cut -d" " -f2)\n"
     gem update --system
 
     if test -x code
-        echo "Updating \udb82\ude1e VS Code Extensions"
+        printf "Updating \udb82\ude1e VS Code Extensions\n"
         code --list-extensions | xargs -I{} code --install-extension {} --force
     end
 
     if test -x nvim
-      echo "Updating \ue6ae LazyVim Plugins"
+      printf "Updating \ue6ae LazyVim Plugins\n"
       nvim --headless "+Lazy! sync" +qa
   end
 end
