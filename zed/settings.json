@@ -20,11 +20,8 @@
     "font_size": 14
   },
   "buffer_font_size": 14,
-  "theme": {
-    "mode": "dark",
-    "light": "Zedokai (Filter Spectrum)",
-    "dark": "Zedokai (Filter Spectrum)"
-  },
+  "theme": "Zedokai Darker (Filter Machine)",
+  "icon_theme": "Material Icon Theme",
   "languages": {
     "Ruby": {
       "language_servers": ["ruby-lsp", "rubocop", "!solargraph", "..."]
