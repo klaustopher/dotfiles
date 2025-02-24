@@ -15,11 +15,12 @@ function update --description 'Updates everything relevant on the system'
       printf "Updating Homebrew Packages\n"
       brew update
 
+      printf "Upgrade Homebrew Packages\n"
+      brew upgrade
+
       printf "Install everything from the Brewfile\n"
       brew bundle --file=~/.dotfiles/homebrew/Brewfile
 
-      printf "Upgrade Homebrew Packages\n"
-      brew upgrade
 
       printf "Cleaning Up old Homebrew Packages\n"
       brew cleanup -s
