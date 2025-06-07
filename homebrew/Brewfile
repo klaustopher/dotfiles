@@ -165,16 +165,16 @@ if CRATES.include?('Private Communication')
 end
 
 # Mac App Store Applications
-# mas 'Apple Configurator', id: 1_037_126_344
-# mas 'Dato', id: 1_470_584_107
-# mas 'GIPHY CAPTURE', id: 668_208_984
-# mas 'Tailscale', id: 1_475_387_142 if CRATES.include?('Home Network Connection')
-# mas 'Monosnap', id: 540_348_655
-# mas 'DWD WarnWetter', id: 986420993
+mas 'Apple Configurator', id: 1_037_126_344
+mas 'Dato', id: 1_470_584_107
+mas 'GIPHY CAPTURE', id: 668_208_984
+mas 'Tailscale', id: 1_475_387_142 if CRATES.include?('Home Network Connection')
+mas 'Monosnap', id: 540_348_655
+mas 'DWD WarnWetter', id: 986_420_993
 
 # mas "AusweisApp", id: 948660805
 
-# mas 'Xcode', id: 497_799_835
+mas 'Xcode', id: 497_799_835
 
 # Apps have been removed from the store
 # mas "Skitch", id: 425955336
