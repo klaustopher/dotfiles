@@ -30,7 +30,7 @@
   "terminal.integrated.enableMultiLinePasteWarning": "never",
   "workbench.preferredDarkColorTheme": "Base16 Tomorrow Dark",
   "editor.codeActionsOnSave": {
-    "source.fixAll": "explicit"
+    "source.fixAll": "always"
   },
   "git.openRepositoryInParentFolders": "always",
   "workbench.settings.editor": "json",

@@ -10,6 +10,13 @@
   "features": {
     "edit_prediction_provider": "zed"
   },
+  "assistant": {
+    "default_model": {
+      "provider": "zed.dev",
+      "model": "claude-3-7-sonnet-latest"
+    },
+    "version": "2"
+  },
   "telemetry": {
     "diagnostics": false,
     "metrics": false
@@ -23,14 +30,21 @@
     "font_size": 14
   },
   "buffer_font_size": 14,
-  "theme": "Zedokai Darker (Filter Machine)",
+  "theme": "Graphene",
   "icon_theme": "Material Icon Theme",
   "languages": {
     "Ruby": {
-      "language_servers": ["ruby-lsp", "rubocop", "!solargraph", "..."]
+      "language_servers": [
+        "ruby-lsp",
+        "rubocop",
+        "!solargraph",
+        "..."
+      ]
     }
   },
-  "vim": { "use_system_clipboard": "never" },
+  "vim": {
+    "use_system_clipboard": "never"
+  },
   "preferred_line_length": 120,
   "soft_wrap": "preferred_line_length"
 }
