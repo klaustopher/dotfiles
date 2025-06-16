@@ -174,7 +174,10 @@ mas 'DWD WarnWetter', id: 986_420_993
 
 # mas "AusweisApp", id: 948660805
 
-mas 'Xcode', id: 497_799_835
+# we're in beta, so we must use the beta version of Xcode
+if MacOS.version <= :tahoe
+  mas 'Xcode', id: 497_799_835
+end
 
 # Apps have been removed from the store
 # mas "Skitch", id: 425955336
