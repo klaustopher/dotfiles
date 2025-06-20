@@ -149,7 +149,7 @@ cask 'dash'
 cask 'firefox'
 cask 'textmate'
 
-cask 'gpg-suite' if MacOS.version < :sequoia
+cask 'gpg-suite' if MacOS.version <= :sequoia
 brew 'pinentry-mac'
 
 if CRATES.include?('Desk Setup')
@@ -175,9 +175,7 @@ mas 'DWD WarnWetter', id: 986_420_993
 # mas "AusweisApp", id: 948660805
 
 # we're in beta, so we must use the beta version of Xcode
-if MacOS.version <= :tahoe
-  mas 'Xcode', id: 497_799_835
-end
+mas 'Xcode', id: 497_799_835 if MacOS.version < :tahoe
 
 # Apps have been removed from the store
 # mas "Skitch", id: 425955336
