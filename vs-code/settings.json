@@ -99,5 +99,6 @@
   "github.copilot.editor.enableAutoCompletions": true,
   "rubyLsp.featureFlags": {
     "all": true
-  }
+  },
+  "docker.extension.enableComposeLanguageServer": false
 }
