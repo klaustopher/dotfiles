@@ -172,8 +172,7 @@ mas 'Tailscale', id: 1_475_387_142 if CRATES.include?('Home Network Connection')
 mas 'Monosnap', id: 540_348_655
 # mas "AusweisApp", id: 948660805
 
-# we're in beta, so we must use the beta version of Xcode
-mas 'Xcode', id: 497_799_835 if MacOS.version < :tahoe
+mas 'Xcode', id: 497_799_835
 
 # Apps have been removed from the store
 # mas "Skitch", id: 425955336
