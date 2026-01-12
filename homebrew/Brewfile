@@ -88,8 +88,8 @@ brew 'rg'
 brew 'fd'
 brew 'fzf'
 brew 'lazygit'
-cask 'neovide-app'
-cask 'zed'
+# cask 'neovide-app'
+# cask 'zed'
 
 # Programming languages
 if CRATES.include?('Crystal')
