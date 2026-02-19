@@ -1,0 +1,98 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Usage: ./claude-docker <image-name> [setup-script]
+# Example: ./claude-docker ubuntu:24.04
+# Example: ./claude-docker ubuntu:24.04 ./my-setup.sh
+#
+# The optional setup script runs as root inside the container before
+# Claude Code is installed. Use it to install additional dependencies.
+#
+# Example setup script:
+#
+#   #!/usr/bin/env bash
+#   apt-get update && apt-get install -y \
+#     git \
+#     ripgrep \
+#     build-essential
+#
+#   cd /app && make deps 2>/dev/null || true
+
+if [[ $# -lt 1 ]]; then
+  echo "Usage: $0 <docker-image> [setup-script]"
+  echo "Example: $0 ubuntu:24.04"
+  echo "Example: $0 ubuntu:24.04 ./my-setup.sh"
+  exit 1
+fi
+
+IMAGE="$1"
+SETUP_SCRIPT="${2:-}"
+CURRENT_DIR="$(pwd)"
+CLAUDE_DIR="$HOME/.claude"
+CLAUDE_JSON="$HOME/.claude.json"
+HOST_UID="$(id -u)"
+HOST_GID="$(id -g)"
+
+# Ensure the ~/.claude directory exists on the host
+mkdir -p "$CLAUDE_DIR"
+
+# Build volume mount args
+VOLUME_ARGS=(
+  -v "${CURRENT_DIR}:/app"
+  -v "${CLAUDE_DIR}:/tmp/claude-config:ro"
+)
+
+if [[ -f "$CLAUDE_JSON" ]]; then
+  VOLUME_ARGS+=(-v "${CLAUDE_JSON}:/tmp/claude-config.json:ro")
+fi
+
+if [[ -n "$SETUP_SCRIPT" ]]; then
+  if [[ ! -f "$SETUP_SCRIPT" ]]; then
+    echo "Error: Setup script '$SETUP_SCRIPT' not found"
+    exit 1
+  fi
+  SETUP_SCRIPT_ABS="$(cd "$(dirname "$SETUP_SCRIPT")" && pwd)/$(basename "$SETUP_SCRIPT")"
+  VOLUME_ARGS+=(-v "${SETUP_SCRIPT_ABS}:/tmp/claude-setup.sh:ro")
+fi
+
+echo "Starting Claude Code in Docker container..."
+echo "  Image:       $IMAGE"
+echo "  Working dir: $CURRENT_DIR -> /app"
+echo "  Claude config: $CLAUDE_DIR (read-only)"
+echo "  Running as:  uid=${HOST_UID} gid=${HOST_GID}"
+[[ -n "$SETUP_SCRIPT" ]] && echo "  Setup script: $SETUP_SCRIPT"
+echo ""
+
+docker run -it --rm \
+  "${VOLUME_ARGS[@]}" \
+  -w /app \
+  -e "TERM=${TERM:-xterm-256color}" \
+  -e "HOME=/home/claude" \
+  "$IMAGE" \
+  bash -c "
+    # Create user with matching UID/GID
+    groupadd -g ${HOST_GID} claudegroup 2>/dev/null || true
+    useradd -u ${HOST_UID} -g ${HOST_GID} -d /home/claude -s /bin/bash claude 2>/dev/null || true
+    mkdir -p /home/claude/.local
+    chown -R ${HOST_UID}:${HOST_GID} /home/claude /home/claude/.local
+
+    # Copy Claude config from read-only mounts
+    cp -r /tmp/claude-config /home/claude/.claude
+    chown -R ${HOST_UID}:${HOST_GID} /home/claude/.claude
+    if [[ -f /tmp/claude-config.json ]]; then
+      cp /tmp/claude-config.json /home/claude/.claude.json
+      chown ${HOST_UID}:${HOST_GID} /home/claude/.claude.json
+    fi
+
+    # Run optional setup script (as root, so it can apt-get install etc.)
+    if [[ -f /tmp/claude-setup.sh ]]; then
+      echo '>>> Running setup script...'
+      bash /tmp/claude-setup.sh
+    fi
+
+    echo '>>> Installing Claude Code...'
+    su - claude -c 'curl -fsSL https://claude.ai/install.sh | bash'
+
+    echo '>>> Launching Claude Code...'
+    exec su - claude -c 'cd /app && /home/claude/.local/bin/claude'
+  "
