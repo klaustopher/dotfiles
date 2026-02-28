@@ -119,7 +119,7 @@ if CRATES.include?('Ruby')
   brew 'gmp'
 end
 
-brew 'nvm' if CRATES.include?('Node')
+brew 'fnm' if CRATES.include?('Node')
 
 if CRATES.include?('Crystal')
   brew 'crystal'

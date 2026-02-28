@@ -78,7 +78,7 @@ if selected "Ruby"; then
 fi
 
 if selected "Node"; then
-  pkg nvm
+  pkg fnm
 fi
 
 if selected "Crystal"; then
