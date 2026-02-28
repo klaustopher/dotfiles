@@ -1,0 +1,225 @@
+# frozen_string_literal: true
+
+CRATE_FILE = "#{Dir.home}/.selected-package-categories"
+CRATES = (File.exist?(CRATE_FILE) ? File.read(CRATE_FILE) : '').split(',').inspect
+
+# ── Taps ──────────────────────────────────────────────────────────────────────
+
+tap '1password/tap'
+tap 'homebrew/services'
+
+# ── Fonts ─────────────────────────────────────────────────────────────────────
+
+cask 'font-fantasque-sans-mono'
+cask 'font-fantasque-sans-mono-nerd-font'
+
+# ── Security & secrets ────────────────────────────────────────────────────────
+
+cask '1password'
+cask '1password-cli'
+# mas '1Password for Safari', id: 1_569_813_296
+brew 'gnupg'
+brew 'libsodium'
+brew 'libksba'
+cask 'gpg-suite' if MacOS.version <= :sequoia
+brew 'pinentry-mac'
+
+# ── Shell ─────────────────────────────────────────────────────────────────────
+
+brew 'zsh'
+brew 'zplug'
+if CRATES.include?('Fish Shell')
+  brew 'fish', args: ['HEAD'] # until V4 is released
+end
+
+# ── Terminal & multiplexing ───────────────────────────────────────────────────
+
+cask 'iterm2'
+cask 'ghostty'
+brew 'tmux'
+brew 'overmind'
+brew 'terminal-notifier'
+
+# ── Editors ───────────────────────────────────────────────────────────────────
+
+brew 'neovim'
+brew 'bat'
+brew 'fd'
+brew 'fzf'
+brew 'rg'
+brew 'lazygit'
+# cask 'neovide-app'
+# cask 'zed'
+
+# ── Git ───────────────────────────────────────────────────────────────────────
+
+brew 'git'
+brew 'git-crypt'
+brew 'gh'
+brew 'gitui'
+brew 'tig'
+brew 'watchman'
+
+# ── CLI utilities ─────────────────────────────────────────────────────────────
+
+brew 'aria2'
+brew 'coreutils'
+brew 'direnv'
+brew 'htop'
+brew 'imagemagick'
+brew 'jq'
+brew 'lima'
+brew 'lsusb'
+brew 'mas'
+brew 'pwgen'
+brew 'rsync'
+brew 'ssh-copy-id'
+brew 'tree'
+brew 'wget'
+
+# ── Network ───────────────────────────────────────────────────────────────────
+
+brew 'ipcalc'
+brew 'nmap'
+brew 'speedtest-cli'
+
+# ── Build tools & libraries ───────────────────────────────────────────────────
+
+brew 'autoconf'
+brew 'automake'
+brew 'gdal'
+brew 'gobject-introspection'
+brew 'harfbuzz'
+brew 'libffi'
+brew 'libressl'
+brew 'libtool'
+brew 'llvm'
+brew 'pkg-config'
+brew 'poppler-qt5'
+brew 'zlib'
+brew 'zstd'
+
+# ── Media ─────────────────────────────────────────────────────────────────────
+
+brew 'yt-dlp'
+if CRATES.include?('Video Encoding')
+  brew 'ffmpeg'
+  brew 'gstreamer'
+end
+
+# ── Programming languages ─────────────────────────────────────────────────────
+
+if CRATES.include?('Ruby')
+  brew 'rbenv'
+  brew 'ruby-build'
+  # Build dependencies
+  brew 'openssl@3'
+  brew 'readline'
+  brew 'libyaml'
+  brew 'gmp'
+end
+
+brew 'nvm' if CRATES.include?('Node')
+
+if CRATES.include?('Crystal')
+  brew 'crystal'
+  brew 'crystalline'
+end
+
+# ── Databases ─────────────────────────────────────────────────────────────────
+
+brew 'sqlfluff'
+brew 'sqldiff'
+brew 'redis', restart_service: true if CRATES.include?('Redis')
+
+if CRATES.include?('MySQL')
+  brew 'mysql', restart_service: true
+  # mas 'Sequel Ace', id: 1_518_036_000
+end
+
+if CRATES.include?('PostgreSQL')
+  tap 'timescale/tap'
+  brew 'geos'
+  brew 'proj'
+  # when updating the version, make sure to also replace the path in homebrew/path.zsh
+  brew 'postgresql@17', restart_service: true
+  brew 'postgis'
+  cask 'postico'
+end
+
+brew 'timescale/tap/timescaledb' if CRATES.include?('TimescaleDB')
+cask 'db-browser-for-sqlite' if CRATES.include?('SQLite')
+
+# ── macOS apps ────────────────────────────────────────────────────────────────
+
+cask 'alfred'
+cask 'dash'
+cask 'firefox'
+cask 'forklift'
+cask 'istat-menus'
+cask 'textmate'
+cask 'tidal'
+cask 'vlc'
+
+if CRATES.include?('Desk Setup')
+  cask 'displaylink'
+  cask 'ankerwork'
+  cask 'elgato-stream-deck'
+end
+
+if CRATES.include?('Private Communication')
+  cask 'threema@beta'
+  cask 'whatsapp'
+  cask 'signal'
+end
+
+# ── Mac App Store ─────────────────────────────────────────────────────────────
+
+mas 'Apple Configurator', id: 1_037_126_344
+mas 'Dato', id: 1_470_584_107
+mas 'GIPHY CAPTURE', id: 668_208_984
+mas 'Monosnap', id: 540_348_655
+mas 'Xcode', id: 497_799_835
+mas 'Tailscale', id: 1_475_387_142 if CRATES.include?('Home Network Connection')
+# mas "AusweisApp", id: 948660805
+# mas "Skitch", id: 425955336
+# mas "ForkLift", id: 412448059
+# mas "Marked", id: 448925439
+
+# ── VS Code ───────────────────────────────────────────────────────────────────
+
+if CRATES.include?('VSCode')
+  cask 'visual-studio-code'
+
+  # Language support
+  vscode 'crystal-lang-tools.crystal-lang'
+  vscode 'dbaeumer.vscode-eslint'
+  vscode 'karunamurti.haml'
+  vscode 'redhat.vscode-yaml'
+  vscode 'tamasfe.even-better-toml'
+  vscode 'twxs.cmake'
+
+  # Ruby
+  vscode 'shopify.ruby-extensions-pack'
+  vscode 'shopify.ruby-lsp'
+  vscode 'sorbet.sorbet-vscode-extension'
+  vscode 'koichisasada.vscode-rdbg'
+  vscode 'matthewmcgarvey.crystal-spec-vscode'
+
+  # Remote & containers
+  vscode 'ms-vscode-remote.remote-containers'
+  vscode 'ms-vscode-remote.remote-ssh'
+  vscode 'ms-vscode-remote.remote-wsl'
+  vscode 'ms-vscode.remote-explorer'
+  vscode 'ms-azuretools.vscode-docker'
+
+  # Tools & themes
+  vscode 'cschlosser.doxdocgen'
+  vscode 'github.vscode-github-actions'
+  vscode 'itarato.byesig'
+  vscode 'ms-ceintl.vscode-language-pack-de'
+  vscode 'ms-vscode.cmake-tools'
+  vscode 'ms-vscode.theme-tomorrowkit'
+  vscode 'pkief.material-icon-theme'
+  vscode 'vscodevim.vim'
+end

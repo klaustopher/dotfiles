@@ -1,0 +1,109 @@
+#!/usr/bin/env bash
+
+CRATE_FILE="$HOME/.selected-package-categories"
+CRATES=$([ -f "$CRATE_FILE" ] && cat "$CRATE_FILE" || echo "")
+
+pkg() { echo "$1"; }
+
+selected() { echo "$CRATES" | grep -q "$1"; }
+
+# ── Security & secrets ────────────────────────────────────────────────────────
+
+pkg gnupg
+pkg pinentry
+
+# ── Shell ─────────────────────────────────────────────────────────────────────
+
+pkg zsh
+pkg zplug
+if selected "Fish Shell"; then
+  pkg fish
+fi
+
+# ── Terminal & multiplexing ───────────────────────────────────────────────────
+
+pkg ghostty
+pkg tmux
+pkg overmind
+
+# ── Editors ───────────────────────────────────────────────────────────────────
+
+pkg neovim
+pkg bat
+pkg fd
+pkg fzf
+pkg ripgrep
+pkg lazygit
+
+# ── Git ───────────────────────────────────────────────────────────────────────
+
+pkg git
+pkg git-crypt
+pkg github-cli
+pkg gitui
+pkg tig
+
+# ── CLI utilities ─────────────────────────────────────────────────────────────
+
+pkg aria2
+pkg direnv
+pkg htop
+pkg imagemagick
+pkg jq
+pkg pwgen
+pkg rsync
+pkg tree
+pkg usbutils
+pkg wget
+
+# ── Network ───────────────────────────────────────────────────────────────────
+
+pkg ipcalc
+pkg nmap
+pkg speedtest-cli
+
+# ── Media ─────────────────────────────────────────────────────────────────────
+
+pkg yt-dlp
+if selected "Video Encoding"; then
+  pkg ffmpeg
+  pkg gstreamer
+fi
+
+# ── Programming languages ─────────────────────────────────────────────────────
+
+if selected "Ruby"; then
+  pkg rbenv
+  pkg ruby-build
+fi
+
+if selected "Node"; then
+  pkg nvm
+fi
+
+if selected "Crystal"; then
+  pkg crystal
+  pkg crystalline
+fi
+
+# ── Databases ─────────────────────────────────────────────────────────────────
+
+if selected "Redis"; then
+  pkg redis
+fi
+if selected "MySQL"; then
+  pkg mysql
+fi
+if selected "PostgreSQL"; then
+  pkg postgresql
+  pkg postgis
+fi
+
+# ── GUI apps ──────────────────────────────────────────────────────────────────
+
+pkg firefox
+pkg vlc
+
+if selected "Private Communication"; then
+  pkg signal-desktop
+fi
