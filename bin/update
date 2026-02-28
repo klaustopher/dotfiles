@@ -1,47 +1,78 @@
 #!/usr/bin/env zsh
 autoload -Uz colors && colors
 
-headline() {
-  print -- "\n\n$bg[blue]$fg_bold[yellow]❖ $*$reset_color"
+has_cmd() { command -v "$1" &>/dev/null }
+
+section() {
+  print -- "\n${fg_bold[blue]}┌─────────────────────────────────────────${reset_color}"
+  print -- "${fg_bold[blue]}│${reset_color} ${fg_bold[white]}$*${reset_color}"
+  print -- "${fg_bold[blue]}└─────────────────────────────────────────${reset_color}"
 }
 
-headline "Updating .dotfiles \uf1d3  repo"
-pushd ~/.dotfiles
+skip() {
+  print -- "  ${fg[yellow]}⚠ skipped: $*${reset_color}"
+}
+
+# ── Dotfiles ──────────────────────────────────────────────────────────────────
+section "Updating .dotfiles \uf1d3 repo"
+pushd ~/.dotfiles >/dev/null
 git pull origin main
 git submodule update --init --recursive
-popd
-source ~/.zshrc
+popd >/dev/null
 
-if [[ `uname` == "Darwin" ]]; then
-  headline "Installing \ue711 Software Updates"
+# ── macOS ─────────────────────────────────────────────────────────────────────
+if [[ $(uname) == "Darwin" ]]; then
+  section "Installing \ue711 Software Updates"
   sudo softwareupdate -i -a
 
-  headline "Updating Mac App Store Apps"
-  mas outdated
-  mas upgrade
+  section "Updating Mac App Store Apps"
+  if has_cmd mas; then
+    mas outdated
+    mas upgrade
+  else
+    skip "mas not installed"
+  fi
 
-  headline "Updating Homebrew Packages"
-  brew update
+  section "Updating \ue0b2 Homebrew Packages"
+  if has_cmd brew; then
+    brew update
+    brew upgrade
+    brew bundle --file=~/.dotfiles/packages/Brewfile
+    brew cleanup -s
+  else
+    skip "brew not installed"
+  fi
 
-  headline "Upgrade Homebrew Packages"
-  brew upgrade
-
-  headline "Install everything from the Brewfile"
-  brew bundle --file=~/.dotfiles/homebrew/Brewfile
-
-  headline "Cleaning Up old Homebrew Packages"
-  brew cleanup -s
+# ── Arch Linux ────────────────────────────────────────────────────────────────
+elif [[ $(uname) == "Linux" ]]; then
+  section "Updating System Packages"
+  if has_cmd paru; then
+    paru -Syu
+  elif has_cmd pacman; then
+    sudo pacman -Syu
+  else
+    skip "no known package manager found (expected paru or pacman)"
+  fi
 fi
 
-headline "Updating Rubygems for \ue739 $(ruby --version | cut -d" " -f2)"
-gem update --system
-
-if type code > /dev/null; then
-    headline "Updating \udb82\ude1e VS Code Extensions"
-    code --list-extensions | xargs -I{} code --install-extension {} --force
+# ── Rubygems ──────────────────────────────────────────────────────────────────
+if has_cmd gem; then
+  section "Updating \ue739 Rubygems ($(ruby --version | cut -d' ' -f2))"
+  gem update --system
+else
+  section "Rubygems"
+  skip "gem not installed"
 fi
 
-if type nvim > /dev/null; then
-  headline "Updating \ue6ae LazyVim Plugins"
+# ── Editors ───────────────────────────────────────────────────────────────────
+if has_cmd code; then
+  section "Updating \udb82\ude1e VS Code Extensions"
+  code --list-extensions | xargs -I{} code --install-extension {} --force
+fi
+
+if has_cmd nvim; then
+  section "Updating \ue6ae LazyVim Plugins"
   nvim --headless "+Lazy! sync" +qa
 fi
+
+print -- "\n${fg_bold[green]}✓ Done.${reset_color}\n"
