@@ -78,6 +78,12 @@
     ~/.config/bat/config: bat/config
     ~/.gnupg/gpg-agent.conf: gpg/gpg-agent.conf
     ~/.config/fish: fish/fish.symlink
+    ~/.claude/CLAUDE.md: claude/CLAUDE.md
+    ~/.claude/skills: claude/skills
+    ~/.claude/agents: claude/agents
+    ~/.claude/settings.json:
+      path: claude/settings.json
+      force: true
 
 - ifmacos:
     - link:
