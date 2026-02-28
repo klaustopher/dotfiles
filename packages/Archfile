@@ -9,22 +9,22 @@ selected() { echo "$CRATES" | grep -q "$1"; }
 
 # ── Security & secrets ────────────────────────────────────────────────────────
 
-pkg gnupg
-pkg pinentry
+# pkg gnupg
+# pkg pinentry
 
 # ── Shell ─────────────────────────────────────────────────────────────────────
 
 pkg zsh
-pkg zplug
+# pkg zplug
 if selected "Fish Shell"; then
   pkg fish
 fi
 
 # ── Terminal & multiplexing ───────────────────────────────────────────────────
 
-pkg ghostty
-pkg tmux
-pkg overmind
+# pkg ghostty
+# pkg tmux
+# pkg overmind
 
 # ── Editors ───────────────────────────────────────────────────────────────────
 
@@ -45,22 +45,22 @@ pkg tig
 
 # ── CLI utilities ─────────────────────────────────────────────────────────────
 
-pkg aria2
-pkg direnv
-pkg htop
-pkg imagemagick
-pkg jq
-pkg pwgen
-pkg rsync
-pkg tree
-pkg usbutils
-pkg wget
+# pkg aria2
+# pkg direnv
+#pkg htop
+#pkg imagemagick
+#pkg jq
+#pkg pwgen
+#pkg rsync
+#pkg tree
+#pkg usbutils
+#pkg wget
 
 # ── Network ───────────────────────────────────────────────────────────────────
 
-pkg ipcalc
-pkg nmap
-pkg speedtest-cli
+#pkg ipcalc
+#pkg nmap
+#pkg speedtest-cli
 
 # ── Media ─────────────────────────────────────────────────────────────────────
 
@@ -83,7 +83,7 @@ fi
 
 if selected "Crystal"; then
   pkg crystal
-  pkg crystalline
+  pkg crystalline-bin
 fi
 
 # ── Databases ─────────────────────────────────────────────────────────────────
@@ -101,8 +101,8 @@ fi
 
 # ── GUI apps ──────────────────────────────────────────────────────────────────
 
-pkg firefox
-pkg vlc
+#pkg firefox
+#pkg vlc
 
 if selected "Private Communication"; then
   pkg signal-desktop

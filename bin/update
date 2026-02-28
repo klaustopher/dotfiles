@@ -8,6 +8,7 @@ headline() {
 headline "Updating .dotfiles \uf1d3  repo"
 pushd ~/.dotfiles
 git pull origin main
+git submodule update --init --recursive
 popd
 source ~/.zshrc
 
