@@ -1,0 +1,99 @@
+#!/usr/bin/env bash
+
+CRATE_FILE="$HOME/.selected-package-categories"
+CRATES=$([ -f "$CRATE_FILE" ] && cat "$CRATE_FILE" || echo "")
+
+pkg() { echo "$1"; }
+
+selected() { echo "$CRATES" | grep -q "$1"; }
+
+# Core utilities
+pkg aria2
+pkg bat
+pkg direnv
+pkg gnupg
+pkg htop
+pkg imagemagick
+pkg jq
+pkg nmap
+pkg overmind
+pkg pinentry
+pkg pwgen
+pkg rsync
+pkg tig
+pkg tmux
+pkg tree
+pkg usbutils
+pkg wget
+
+# Media
+pkg yt-dlp
+
+# Git
+pkg git
+pkg git-crypt
+pkg github-cli
+pkg gitui
+pkg lazygit
+
+# Network
+pkg ipcalc
+pkg speedtest-cli
+
+# Shell
+pkg zsh
+pkg zplug
+if selected "Fish Shell"; then
+  pkg fish
+fi
+
+# Editors & dev tools
+pkg neovim
+pkg ripgrep
+pkg fd
+pkg fzf
+
+# Optional: Ruby
+if selected "Ruby"; then
+  pkg rbenv
+  pkg ruby-build
+fi
+
+# Optional: Node
+if selected "Node"; then
+  pkg nvm
+fi
+
+# Optional: Crystal
+if selected "Crystal"; then
+  pkg crystal
+  pkg crystalline
+fi
+
+# Optional: Databases
+if selected "Redis"; then
+  pkg redis
+fi
+if selected "MySQL"; then
+  pkg mysql
+fi
+if selected "PostgreSQL"; then
+  pkg postgresql
+  pkg postgis
+fi
+
+# Optional: Video encoding
+if selected "Video Encoding"; then
+  pkg ffmpeg
+  pkg gstreamer
+fi
+
+# Optional: Private Communication
+if selected "Private Communication"; then
+  pkg signal-desktop
+fi
+
+# GUI
+pkg firefox
+pkg vlc
+pkg ghostty

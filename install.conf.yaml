@@ -1,0 +1,114 @@
+- defaults:
+    link:
+      relink: true
+
+- clean:
+    - "~"
+    - "~/.config"
+
+- shell:
+    - command: sudo ln -sf "$(pwd)/system/sudoers.klaustopher.symlink" /etc/sudoers.d/klaustopher && sudo chown root:$(id -gn root) /etc/sudoers.d/klaustopher
+      description: Install sudoers file
+      stdout: true
+      stderr: true
+
+- create:
+    - ~/.config
+    - ~/.config/zed
+    - ~/.config/ghostty
+    - ~/.config/bat
+    - ~/Projects
+    - ~/.gnupg/
+
+- ifmacos:
+    - create:
+        - "~/Library/Application Support/Code/User/"
+
+- ifmacos:
+    - install-brew: true
+
+- ifmacos:
+    - shell:
+        - command: brew install gum
+          description: Install gum for package selection
+
+- ifarch:
+    - shell:
+        - command: pacman -Q paru || (sudo pacman -S --needed --noconfirm base-devel git && git clone https://aur.archlinux.org/paru.git /tmp/paru && cd /tmp/paru && makepkg -si --noconfirm)
+          description: Install paru AUR helper
+          stdout: true
+          stderr: true
+        - command: sudo pacman -S --needed --noconfirm gum
+          description: Install gum for package selection
+
+- shell:
+    - command: packages/select-packages.sh
+      description: Select packages to install
+      stdout: true
+      stderr: true
+      stdin: true
+
+- ifmacos:
+    - brewfile:
+        - packages/Brewfile
+
+- ifarch:
+    - shell:
+        - command: paru -S --needed --noconfirm $(packages/Archfile)
+          description: Install paru packages from Archfile
+          stdout: true
+          stderr: true
+
+- shell:
+    - command: '[ -d "$HOME/.config/fish" ] && [ ! -L "$HOME/.config/fish" ] && rm -rf "$HOME/.config/fish" || true'
+      description: Delete fish config folder to symlink our own
+
+- link:
+    ~/.zshrc: zsh/zshrc.symlink
+    ~/.gitignore: git/gitignore.symlink
+    ~/.gitconfig: git/gitconfig.symlink
+    ~/.gitattributes: git/gitattributes.symlink
+    ~/.config/nvim: nvim/nvim.symlink
+    ~/.irbrc: ruby/irbrc.symlink
+    ~/.gemrc: ruby/gemrc.symlink
+    ~/.rbenv/: ruby/rbenv.symlink/
+    ~/.ssh/config: openssh/config.symlink
+    ~/.config/zed/settings.json: zed/settings.json
+    ~/.config/ghostty/config: ghostty/config
+    ~/.config/bat/config: bat/config
+    ~/.gnupg/gpg-agent.conf: gpg/gpg-agent.conf
+    ~/.config/fish/: fish/fish.symlink/
+
+- ifmacos:
+    - link:
+        "~/Library/Application Support/Code/User/settings.json": vs-code/settings.json
+
+- ifmacos:
+    - shell:
+        - command: grep -qF "$(brew --prefix)/bin/zsh" /etc/shells || echo "$(brew --prefix)/bin/zsh" | sudo tee -a /etc/shells
+          description: Add Homebrew zsh to /etc/shells
+        - command: sudo chsh -s $(brew --prefix)/bin/zsh $(whoami)
+          description: Switch shell to Homebrew ZSH
+          stdout: true
+          stderr: true
+        - command: /opt/homebrew/bin/gpgconf --kill gpg-agent
+          description: Reload GPG agent
+        - command: iterm2/download-shell-integration.sh
+          description: Install iTerm2 shell integration script
+        - command: iterm2/install-profile.sh
+          description: Make the profile available in iTerm2
+        - command: macos/set-defaults.sh
+          description: Set macOS defaults
+        - command: macos/install-layout.sh
+          description: Install custom keyboard layout
+
+- shell:
+    - command: git/create-user-config.sh
+      description: Create user config for git
+      stdout: true
+      stderr: true
+      stdin: true
+
+- shell:
+    - command: source ~/.zshrc
+      description: Reload shell config

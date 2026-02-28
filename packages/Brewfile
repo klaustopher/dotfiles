@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-CRATE_FILE = "#{Dir.home}/.selected-homebrew-crates"
+CRATE_FILE = "#{Dir.home}/.selected-package-categories"
 CRATES = (File.exist?(CRATE_FILE) ? File.read(CRATE_FILE) : '').split(',').inspect
 
 # Install fonts so that everything looks amazing
