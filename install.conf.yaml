@@ -30,7 +30,7 @@
 - ifmacos:
     - shell:
         - command: brew install gum
-          description: Install gum for package selection
+          description: Install gum for package selection via Homebrew
 
 - ifarch:
     - shell:
@@ -39,7 +39,7 @@
           stdout: true
           stderr: true
         - command: sudo pacman -S --needed --noconfirm gum
-          description: Install gum for package selection
+          description: Install gum for package selection via pacman
 
 - shell:
     - command: packages/select-packages.sh
@@ -71,13 +71,13 @@
     ~/.config/nvim: nvim/nvim.symlink
     ~/.irbrc: ruby/irbrc.symlink
     ~/.gemrc: ruby/gemrc.symlink
-    ~/.rbenv/: ruby/rbenv.symlink/
+    ~/.rbenv: ruby/rbenv.symlink
     ~/.ssh/config: openssh/config.symlink
     ~/.config/zed/settings.json: zed/settings.json
     ~/.config/ghostty/config: ghostty/config
     ~/.config/bat/config: bat/config
     ~/.gnupg/gpg-agent.conf: gpg/gpg-agent.conf
-    ~/.config/fish/: fish/fish.symlink/
+    ~/.config/fish: fish/fish.symlink
 
 - ifmacos:
     - link:
