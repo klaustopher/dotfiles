@@ -17,6 +17,7 @@
     - ~/.config/zed
     - ~/.config/ghostty
     - ~/.config/bat
+    - ~/.claude
     - ~/Projects
     - ~/.gnupg/
 
