@@ -7,70 +7,87 @@ pkg() { echo "$1"; }
 
 selected() { echo "$CRATES" | grep -q "$1"; }
 
-# Core utilities
-pkg aria2
-pkg bat
-pkg direnv
+# ── Security & secrets ────────────────────────────────────────────────────────
+
 pkg gnupg
-pkg htop
-pkg imagemagick
-pkg jq
-pkg nmap
-pkg overmind
 pkg pinentry
-pkg pwgen
-pkg rsync
-pkg tig
-pkg tmux
-pkg tree
-pkg usbutils
-pkg wget
 
-# Media
-pkg yt-dlp
+# ── Shell ─────────────────────────────────────────────────────────────────────
 
-# Git
-pkg git
-pkg git-crypt
-pkg github-cli
-pkg gitui
-pkg lazygit
-
-# Network
-pkg ipcalc
-pkg speedtest-cli
-
-# Shell
 pkg zsh
 pkg zplug
 if selected "Fish Shell"; then
   pkg fish
 fi
 
-# Editors & dev tools
+# ── Terminal & multiplexing ───────────────────────────────────────────────────
+
+pkg ghostty
+pkg tmux
+pkg overmind
+
+# ── Editors ───────────────────────────────────────────────────────────────────
+
 pkg neovim
-pkg ripgrep
+pkg bat
 pkg fd
 pkg fzf
+pkg ripgrep
+pkg lazygit
 
-# Optional: Ruby
+# ── Git ───────────────────────────────────────────────────────────────────────
+
+pkg git
+pkg git-crypt
+pkg github-cli
+pkg gitui
+pkg tig
+
+# ── CLI utilities ─────────────────────────────────────────────────────────────
+
+pkg aria2
+pkg direnv
+pkg htop
+pkg imagemagick
+pkg jq
+pkg pwgen
+pkg rsync
+pkg tree
+pkg usbutils
+pkg wget
+
+# ── Network ───────────────────────────────────────────────────────────────────
+
+pkg ipcalc
+pkg nmap
+pkg speedtest-cli
+
+# ── Media ─────────────────────────────────────────────────────────────────────
+
+pkg yt-dlp
+if selected "Video Encoding"; then
+  pkg ffmpeg
+  pkg gstreamer
+fi
+
+# ── Programming languages ─────────────────────────────────────────────────────
+
 if selected "Ruby"; then
   pkg rbenv
   pkg ruby-build
 fi
 
-# Optional: Node
 if selected "Node"; then
   pkg nvm
 fi
 
-# Optional: Crystal
 if selected "Crystal"; then
   pkg crystal
   pkg crystalline
 fi
 
-# Optional: Databases
+# ── Databases ─────────────────────────────────────────────────────────────────
+
 if selected "Redis"; then
   pkg redis
 fi
@@ -82,18 +99,11 @@ if selected "PostgreSQL"; then
   pkg postgis
 fi
 
-# Optional: Video encoding
-if selected "Video Encoding"; then
-  pkg ffmpeg
-  pkg gstreamer
-fi
+# ── GUI apps ──────────────────────────────────────────────────────────────────
 
-# Optional: Private Communication
+pkg firefox
+pkg vlc
+
 if selected "Private Communication"; then
   pkg signal-desktop
 fi
-
-# GUI
-pkg firefox
-pkg vlc
-pkg ghostty
