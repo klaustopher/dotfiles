@@ -27,7 +27,6 @@ brew 'pinentry-mac'
 # ── Shell ─────────────────────────────────────────────────────────────────────
 
 brew 'zsh'
-brew 'zplug'
 if CRATES.include?('Fish Shell')
   brew 'fish', args: ['HEAD'] # until V4 is released
 end
