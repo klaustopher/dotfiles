@@ -35,6 +35,9 @@ if [[ $(uname) == "Darwin" ]]; then
 
   section "Updating \ue0b2 Homebrew Packages"
   if has_cmd brew; then
+    # Accept Xcode license if needed to avoid issues with brew update/upgrade
+    sudo xcodebuild -license accept
+
     brew update
     brew upgrade
     brew bundle --file=~/.dotfiles/packages/Brewfile

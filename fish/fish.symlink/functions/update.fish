@@ -31,6 +31,8 @@ function update --description 'Updates everything relevant on the system'
 
         _section "Updating  Homebrew Packages"
         if type -q brew
+            # Accept Xcode license if needed to avoid issues with brew update/upgrade
+            sudo xcodebuild -license accept
             brew update
             brew upgrade
             brew bundle --file=~/.dotfiles/packages/Brewfile
