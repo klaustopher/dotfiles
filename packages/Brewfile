@@ -175,15 +175,14 @@ end
 # ── Claude Code ─--────────────────────────────────────────────────────────────
 
 if CRATES.include?('Claude Code')
-  tap 'hamed-elfayome/claude-usage'
-  cask 'hamed-elfayome/claude-usage/claude-usage-tracker'
   brew 'claude-code'
 end
 
 # ── Mac App Store ─────────────────────────────────────────────────────────────
 
 mas 'Apple Configurator', id: 1_037_126_344
-mas 'Dato', id: 1_470_584_107
+# mas 'Dato', id: 1_470_584_107
+mas 'MeetingBar', id: 1532419400
 mas 'GIPHY CAPTURE', id: 668_208_984
 mas 'Monosnap', id: 540_348_655
 mas 'Xcode', id: 497_799_835
