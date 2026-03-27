@@ -5,6 +5,8 @@ MySQL
 PostgreSQL
 TimescaleDB
 Claude Code
+Google Gemini
+OpenAI Codex
 Redis
 Home Network Connection
 VSCode

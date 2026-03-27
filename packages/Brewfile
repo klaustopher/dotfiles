@@ -172,10 +172,18 @@ if CRATES.include?('Private Communication')
   cask 'signal'
 end
 
-# ── Claude Code ─--────────────────────────────────────────────────────────────
+# ── AI Development Tools ────────────────────────────────────────────────────────────
 
 if CRATES.include?('Claude Code')
-  brew 'claude-code'
+  cask 'claude-code'
+end
+
+if CRATES.include?('Google Gemini')
+  brew 'gemini-cli'
+end
+
+if CRATES.include?('OpenAI Codex')
+  cask "codex"
 end
 
 # ── Mac App Store ─────────────────────────────────────────────────────────────
