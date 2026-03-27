@@ -172,6 +172,14 @@ if CRATES.include?('Private Communication')
   cask 'signal'
 end
 
+# ── Claude Code ─--────────────────────────────────────────────────────────────
+
+if CRATES.include?('Claude Code')
+  tap 'hamed-elfayome/claude-usage'
+  cask 'hamed-elfayome/claude-usage/claude-usage-tracker'
+  brew 'claude-code'
+end
+
 # ── Mac App Store ─────────────────────────────────────────────────────────────
 
 mas 'Apple Configurator', id: 1_037_126_344

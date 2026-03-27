@@ -4,6 +4,7 @@ Node
 MySQL
 PostgreSQL
 TimescaleDB
+Claude Code
 Redis
 Home Network Connection
 VSCode
@@ -12,3 +13,4 @@ SQLite
 Desk Setup
 Private Communication
 Fish Shell
+
