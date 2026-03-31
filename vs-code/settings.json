@@ -7,7 +7,7 @@
   "editor.fontFamily": "'FantasqueSansM Nerd Font', Menlo, Monaco, 'Courier New', monospace",
   "editor.fontSize": 14,
   "editor.fontLigatures": true,
-  "workbench.colorTheme": "Spinel",
+  "workbench.colorTheme": "One Monokai",
   "editor.tabSize": 2,
   "files.trimTrailingWhitespace": true,
   "editor.rulers": [120],
@@ -28,13 +28,13 @@
   "terminal.integrated.enableMultiLinePasteWarning": "never",
   "workbench.preferredDarkColorTheme": "Base16 Tomorrow Dark",
   "editor.codeActionsOnSave": {
-    "source.fixAll": "always"
+    "source.fixAll": "always",
   },
   "git.openRepositoryInParentFolders": "always",
   "workbench.settings.editor": "json",
   // Markdown
   "markdown.styles": [
-    "https://cdn.jsdelivr.net/gh/dhdhagar/vscode-md-preview-light/style.min.css"
+    "https://cdn.jsdelivr.net/gh/dhdhagar/vscode-md-preview-light/style.min.css",
   ],
   // Ruby Settings
   "[ruby]": {
@@ -43,12 +43,12 @@
     "editor.insertSpaces": true,
     "editor.semanticHighlighting.enabled": true,
     "editor.formatOnType": true,
-    "files.trimFinalNewlines": true
+    "files.trimFinalNewlines": true,
   },
   // Plugin TODO Tree
   "todo-tree.highlights.defaultHighlight": {
     "foreground": "#2e872e",
-    "type": "none"
+    "type": "none",
   },
   "byesig.enabled": true,
   "byesig.fold": false,
@@ -68,13 +68,13 @@
     "selectionRanges": true,
     "semanticHighlighting": true,
     "completion": true,
-    "codeLens": false
+    "codeLens": false,
   },
   // YAML Settings
   "yaml.format.singleQuote": false,
   "yaml.format.enable": true,
   "[yaml]": {
-    "editor.defaultFormatter": "redhat.vscode-yaml"
+    "editor.defaultFormatter": "redhat.vscode-yaml",
   },
   // JavaScript & ESLint
   "javascript.updateImportsOnFileMove.enabled": "always",
@@ -84,16 +84,16 @@
     "*": true,
     "plaintext": false,
     "markdown": true,
-    "scminput": false
+    "scminput": false,
   },
   "diffEditor.ignoreTrimWhitespace": false,
   "update.showReleaseNotes": false,
   "[typescript]": {
-    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint",
   },
   "github.copilot.editor.enableAutoCompletions": true,
   "rubyLsp.featureFlags": {
-    "all": true
+    "all": true,
   },
   "docker.extension.enableComposeLanguageServer": false,
   "[dockercompose]": {
@@ -103,15 +103,15 @@
     "editor.quickSuggestions": {
       "other": true,
       "comments": false,
-      "strings": true
+      "strings": true,
     },
-    "editor.defaultFormatter": "redhat.vscode-yaml"
+    "editor.defaultFormatter": "redhat.vscode-yaml",
   },
   "[github-actions-workflow]": {
-    "editor.defaultFormatter": "redhat.vscode-yaml"
+    "editor.defaultFormatter": "redhat.vscode-yaml",
   },
   "github.copilot.nextEditSuggestions.enabled": true,
   "svelte.enable-ts-plugin": true,
   "claudeCode.preferredLocation": "panel",
-  "claudeCode.selectedModel": "default"
+  "claudeCode.selectedModel": "default",
 }
