@@ -7,6 +7,7 @@ CRATES = (File.exist?(CRATE_FILE) ? File.read(CRATE_FILE) : '').split(',').inspe
 
 tap '1password/tap'
 tap 'homebrew/services'
+tap "tsonglew/dutis", "https://github.com/tsonglew/dutis"
 
 # ── Fonts ─────────────────────────────────────────────────────────────────────
 
@@ -104,6 +105,7 @@ brew 'yt-dlp'
 if CRATES.include?('Video Encoding')
   brew 'ffmpeg'
   brew 'gstreamer'
+  mas "LosslessCut", id: 1505323402
 end
 
 # ── Programming languages ─────────────────────────────────────────────────────
@@ -188,8 +190,8 @@ end
 
 # ── Mac App Store ─────────────────────────────────────────────────────────────
 
+mas "Amphetamine", id: 937984704
 mas 'Apple Configurator', id: 1_037_126_344
-# mas 'Dato', id: 1_470_584_107
 # mas 'MeetingBar', id: 1532419400
 mas 'Dato', id: 1470584107
 mas 'GIPHY CAPTURE', id: 668_208_984
@@ -200,6 +202,12 @@ mas 'Tailscale', id: 1_475_387_142 if CRATES.include?('Home Network Connection')
 # mas "Skitch", id: 425955336
 # mas "ForkLift", id: 412448059
 # mas "Marked", id: 448925439
+
+# Apple Desktop
+mas "Keynote", id: 361285480
+mas "Pages", id: 361309726
+mas "Numbers", id: 361304891
+mas "Pixelmator Pro", id: 1289583905
 
 # ── VS Code ───────────────────────────────────────────────────────────────────
 
@@ -229,12 +237,14 @@ if CRATES.include?('VSCode')
   vscode 'ms-azuretools.vscode-docker'
 
   # Tools & themes
+  vscode "azemoh.one-monokai"
+  # vscode 'ms-vscode.theme-tomorrowkit'
+
   vscode 'cschlosser.doxdocgen'
   vscode 'github.vscode-github-actions'
   vscode 'itarato.byesig'
   vscode 'ms-ceintl.vscode-language-pack-de'
   vscode 'ms-vscode.cmake-tools'
-  vscode 'ms-vscode.theme-tomorrowkit'
   vscode 'pkief.material-icon-theme'
   vscode 'vscodevim.vim'
 end
