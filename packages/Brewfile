@@ -190,7 +190,8 @@ end
 
 mas 'Apple Configurator', id: 1_037_126_344
 # mas 'Dato', id: 1_470_584_107
-mas 'MeetingBar', id: 1532419400
+# mas 'MeetingBar', id: 1532419400
+mas 'Dato', id: 1470584107
 mas 'GIPHY CAPTURE', id: 668_208_984
 mas 'Monosnap', id: 540_348_655
 mas 'Xcode', id: 497_799_835
