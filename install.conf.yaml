@@ -61,6 +61,12 @@
           stderr: true
 
 - shell:
+    - command: command -v claude || curl -fsSL https://claude.ai/install.sh | bash
+      description: Install Claude Code CLI
+      stdout: true
+      stderr: true
+
+- shell:
     - command: '[ -d "$HOME/.config/fish" ] && [ ! -L "$HOME/.config/fish" ] && rm -rf "$HOME/.config/fish" || true'
       description: Delete fish config folder to symlink our own
 
