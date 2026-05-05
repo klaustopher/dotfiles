@@ -1,1 +1,2 @@
 export DISABLE_SPRING=true
+export DISABLE_BOOTSNAP=1
