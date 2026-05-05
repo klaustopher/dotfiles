@@ -161,9 +161,9 @@ cask 'istat-menus'
 cask 'textmate'
 cask 'tidal'
 cask 'vlc'
+cask 'yubico-authenticator'
 
 if CRATES.include?('Desk Setup')
-  cask 'displaylink'
   cask 'ankerwork'
   cask 'elgato-stream-deck'
 end
