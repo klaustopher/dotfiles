@@ -5,7 +5,7 @@ alias gme='git log --pretty=format:"%C(yellow)%h%Creset %ad%x09%s" --author="$(g
 alias gtoday='git log --pretty=format:"%h %ad%x09%s" --author="$(git config user.name)" --since="1 day ago"'
 alias glog="git log --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
 alias gclean="git pull --rebase && git fetch -p && for branch in \$(git branch -vv | grep ': gone]' | awk '{print \$1}'); do git branch -d \$branch; done"
-alias gp='git push origin HEAD --follow-tags'
+alias gp='git push --follow-tags'
 alias gd='git diff'
 alias gc='git commit --verbose'
 alias gca='git commit -a'
