@@ -36,11 +36,45 @@ HOST_GID="$(id -g)"
 # Ensure the ~/.claude directory exists on the host
 mkdir -p "$CLAUDE_DIR"
 
+# On macOS, Claude Code stores the OAuth token in the login Keychain rather
+# than in a file, so it is NOT inside ~/.claude. Extract it to a temp file so
+# we can hand it to the (Linux) container, which reads ~/.claude/.credentials.json.
+# On Linux the credential already lives in ~/.claude and is copied via the dir mount.
+CREDS_TMP=""
+cleanup() {
+  if [[ -n "$CREDS_TMP" && -f "$CREDS_TMP" ]]; then
+    rm -f "$CREDS_TMP"
+  fi
+}
+# EXIT covers normal exit and `set -e` failures. The signal traps just exit,
+# which in turn fires the EXIT trap — so cleanup runs on Ctrl-C, kill, and
+# terminal hangup too. (SIGKILL/-9 cannot be trapped; nothing can catch that.)
+trap cleanup EXIT
+trap 'exit 130' INT
+trap 'exit 143' TERM
+trap 'exit 129' HUP
+
+if command -v security >/dev/null 2>&1; then
+  CREDS_TMP="$(mktemp)"
+  chmod 600 "$CREDS_TMP"
+  if ! security find-generic-password -s "Claude Code-credentials" -w >"$CREDS_TMP" 2>/dev/null \
+     || [[ ! -s "$CREDS_TMP" ]]; then
+    echo "Warning: could not read 'Claude Code-credentials' from the macOS Keychain."
+    echo "         You may need to log in inside the container."
+    rm -f "$CREDS_TMP"
+    CREDS_TMP=""
+  fi
+fi
+
 # Build volume mount args
 VOLUME_ARGS=(
   -v "${CURRENT_DIR}:/app"
   -v "${CLAUDE_DIR}:/tmp/claude-config:ro"
 )
+
+if [[ -n "$CREDS_TMP" ]]; then
+  VOLUME_ARGS+=(-v "${CREDS_TMP}:/tmp/claude-credentials.json:ro")
+fi
 
 if [[ -f "$CLAUDE_JSON" ]]; then
   VOLUME_ARGS+=(-v "${CLAUDE_JSON}:/tmp/claude-config.json:ro")
@@ -82,6 +116,14 @@ docker run -it --rm \
     if [[ -f /tmp/claude-config.json ]]; then
       cp /tmp/claude-config.json /home/claude/.claude.json
       chown ${HOST_UID}:${HOST_GID} /home/claude/.claude.json
+    fi
+
+    # On macOS the OAuth token comes from the Keychain via a separate mount.
+    # Claude Code on Linux reads it from ~/.claude/.credentials.json (mode 0600).
+    if [[ -f /tmp/claude-credentials.json ]]; then
+      cp /tmp/claude-credentials.json /home/claude/.claude/.credentials.json
+      chown ${HOST_UID}:${HOST_GID} /home/claude/.claude/.credentials.json
+      chmod 600 /home/claude/.claude/.credentials.json
     fi
 
     # Run optional setup script (as root, so it can apt-get install etc.)
