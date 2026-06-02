@@ -92,6 +92,9 @@ fi
 echo "Starting Claude Code in Docker container..."
 echo "  Image:       $IMAGE"
 echo "  Working dir: $CURRENT_DIR -> /app"
+if [[ -n "$CREDS_TMP" ]]; then
+  echo "  macOS Keychain credentials -> /home/claude/.claude/.credentials.json (read-only)"
+fi
 echo "  Claude config: $CLAUDE_DIR (read-only)"
 echo "  Running as:  uid=${HOST_UID} gid=${HOST_GID}"
 [[ -n "$SETUP_SCRIPT" ]] && echo "  Setup script: $SETUP_SCRIPT"
