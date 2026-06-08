@@ -66,10 +66,6 @@
       stdout: true
       stderr: true
 
-- shell:
-    - command: '[ -d "$HOME/.config/fish" ] && [ ! -L "$HOME/.config/fish" ] && rm -rf "$HOME/.config/fish" || true'
-      description: Delete fish config folder to symlink our own
-
 - link:
     ~/.zshrc: zsh/zshrc.symlink
     ~/.gitignore: git/gitignore.symlink
@@ -84,7 +80,6 @@
     ~/.config/ghostty/config: ghostty/config
     ~/.config/bat/config: bat/config
     ~/.gnupg/gpg-agent.conf: gpg/gpg-agent.conf
-    ~/.config/fish: fish/fish.symlink
     ~/.claude/CLAUDE.md: claude/CLAUDE.md
     ~/.claude/skills: claude/skills
     ~/.claude/agents: claude/agents

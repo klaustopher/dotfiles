@@ -29,9 +29,6 @@ cask 'gtfs-planner'
 # ── Shell ─────────────────────────────────────────────────────────────────────
 
 brew 'zsh'
-if CRATES.include?('Fish Shell')
-  brew 'fish', args: ['HEAD'] # until V4 is released
-end
 
 # ── Terminal & multiplexing ───────────────────────────────────────────────────
 

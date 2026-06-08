@@ -16,9 +16,6 @@ selected() { echo "$CRATES" | grep -q "$1"; }
 
 pkg zsh
 # pkg zplug
-if selected "Fish Shell"; then
-  pkg fish
-fi
 
 # ── Terminal & multiplexing ───────────────────────────────────────────────────
 
