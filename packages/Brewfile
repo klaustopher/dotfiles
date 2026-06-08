@@ -177,10 +177,6 @@ end
 
 # ── AI Development Tools ────────────────────────────────────────────────────────────
 
-#if CRATES.include?('Claude Code')
-#  cask 'claude-code'
-#end
-
 if CRATES.include?('Google Gemini')
   brew 'gemini-cli'
 end

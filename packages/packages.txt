@@ -4,7 +4,6 @@ Node
 MySQL
 PostgreSQL
 TimescaleDB
-Claude Code
 Google Gemini
 OpenAI Codex
 Redis
