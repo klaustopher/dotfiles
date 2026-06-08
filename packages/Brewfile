@@ -157,9 +157,9 @@ cask 'firefox'
 cask 'forklift'
 cask 'istat-menus'
 cask 'textmate'
-cask 'tidal'
 cask 'vlc'
 cask 'yubico-authenticator'
+cask 'sozercan/repo/kaset'
 
 if CRATES.include?('Desk Setup')
   cask 'ankerwork'
