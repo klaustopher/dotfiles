@@ -6,8 +6,8 @@ CRATES = (File.exist?(CRATE_FILE) ? File.read(CRATE_FILE) : '').split(',').inspe
 # ── Taps ──────────────────────────────────────────────────────────────────────
 
 tap '1password/tap'
-tap 'homebrew/services'
 tap "tsonglew/dutis", "https://github.com/tsonglew/dutis"
+tap "klaustopher/gtfs-planner", "https://github.com/klaustopher/gtfs-planner"
 
 # ── Fonts ─────────────────────────────────────────────────────────────────────
 
@@ -24,6 +24,7 @@ brew 'libsodium'
 brew 'libksba'
 cask 'gpg-suite' if MacOS.version <= :sequoia
 brew 'pinentry-mac'
+cask 'gtfs-planner'
 
 # ── Shell ─────────────────────────────────────────────────────────────────────
 
