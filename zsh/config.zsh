@@ -4,16 +4,23 @@ else
   export PS1='%3~$(git_info_for_prompt)%# '
 fi
 
+export EDITOR='nvim'
+export VISUAL='nvim'
+
+# Color setup: LSCOLORS is BSD/macOS; LS_COLORS (via dircolors) is GNU/Arch
 export LSCOLORS="exfxcxdxbxegedabagacad"
 export CLICOLOR=true
+if (( $+commands[dircolors] )); then
+  eval "$(dircolors -b)"
+fi
 
 fpath=($DOTFILES/zsh/functions $fpath)
 
 autoload -U $DOTFILES/zsh/functions/*(:t)
 
 HISTFILE=~/.zsh_history
-HISTSIZE=10000
-SAVEHIST=10000
+HISTSIZE=50000
+SAVEHIST=50000
 
 setopt NO_BG_NICE # don't nice background tasks
 setopt NO_HUP
@@ -28,9 +35,13 @@ setopt CORRECT
 setopt COMPLETE_IN_WORD
 setopt IGNORE_EOF
 
-setopt APPEND_HISTORY # adds history
-setopt INC_APPEND_HISTORY SHARE_HISTORY  # adds history incrementally and share it across sessions
+# Directory stack navigation: `cd -<tab>` through history
+setopt AUTO_CD AUTO_PUSHD PUSHD_IGNORE_DUPS PUSHD_SILENT
+
+# SHARE_HISTORY (set above) already implies incremental append across sessions
 setopt HIST_IGNORE_ALL_DUPS  # don't record dupes in history
+setopt HIST_FIND_NO_DUPS     # don't show dupes when searching history
+setopt HIST_IGNORE_SPACE     # commands prefixed with a space skip history (handy for secrets)
 setopt HIST_REDUCE_BLANKS
 
 unsetopt NOMATCH
