@@ -37,6 +37,36 @@
         default = simple
         autoSetupRemote = true
 
+[pull]
+        ff = only
+
+[fetch]
+        prune = true
+        pruneTags = true
+
+[rebase]
+        autoStash = true
+        autoSquash = true
+        updateRefs = true
+
+[rerere]
+        enabled = true
+
+[branch]
+        sort = -committerdate
+
+[tag]
+        sort = version:refname
+
+[diff]
+        algorithm = histogram
+        colorMoved = default
+        mnemonicPrefix = true
+        renames = copies
+
+[merge]
+        conflictstyle = zdiff3
+
 [i18n]
         logoutputencoding = utf8
         commitencoding = utf8
