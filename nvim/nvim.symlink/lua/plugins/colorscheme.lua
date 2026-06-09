@@ -1,4 +1,4 @@
 return {
-    { "olimorris/onedarkpro.nvim", priority = 1000 },
-    { "LazyVim/LazyVim",           opts = { colorscheme = "onedark" } },
+  { "EdenEast/nightfox.nvim" },
+  { "LazyVim/LazyVim", opts = { colorscheme = "Dayfox" } },
 }
