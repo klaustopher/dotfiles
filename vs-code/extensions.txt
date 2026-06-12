@@ -26,7 +26,6 @@ ms-python.vscode-python-envs
 
 # Tools
 cschlosser.doxdocgen
-github.vscode-github-actions
 itarato.byesig
 ms-ceintl.vscode-language-pack-de
 vscodevim.vim
