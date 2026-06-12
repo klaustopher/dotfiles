@@ -131,4 +131,5 @@
   "claudeCode.selectedModel": "default",
   "diffEditor.renderSideBySide": false,
   "chat.mcp.access": "none",
+  "workbench.iconTheme": "material-icon-theme",
 }
