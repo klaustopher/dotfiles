@@ -7,10 +7,12 @@
   "editor.fontFamily": "'FantasqueSansM Nerd Font', Menlo, Monaco, 'Courier New', monospace",
   "editor.fontSize": 14,
   "editor.fontLigatures": true,
-  "workbench.colorTheme": "One Monokai",
+  "workbench.colorTheme": "Nightfox",
   "editor.tabSize": 2,
   "files.trimTrailingWhitespace": true,
-  "editor.rulers": [120],
+  "editor.rulers": [
+    120
+  ],
   "editor.formatOnSave": true,
   "workbench.startupEditor": "newUntitledFile",
   "editor.dragAndDrop": false,
@@ -26,7 +28,8 @@
   "git.confirmSync": false,
   "terminal.integrated.scrollback": 10000,
   "terminal.integrated.enableMultiLinePasteWarning": "never",
-  "workbench.preferredDarkColorTheme": "Base16 Tomorrow Dark",
+  "workbench.preferredDarkColorTheme": "Nightfox",
+  "workbench.preferredLightColorTheme": "Dayfox",
   "editor.codeActionsOnSave": {
     "source.fixAll": "always",
   },
@@ -78,12 +81,15 @@
   },
   // JavaScript & ESLint
   "javascript.updateImportsOnFileMove.enabled": "always",
-  "eslint.validate": ["typescript", "typescriptreact"],
+  "eslint.validate": [
+    "typescript",
+    "typescriptreact"
+  ],
   "eslint.format.enable": true,
   "github.copilot.enable": {
-    "*": true,
+    "*": false,
     "plaintext": false,
-    "markdown": true,
+    "markdown": false,
     "scminput": false,
   },
   "diffEditor.ignoreTrimWhitespace": false,
@@ -91,7 +97,7 @@
   "[typescript]": {
     "editor.defaultFormatter": "dbaeumer.vscode-eslint",
   },
-  "github.copilot.editor.enableAutoCompletions": true,
+  "github.copilot.editor.enableAutoCompletions": false,
   "rubyLsp.featureFlags": {
     "all": true,
   },
@@ -110,8 +116,19 @@
   "[github-actions-workflow]": {
     "editor.defaultFormatter": "redhat.vscode-yaml",
   },
-  "github.copilot.nextEditSuggestions.enabled": true,
+  "github.copilot.nextEditSuggestions.enabled": false,
+  // Disable built-in AI / MCP features
+  "chat.agent.enabled": false,
+  "chat.mcp.discovery.enabled": {
+    "claude-desktop": false,
+    "windsurf": false,
+    "cursor-global": false,
+    "cursor-workspace": false
+  },
+  "chat.commandCenter.enabled": false,
   "svelte.enable-ts-plugin": true,
   "claudeCode.preferredLocation": "panel",
   "claudeCode.selectedModel": "default",
+  "diffEditor.renderSideBySide": false,
+  "chat.mcp.access": "none",
 }

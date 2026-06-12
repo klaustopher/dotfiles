@@ -68,9 +68,12 @@ else
 fi
 
 # ── Editors ───────────────────────────────────────────────────────────────────
-if has_cmd code; then
-  section "Updating \udb82\ude1e VS Code Extensions"
-  code --list-extensions | xargs -I{} code --install-extension {} --force
+if has_cmd codium; then
+  section "Updating \U000F0A1E VSCodium Extensions"
+  # Single source of truth: the install script knows the Open VSX list and the
+  # VSIX side-loads (e.g. geo-viewer, which isn't on Open VSX). --update forces
+  # a reinstall of all of them at their latest version.
+  ~/.dotfiles/vs-code/install-extensions.sh --update
 fi
 
 if has_cmd nvim; then

@@ -1,0 +1,36 @@
+# VSCodium extensions — installed from Open VSX via vs-code/install-extensions.sh.
+# One id per line. Comments (#) and blank lines are ignored.
+# Extensions that are NOT on Open VSX are side-loaded as VSIX in the script.
+
+# Language support
+crystal-lang-tools.crystal-lang
+dbaeumer.vscode-eslint
+karunamurti.haml
+redhat.vscode-yaml
+tamasfe.even-better-toml
+twxs.cmake
+ms-vscode.cmake-tools
+
+# Ruby
+shopify.ruby-extensions-pack
+shopify.ruby-lsp
+sorbet.sorbet-vscode-extension
+koichisasada.vscode-rdbg
+
+# Docker / containers
+ms-azuretools.vscode-docker
+ms-azuretools.vscode-containers
+
+# Python
+ms-python.vscode-python-envs
+
+# Tools
+cschlosser.doxdocgen
+github.vscode-github-actions
+itarato.byesig
+ms-ceintl.vscode-language-pack-de
+vscodevim.vim
+
+# Themes & icons
+nuromirg.nightfox-theme-collections
+pkief.material-icon-theme

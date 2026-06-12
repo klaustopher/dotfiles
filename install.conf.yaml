@@ -23,7 +23,11 @@
 
 - ifmacos:
     - create:
-        - "~/Library/Application Support/Code/User/"
+        - "~/Library/Application Support/VSCodium/User/"
+
+- ifarch:
+    - create:
+        - "~/.config/VSCodium/User/"
 
 - ifmacos:
     - install-brew: true
@@ -89,7 +93,17 @@
 
 - ifmacos:
     - link:
-        "~/Library/Application Support/Code/User/settings.json": vs-code/settings.json
+        "~/Library/Application Support/VSCodium/User/settings.json": vs-code/settings.json
+
+- ifarch:
+    - link:
+        "~/.config/VSCodium/User/settings.json": vs-code/settings.json
+
+- shell:
+    - command: vs-code/install-extensions.sh
+      description: Install VSCodium extensions (Open VSX + VSIX side-loads)
+      stdout: true
+      stderr: true
 
 - ifmacos:
     - shell:

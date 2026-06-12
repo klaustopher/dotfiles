@@ -202,42 +202,11 @@ mas "Pages", id: 361309726
 mas "Numbers", id: 361304891
 mas "Pixelmator Pro", id: 1289583905
 
-# ── VS Code ───────────────────────────────────────────────────────────────────
+# ── VSCodium ──────────────────────────────────────────────────────────────────
 
 if CRATES.include?('VSCode')
-  cask 'visual-studio-code'
-
-  # Language support
-  vscode 'crystal-lang-tools.crystal-lang'
-  vscode 'dbaeumer.vscode-eslint'
-  vscode 'karunamurti.haml'
-  vscode 'redhat.vscode-yaml'
-  vscode 'tamasfe.even-better-toml'
-  vscode 'twxs.cmake'
-
-  # Ruby
-  vscode 'shopify.ruby-extensions-pack'
-  vscode 'shopify.ruby-lsp'
-  vscode 'sorbet.sorbet-vscode-extension'
-  vscode 'koichisasada.vscode-rdbg'
-  vscode 'matthewmcgarvey.crystal-spec-vscode'
-
-  # Remote & containers
-  vscode 'ms-vscode-remote.remote-containers'
-  vscode 'ms-vscode-remote.remote-ssh'
-  vscode 'ms-vscode-remote.remote-wsl'
-  vscode 'ms-vscode.remote-explorer'
-  vscode 'ms-azuretools.vscode-docker'
-
-  # Tools & themes
-  vscode "azemoh.one-monokai"
-  # vscode 'ms-vscode.theme-tomorrowkit'
-
-  vscode 'cschlosser.doxdocgen'
-  vscode 'github.vscode-github-actions'
-  vscode 'itarato.byesig'
-  vscode 'ms-ceintl.vscode-language-pack-de'
-  vscode 'ms-vscode.cmake-tools'
-  vscode 'pkief.material-icon-theme'
-  vscode 'vscodevim.vim'
+  cask 'vscodium'
+  # Extensions are managed cross-platform (macOS + Arch) via Open VSX in
+  # vs-code/install-extensions.sh — not through Homebrew Bundle's `vscode` DSL,
+  # which would pull from the proprietary MS Marketplace into official VS Code.
 end

@@ -96,6 +96,13 @@ if selected "PostgreSQL"; then
   pkg postgis
 fi
 
+# ── Editors (GUI) ─────────────────────────────────────────────────────────────
+
+if selected "VSCode"; then
+  pkg vscodium-bin
+  # Extensions managed via vs-code/install-extensions.sh (Open VSX), not paru.
+fi
+
 # ── GUI apps ──────────────────────────────────────────────────────────────────
 
 #pkg firefox
