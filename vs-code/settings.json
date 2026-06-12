@@ -8,6 +8,7 @@
   "editor.fontSize": 14,
   "editor.fontLigatures": true,
   "workbench.colorTheme": "Nightfox",
+  "window.autoDetectColorScheme": true,
   "editor.tabSize": 2,
   "files.trimTrailingWhitespace": true,
   "editor.rulers": [
