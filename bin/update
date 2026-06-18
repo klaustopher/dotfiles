@@ -39,7 +39,7 @@ if [[ $(uname) == "Darwin" ]]; then
     sudo xcodebuild -license accept
 
     brew update
-    brew upgrade
+    brew upgrade --yes
     brew bundle --file=~/.dotfiles/packages/Brewfile
     brew cleanup -s
   else
