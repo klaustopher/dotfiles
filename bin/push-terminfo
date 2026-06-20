@@ -1,0 +1,47 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Usage: push-terminfo <ssh-host> [term]
+# Example: push-terminfo docker-host
+# Example: push-terminfo docker-host xterm-ghostty
+#
+# Compiles the local terminfo entry for the given terminal and installs it into
+# the remote user's ~/.terminfo via `tic`. Fixes the classic "backspace shows a
+# space but deletes internally" symptom that happens when you SSH from a terminal
+# whose TERM (e.g. xterm-ghostty) is unknown to the remote's terminfo database.
+#
+# <ssh-host> is anything ssh understands (a Host alias from ~/.ssh/config or
+# user@hostname). [term] defaults to the current $TERM.
+
+if [[ $# -lt 1 ]]; then
+  echo "Usage: $0 <ssh-host> [term]"
+  echo "Example: $0 docker-host"
+  echo "Example: $0 docker-host xterm-ghostty"
+  exit 1
+fi
+
+HOST="$1"
+TERM_NAME="${2:-${TERM:-}}"
+
+if [[ -z "$TERM_NAME" ]]; then
+  echo "Error: no terminal given and \$TERM is unset."
+  exit 1
+fi
+
+# Make sure the entry actually exists locally before we try to ship it.
+if ! infocmp -x "$TERM_NAME" >/dev/null 2>&1; then
+  echo "Error: no local terminfo entry for '$TERM_NAME'."
+  echo "       Check \$TERM or pass an explicit terminal name."
+  exit 1
+fi
+
+echo "Pushing terminfo '$TERM_NAME' to $HOST ..."
+
+# `infocmp -x` dumps the entry (including extended capabilities), and remote
+# `tic -x -` compiles it from stdin into ~/.terminfo. No root needed.
+if infocmp -x "$TERM_NAME" | ssh "$HOST" -- tic -x -; then
+  echo "✓ Installed. Reconnect to $HOST and backspace should behave."
+else
+  echo "Error: failed to install terminfo on $HOST (is tic available there?)."
+  exit 1
+fi
