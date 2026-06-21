@@ -17,6 +17,7 @@
     - ~/.config/zed
     - ~/.config/ghostty
     - ~/.config/bat
+    - ~/.config/opencode
     - ~/.claude
     - ~/Projects
     - ~/.gnupg/
@@ -83,6 +84,7 @@
     ~/.config/zed/settings.json: zed/settings.json
     ~/.config/ghostty/config: ghostty/config
     ~/.config/bat/config: bat/config
+    ~/.config/opencode/opencode.json: opencode/opencode.json
     ~/.gnupg/gpg-agent.conf: gpg/gpg-agent.conf
     ~/.claude/CLAUDE.md: claude/CLAUDE.md
     ~/.claude/skills: claude/skills
