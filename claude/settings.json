@@ -1,4 +1,5 @@
 {
+  "includeCoAuthoredBy": false,
   "model": "opus[1m]",
   "enabledPlugins": {
     "gopls-lsp@claude-plugins-official": true,
@@ -6,5 +7,9 @@
   },
   "effortLevel": "high",
   "theme": "auto",
-  "includeCoAuthoredBy": false
+  "tui": "fullscreen",
+  "statusLine": {
+    "type": "command",
+    "command": "~/.claude/statusline.sh"
+  }
 }

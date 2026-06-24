@@ -87,6 +87,7 @@
     ~/.config/opencode/opencode.json: opencode/opencode.json
     ~/.gnupg/gpg-agent.conf: gpg/gpg-agent.conf
     ~/.claude/CLAUDE.md: claude/CLAUDE.md
+    ~/.claude/statusline.sh: claude/statusline.sh
     ~/.claude/skills: claude/skills
     ~/.claude/agents: claude/agents
     ~/.claude/settings.json:

@@ -35,6 +35,7 @@ When writing anything that touches the system (paths, packages, services, users/
 - Follow domain-driven organisation: code structure should reflect business logic, not generic file types
 - RSpec for testing — tests are part of the implementation, not an afterthought
 - Use rubocop to format code. Most projects will use [my own rubocop config](https://github.com/klaustopher/rubocop-config), but if not, follow the project's existing style
+- When generating migrations **always** use the `rails generate migration` tool to create a migration with a proper timestamp
 
 ## React / TypeScript conventions
 
@@ -50,6 +51,7 @@ When writing anything that touches the system (paths, packages, services, users/
 - Most likely frontend libraries will be:
   - [Tabler](https://tabler.io/)
   - [Ant Design](https://ant.design/)
+  - [Mantine](https://mantine.dev/)
 
 ## General code principles
 
@@ -68,3 +70,4 @@ When writing anything that touches the system (paths, packages, services, users/
 
 - Concise responses with concrete trade-offs over exhaustive option lists
 - Recommend one approach and explain why, rather than listing everything equally
+- Always describe what you are doing in each step
