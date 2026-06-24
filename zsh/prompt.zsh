@@ -48,20 +48,14 @@ need_push () {
 }
 
 ruby_version() {
-  if (( $+commands[rvm-prompt] ))
-  then
-    echo "$(rvm-prompt | awk '{print $1}' | cut -d"-" -f2)"
-  elif [ ! -z ruby ]
+  if (( $+commands[ruby] ))
   then
     echo "$(ruby -v | cut -d" " -f2 | cut -d"-" -f2)"
   fi
 }
 
 node_version() {
-  if [ ! -z $NVM_BIN ]
-  then
-    echo "$(nvm current | awk '{print $1}')"
-  elif [ ! -z node ]
+  if (( $+commands[node] ))
   then
     echo "$(node -v)"
   fi
