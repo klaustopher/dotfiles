@@ -144,4 +144,5 @@
     "https://schemastore.azurewebsites.net/": true,
     "https://www.schemastore.org/": true
   },
+  "platformio-ide.intelliSenseEngine": "clangd",
 }
