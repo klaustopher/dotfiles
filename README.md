@@ -28,7 +28,7 @@ We iterate alphabetically over all our topic folders and load `*.zsh` files in t
 
 ### Plugins
 
-Plugins are managed using [`zplug`](https://github.com/zplug/zplug). Plugins will be defined and loaded in `zsh/plugins.zsh`
+Plugins are managed using [`sheldon`](https://sheldon.cli.rs). The plugin list lives in `zsh/sheldon.toml` (linked to `~/.config/sheldon/plugins.toml`) and is sourced in `zsh/plugins.zsh`. Update plugins with `sheldon lock --update`.
 
 ## Some helpful links I want to keep track off
 - https://github.com/anishathalye/dotbot

@@ -18,6 +18,7 @@
     - ~/.config/ghostty
     - ~/.config/bat
     - ~/.config/opencode
+    - ~/.config/sheldon
     - ~/.claude
     - ~/Projects
     - ~/.gnupg/
@@ -78,6 +79,7 @@
     ~/.config/ghostty/config: ghostty/config
     ~/.config/bat/config: bat/config
     ~/.config/opencode/opencode.json: opencode/opencode.json
+    ~/.config/sheldon/plugins.toml: zsh/sheldon.toml
     ~/.gnupg/gpg-agent.conf: gpg/gpg-agent.conf
     ~/.claude/CLAUDE.md: claude/CLAUDE.md
     ~/.claude/statusline.sh: claude/statusline.sh

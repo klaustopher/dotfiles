@@ -1,0 +1,16 @@
+shell = "zsh"
+
+# Plugins are sourced in declaration order. Keep the ordering below:
+#   1. autosuggestions
+#   2. syntax-highlighting   (must come before history-substring-search)
+#   3. history-substring-search (binds ZLE widgets, so it must load last)
+# Keybindings for history-substring-search live in zsh/config.zsh.
+
+[plugins.zsh-autosuggestions]
+github = "zsh-users/zsh-autosuggestions"
+
+[plugins.zsh-syntax-highlighting]
+github = "zsh-users/zsh-syntax-highlighting"
+
+[plugins.zsh-history-substring-search]
+github = "zsh-users/zsh-history-substring-search"

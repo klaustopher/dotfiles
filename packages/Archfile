@@ -15,7 +15,7 @@ selected() { echo "$CRATES" | grep -q "$1"; }
 # ── Shell ─────────────────────────────────────────────────────────────────────
 
 pkg zsh
-# pkg zplug
+pkg sheldon
 
 # ── Terminal & multiplexing ───────────────────────────────────────────────────
 

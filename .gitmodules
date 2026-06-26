@@ -11,6 +11,3 @@
 [submodule "dotbot-ifplatform"]
 	path = dotbot-ifplatform
 	url = git@github.com:klaustopher/dotbot-ifplatform.git
-[submodule "zsh/zplug"]
-	path = zsh/zplug
-	url = https://github.com/zplug/zplug

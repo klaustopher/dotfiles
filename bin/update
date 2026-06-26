@@ -67,6 +67,15 @@ else
   skip "gem not installed"
 fi
 
+# ── Shell plugins ─────────────────────────────────────────────────────────────
+if has_cmd sheldon; then
+  section "Updating  Zsh Plugins"
+  sheldon lock --update
+else
+  section "Zsh Plugins"
+  skip "sheldon not installed"
+fi
+
 # ── Editors ───────────────────────────────────────────────────────────────────
 if has_cmd codium; then
   section "Updating \U000F0A1E VSCodium Extensions"
