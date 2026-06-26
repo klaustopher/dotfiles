@@ -66,8 +66,8 @@
           stderr: true
 
 - shell:
-    - command: command -v claude || curl -fsSL https://claude.ai/install.sh | bash
-      description: Install Claude Code CLI
+    - command: packages/third-party-installers.sh
+      description: Install 3rd-party tools (latest upstream, gated on selection)
       stdout: true
       stderr: true
 

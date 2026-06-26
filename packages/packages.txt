@@ -6,6 +6,7 @@ PostgreSQL
 TimescaleDB
 Google Gemini
 OpenAI Codex
+Claude Code
 Redis
 Home Network Connection
 VSCode
