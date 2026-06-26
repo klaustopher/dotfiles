@@ -33,19 +33,12 @@
 - ifmacos:
     - install-brew: true
 
-- ifmacos:
-    - shell:
-        - command: brew install gum
-          description: Install gum for package selection via Homebrew
-
 - ifarch:
     - shell:
         - command: pacman -Q paru || (sudo pacman -S --needed --noconfirm base-devel git && git clone https://aur.archlinux.org/paru.git /tmp/paru && cd /tmp/paru && makepkg -si --noconfirm)
           description: Install paru AUR helper
           stdout: true
           stderr: true
-        - command: sudo pacman -S --needed --noconfirm gum
-          description: Install gum for package selection via pacman
 
 - shell:
     - command: packages/select-packages.sh

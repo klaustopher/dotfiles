@@ -4,7 +4,7 @@
 # because we want the latest upstream version straight from the vendor's own
 # installer (cross-platform on macOS + Arch).
 #
-# Each tool is gated on a package category selected via gum (see packages.txt
+# Each tool is gated on a package category selected via select-packages.sh (see packages.txt
 # and select-packages.sh). Running this on every `./install` is a no-op for
 # anything that isn't selected or is already installed.
 
