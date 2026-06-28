@@ -1,0 +1,246 @@
+# Spaceship prompt configuration.
+#
+# Symlinked to ~/.config/spaceship.zsh (an official spaceship config path), so
+# spaceship sources it itself. It deliberately does NOT live as a *.zsh file
+# inside the dotfiles tree, otherwise zshrc's `**/*.zsh` auto-loader would source
+# it a second time. Spaceship is the single owner of this file.
+#
+# Migrated from the old hand-rolled prompt.zsh. Section reference:
+#   https://spaceship-prompt.sh/options/
+#
+# Nerd-font glyphs are written as \u escapes (the codepoints from the old prompt):
+#    branch    ruby    node    user
+
+# ------------------------------------------------------------------------------
+# Layout
+# ------------------------------------------------------------------------------
+# Old layout was: <ruby> <node> in <dir> on <branch> <status> as <email>
+# followed by a `$` on its own line, with a blank line above the whole block.
+
+SPACESHIP_PROMPT_ORDER=(
+  ruby_version  # ruby version -- custom, always shown (see below)
+  node_version  # node version -- custom, always shown (see below)
+  python_env    # python virtualenv / uv project -- custom (see below)
+  dir           # current directory
+  git_branch    # branch name (built-in)
+  git_state     # working-tree state with counts -- custom (see below)
+  git_email     # active git identity -- custom section (see below)
+  line_sep      # break onto a new line for the prompt char
+  char          # the prompt character
+)
+
+SPACESHIP_PROMPT_ADD_NEWLINE=true     # blank line before each prompt block
+SPACESHIP_PROMPT_SEPARATE_LINE=true   # honoured by the line_sep section above
+
+# ------------------------------------------------------------------------------
+# Prompt character -- old prompt used a literal `$`
+# ------------------------------------------------------------------------------
+SPACESHIP_CHAR_SYMBOL="$ "
+SPACESHIP_CHAR_COLOR_SUCCESS="white"
+SPACESHIP_CHAR_COLOR_FAILURE="red"    # turns red when the last command failed
+
+# ------------------------------------------------------------------------------
+# Directory -- old showed only the last path component, in cyan, prefixed "in "
+# ------------------------------------------------------------------------------
+SPACESHIP_DIR_PREFIX="in "
+SPACESHIP_DIR_COLOR="cyan"
+SPACESHIP_DIR_TRUNC=1
+SPACESHIP_DIR_TRUNC_REPO=false
+
+# ------------------------------------------------------------------------------
+# Git branch -- built-in section. We use git_branch directly (not the `git`
+# meta-section) so we can pair it with our own status section below. The "on "
+# connective and the branch glyph both live in the branch prefix.
+# ------------------------------------------------------------------------------
+SPACESHIP_GIT_BRANCH_PREFIX=$'on \ue0a0 '
+SPACESHIP_GIT_BRANCH_COLOR="green"
+# git_branch's default suffix is empty (it normally sits inside the `git`
+# meta-section). Add a trailing space so the branch is separated from whatever
+# follows -- the git_state section, or the git_email section when the tree is
+# clean and git_state renders nothing.
+SPACESHIP_GIT_BRANCH_SUFFIX=" "
+
+# ------------------------------------------------------------------------------
+# Python environment -- custom section.
+# The built-in `venv` only shows when $VIRTUAL_ENV is set. uv-managed projects
+# create a standard `.venv` but are usually run via `uv run` *without*
+# activating it, so $VIRTUAL_ENV stays empty in the interactive shell. This
+# section shows the env in both cases:
+#   - activated venv  -> the env name from $VIRTUAL_ENV
+#   - uv / unactivated -> detected by an upsearch for a `.venv` directory
+# ------------------------------------------------------------------------------
+SPACESHIP_PYTHON_ENV_SHOW="${SPACESHIP_PYTHON_ENV_SHOW=true}"
+SPACESHIP_PYTHON_ENV_PREFIX="using "
+SPACESHIP_PYTHON_ENV_SUFFIX="${SPACESHIP_PYTHON_ENV_SUFFIX="$SPACESHIP_PROMPT_DEFAULT_SUFFIX"}"
+SPACESHIP_PYTHON_ENV_SYMBOL=$'\ue73c '
+SPACESHIP_PYTHON_ENV_COLOR="blue"
+
+spaceship_python_env() {
+  [[ $SPACESHIP_PYTHON_ENV_SHOW == false ]] && return
+
+  local env_name
+  if [[ -n $VIRTUAL_ENV ]]; then
+    # Activated venv (manual `source`, or inside `uv run`).
+    env_name=${VIRTUAL_ENV:t}
+    # Generic names like `.venv` aren't useful -- show the project dir instead.
+    case $env_name in
+      .venv|venv|env|.env) env_name=${VIRTUAL_ENV:h:t} ;;
+    esac
+  else
+    # Not activated: detect a project-local `.venv` up the tree (uv default).
+    local venv_path
+    venv_path=$(spaceship::upsearch .venv)
+    [[ -z $venv_path ]] && return
+    env_name=${venv_path:h:t}   # the project directory name
+  fi
+
+  [[ -z $env_name ]] && return
+
+  spaceship::section \
+    --color "$SPACESHIP_PYTHON_ENV_COLOR" \
+    --prefix "$SPACESHIP_PYTHON_ENV_PREFIX" \
+    --suffix "$SPACESHIP_PYTHON_ENV_SUFFIX" \
+    --symbol "$SPACESHIP_PYTHON_ENV_SYMBOL" \
+    "$env_name"
+}
+
+# ------------------------------------------------------------------------------
+# Git working-tree state -- custom section.
+# Spaceship's built-in git_status renders every state in one colour with no
+# counts. This replaces it with per-state colours and file counts, e.g.
+#   [2 staged 3 modified 1 ahead]
+# Each state is hidden when its count is 0.
+# ------------------------------------------------------------------------------
+SPACESHIP_GIT_STATE_SHOW="${SPACESHIP_GIT_STATE_SHOW=true}"
+SPACESHIP_GIT_STATE_PREFIX=""
+SPACESHIP_GIT_STATE_SUFFIX="${SPACESHIP_GIT_STATE_SUFFIX="$SPACESHIP_PROMPT_DEFAULT_SUFFIX"}"
+
+spaceship_git_state() {
+  [[ $SPACESHIP_GIT_STATE_SHOW == false ]] && return
+  spaceship::is_git || return
+
+  local porcelain line x y
+  porcelain="$(command git status --porcelain=v1 2>/dev/null)"
+
+  local -i staged=0 modified=0 deleted=0 renamed=0 untracked=0 stashed=0
+  while IFS= read -r line; do
+    [[ -z $line ]] && continue
+    x=${line[1]} y=${line[2]}
+    if [[ $x == '?' ]]; then
+      (( untracked++ ))
+    elif [[ $x == 'R' ]]; then
+      (( renamed++ ))
+    elif [[ $x != ' ' ]]; then
+      (( staged++ ))
+    fi
+    [[ $y == 'M' ]] && (( modified++ ))
+    [[ $x == 'D' || $y == 'D' ]] && (( deleted++ ))
+  done <<< "$porcelain"
+
+  stashed=$(command git stash list 2>/dev/null | command grep -c '')
+
+  local -i ahead behind
+  ahead=$(command git rev-list --count @{upstream}..HEAD 2>/dev/null || echo 0)
+  behind=$(command git rev-list --count HEAD..@{upstream} 2>/dev/null || echo 0)
+
+  # Each state: "<count> <word>" in its own colour; only shown when non-zero.
+  local -a parts
+  (( staged ))    && parts+=("%F{green}${staged} staged%f")
+  (( modified ))  && parts+=("%F{yellow}${modified} modified%f")
+  (( deleted ))   && parts+=("%F{red}${deleted} deleted%f")
+  (( renamed ))   && parts+=("%F{cyan}${renamed} renamed%f")
+  (( untracked )) && parts+=("%F{blue}${untracked} untracked%f")
+  (( stashed ))   && parts+=("%F{magenta}${stashed} stashed%f")
+  (( ahead ))     && parts+=("%F{green}${ahead} ahead%f")
+  (( behind ))    && parts+=("%F{red}${behind} behind%f")
+
+  (( ${#parts} == 0 )) && return
+
+  local content="%F{white}[%f${(j: :)parts}%F{white}]%f"
+
+  spaceship::section \
+    --color "white" \
+    --prefix "$SPACESHIP_GIT_STATE_PREFIX" \
+    --suffix "$SPACESHIP_GIT_STATE_SUFFIX" \
+    "$content"
+}
+
+# ------------------------------------------------------------------------------
+# Ruby / Node -- custom always-on sections.
+# Spaceship's built-in `ruby`/`node` sections only render inside a matching
+# project (Gemfile, package.json, ...). The old prompt instead showed the
+# version in *every* directory via `ruby -v` / `node -v`, so these custom
+# sections reproduce that. Trade-off: they fork ruby/node on every prompt
+# (a few ms each) -- swap the order back to the built-in `ruby`/`node` if you
+# prefer contextual + async behaviour.
+# ------------------------------------------------------------------------------
+SPACESHIP_RUBY_VERSION_SHOW="${SPACESHIP_RUBY_VERSION_SHOW=true}"
+SPACESHIP_RUBY_VERSION_PREFIX=""
+SPACESHIP_RUBY_VERSION_SUFFIX="${SPACESHIP_RUBY_VERSION_SUFFIX="$SPACESHIP_PROMPT_DEFAULT_SUFFIX"}"
+SPACESHIP_RUBY_VERSION_SYMBOL=$'\ue739 '
+SPACESHIP_RUBY_VERSION_COLOR="yellow"
+
+spaceship_ruby_version() {
+  [[ $SPACESHIP_RUBY_VERSION_SHOW == false ]] && return
+  spaceship::exists ruby || return
+
+  local version
+  version=$(ruby -v | cut -d" " -f2 | cut -d"-" -f2)
+  [[ -z $version ]] && return
+
+  spaceship::section \
+    --color "$SPACESHIP_RUBY_VERSION_COLOR" \
+    --prefix "$SPACESHIP_RUBY_VERSION_PREFIX" \
+    --suffix "$SPACESHIP_RUBY_VERSION_SUFFIX" \
+    --symbol "$SPACESHIP_RUBY_VERSION_SYMBOL" \
+    "$version"
+}
+
+SPACESHIP_NODE_VERSION_SHOW="${SPACESHIP_NODE_VERSION_SHOW=true}"
+SPACESHIP_NODE_VERSION_PREFIX=""
+SPACESHIP_NODE_VERSION_SUFFIX="${SPACESHIP_NODE_VERSION_SUFFIX="$SPACESHIP_PROMPT_DEFAULT_SUFFIX"}"
+SPACESHIP_NODE_VERSION_SYMBOL=$'\ued0d '
+SPACESHIP_NODE_VERSION_COLOR="magenta"
+
+spaceship_node_version() {
+  [[ $SPACESHIP_NODE_VERSION_SHOW == false ]] && return
+  spaceship::exists node || return
+
+  local version
+  version=$(node -v 2>/dev/null)
+  [[ -z $version ]] && return
+
+  spaceship::section \
+    --color "$SPACESHIP_NODE_VERSION_COLOR" \
+    --prefix "$SPACESHIP_NODE_VERSION_PREFIX" \
+    --suffix "$SPACESHIP_NODE_VERSION_SUFFIX" \
+    --symbol "$SPACESHIP_NODE_VERSION_SYMBOL" \
+    "$version"
+}
+
+# ------------------------------------------------------------------------------
+# Git email -- custom section.
+# Reproduces the old "as <user> <email>" indicator showing the active git
+# identity. Uses `git config user.email`, so it falls back to the global
+# identity outside of a repository (matching the old always-on behaviour).
+# ------------------------------------------------------------------------------
+SPACESHIP_GIT_EMAIL_SHOW="${SPACESHIP_GIT_EMAIL_SHOW=true}"
+SPACESHIP_GIT_EMAIL_PREFIX="as "
+SPACESHIP_GIT_EMAIL_SUFFIX="${SPACESHIP_GIT_EMAIL_SUFFIX="$SPACESHIP_PROMPT_DEFAULT_SUFFIX"}"
+SPACESHIP_GIT_EMAIL_SYMBOL=$'\uf007 '
+SPACESHIP_GIT_EMAIL_COLOR="white"
+
+spaceship_git_email() {
+  [[ $SPACESHIP_GIT_EMAIL_SHOW == false ]] && return
+
+  local email
+  email=$(command git config user.email 2>/dev/null)
+  [[ -z $email ]] && return
+
+  spaceship::section \
+    --color "$SPACESHIP_GIT_EMAIL_COLOR" \
+    --prefix "$SPACESHIP_GIT_EMAIL_PREFIX" \
+    --suffix "$SPACESHIP_GIT_EMAIL_SUFFIX" \
+    --symbol "$SPACESHIP_GIT_EMAIL_SYMBOL" \
+    "$email"
+}

@@ -14,3 +14,6 @@ github = "zsh-users/zsh-syntax-highlighting"
 
 [plugins.zsh-history-substring-search]
 github = "zsh-users/zsh-history-substring-search"
+
+[plugins.spaceship]
+github = "spaceship-prompt/spaceship-prompt"

@@ -17,3 +17,10 @@ function title() {
   esac
 }
 
+# Keep the window title updated on every prompt. This used to live in the old
+# prompt.zsh's precmd; spaceship now owns precmd, so register via add-zsh-hook
+# so both coexist.
+autoload -Uz add-zsh-hook
+_set_window_title() { title "zsh" "%m" "%55<...<%~" }
+add-zsh-hook precmd _set_window_title
+
