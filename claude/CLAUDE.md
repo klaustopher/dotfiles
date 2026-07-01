@@ -69,6 +69,15 @@ Readers are domain experts who understand the language, the stack, and standard 
 - Default to zero comments. If a file accumulates more than a handful, treat that as a smell — restructure into better-named methods, variables, and objects so the code explains itself instead of adding comments.
 - Don't add docstrings/comment headers to self-descriptive methods just to have them. Unless the project explicitly asks for a documentation to be auto generated from code (YARD, JSDOC, etc)
 
+## Subagents / delegation
+
+I want to actively watch the work happen in the main thread, step by step. Visibility and control matter more than parallelism here.
+
+- **Read-only work may be delegated**: searching, research, codebase exploration, and gathering context via the Agent tool / subagents is fine — I only care about the conclusion, not the file dumps.
+- **All writing happens on the main thread**: any implementation — edits, file creation, refactors, migrations — must be done directly via Read/Edit/Write in the main conversation so I can see each change as it lands. Do **not** spawn subagents (or workflows) to make changes on my behalf.
+- Build/test/lint gates run inline in the main thread too.
+- Only delegate writing work if I explicitly ask for it in that moment.
+
 ## Workflow
 
 - Discuss architecture and approach before writing code
