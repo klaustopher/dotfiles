@@ -6,7 +6,7 @@
         co = checkout
         upstream-name = !git remote | egrep -o '(upstream|origin)' | tail -1
         head-branch = !git remote show $(git upstream-name) | awk '/HEAD branch/ {print $NF}'
-        remove-merged-branches = !git branch --delete $(git branch --format '%(refname:short)' --merged | grep --invert-match $(git head-branch))
+        remove-merged-branches = "!f() { branches=$(git branch --format '%(refname:short)' --merged | grep --invert-match --line-regexp --fixed-strings -e \"$(git head-branch)\" -e \"$(git branch --show-current)\"); if [ -z \"$branches\" ]; then echo 'No merged branches to delete.'; else echo \"$branches\" | xargs git branch --delete; fi; }; f"
         back-to-main = !git checkout $(git head-branch) && git pull && git remove-merged-branches
 
 [color]
