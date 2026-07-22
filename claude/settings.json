@@ -2,8 +2,8 @@
   "includeCoAuthoredBy": false,
   "model": "opus[1m]",
   "enabledPlugins": {
-    "gopls-lsp@claude-plugins-official": true,
-    "ruby-lsp@claude-plugins-official": true
+    "gopls-lsp@claude-plugins-official": false,
+    "ruby-lsp@claude-plugins-official": false
   },
   "effortLevel": "high",
   "theme": "auto",
