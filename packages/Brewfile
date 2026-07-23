@@ -183,6 +183,10 @@ if CRATES.include?('OpenAI Codex')
   cask "codex"
 end
 
+if CRATES.include?("Oh My Pi")
+  brew 'can1357/tap/omp', trusted: true
+end
+
 # ── Mac App Store ─────────────────────────────────────────────────────────────
 
 mas "Amphetamine", id: 937984704

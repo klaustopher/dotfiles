@@ -17,7 +17,6 @@
     - ~/.config/zed
     - ~/.config/ghostty
     - ~/.config/bat
-    - ~/.config/opencode
     - ~/.config/sheldon
     - ~/.claude
     - ~/Projects
@@ -78,7 +77,6 @@
     ~/.config/zed/settings.json: zed/settings.json
     ~/.config/ghostty/config: ghostty/config
     ~/.config/bat/config: bat/config
-    ~/.config/opencode/opencode.json: opencode/opencode.json
     ~/.config/sheldon/plugins.toml: zsh/sheldon.toml
     ~/.config/spaceship.zsh: zsh/spaceship.symlink
     ~/.gnupg/gpg-agent.conf: gpg/gpg-agent.conf
