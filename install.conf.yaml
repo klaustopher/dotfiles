@@ -19,6 +19,7 @@
     - ~/.config/bat
     - ~/.config/sheldon
     - ~/.claude
+    - ~/.omp/agent
     - ~/Projects
     - ~/.gnupg/
 
@@ -86,6 +87,11 @@
     ~/.claude/agents: claude/agents
     ~/.claude/settings.json:
       path: claude/settings.json
+      force: true
+    # omp rewrites this file on `omp config set`, so it can come back as a real
+    # file and detach from the repo — force the link back on every install.
+    ~/.omp/agent/config.yml:
+      path: omp/config.yml
       force: true
 
 - ifmacos:
