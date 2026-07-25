@@ -8,6 +8,7 @@ Google Gemini
 OpenAI Codex
 Claude Code
 Oh My Pi
+LM Studio
 Redis
 Home Network Connection
 VSCode

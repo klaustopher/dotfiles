@@ -187,6 +187,10 @@ if CRATES.include?("Oh My Pi")
   brew 'can1357/tap/omp', trusted: true
 end
 
+if CRATES.include?('LM Studio')
+  cask 'lm-studio'
+end
+
 # ── Mac App Store ─────────────────────────────────────────────────────────────
 
 mas "Amphetamine", id: 937984704
