@@ -90,4 +90,10 @@ if has_cmd nvim; then
   nvim --headless "+Lazy! sync" +qa
 fi
 
+# ── AI Tooling ───────────────────────────────────────────────────────────────────
+if has_cmd claude; then
+  section "Updating \U000F06A9 Claude Code"
+  claude update
+fi
+
 print -- "\n${fg_bold[green]}✓ Done.${reset_color}\n"
