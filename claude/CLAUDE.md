@@ -65,9 +65,11 @@ When writing anything that touches the system (paths, packages, services, users/
 Readers are domain experts who understand the language, the stack, and standard patterns. Write self-explanatory code, not comments.
 
 - **Never** write comments that restate what the code plainly does (e.g. `# adds 5 to var` above `var += 5`). These are noise and get flagged in review.
-- Comment only to explain *why* a non-obvious choice was made: a workaround, a subtle edge case, a performance trade-off, an external constraint, or an expectation not enforced by the language (e.g. a Ruby method meant to be overridden in a subclass, since there are no abstract methods).
 - Default to zero comments. If a file accumulates more than a handful, treat that as a smell — restructure into better-named methods, variables, and objects so the code explains itself instead of adding comments.
 - Don't add docstrings/comment headers to self-descriptive methods just to have them. Unless the project explicitly asks for a documentation to be auto generated from code (YARD, JSDOC, etc)
+- Comment only to explain a constraint the code is subject to — a workaround for an external bug, a subtle edge case, an expectation not enforced by the language. Never to
+  explain or defend the approach you chose. If a comment names an alternative you rejected ("X rather than Y, because…"), delete it — that reasoning belongs in the commit message
+  or the PR, not the source. When in doubt, delete the comment rather than shortening it.
 
 ## Subagents / delegation
 
@@ -77,6 +79,10 @@ I want to actively watch the work happen in the main thread, step by step. Visib
 - **All writing happens on the main thread**: any implementation — edits, file creation, refactors, migrations — must be done directly via Read/Edit/Write in the main conversation so I can see each change as it lands. Do **not** spawn subagents (or workflows) to make changes on my behalf.
 - Build/test/lint gates run inline in the main thread too.
 - Only delegate writing work if I explicitly ask for it in that moment.
+
+## Tool Use
+- Apply edits with Edit/Write tools so the user can see wehat is happening. Do **not** use perl, python, ruby, sed, awk or other generated scripts to make replacements in the code
+- No filesystem-wide `find /`. NEVER! Resolve an exact path first (bundle show, Gem.loaded_specs) and search only there.
 
 ## Workflow
 
