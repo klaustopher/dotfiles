@@ -1,7 +1,9 @@
 modelRoles:
-  default: lm-studio/qwen/qwen3.6-35b-a3b
+  default: lm-studio/qwen/qwen3.8-27b
 symbolPreset: nerd
 theme:
   dark: titanium
   light: light
-setupVersion: 1
+setupVersion: 2
+composer:
+  shape: band
