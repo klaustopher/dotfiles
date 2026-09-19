@@ -11,5 +11,10 @@
   },
   "effortLevel": "high",
   "tui": "fullscreen",
-  "theme": "auto"
+  "theme": "auto",
+  "modelSettings": {
+    "qwen/qwen3.8-27b": {
+      "effortLevel": "medium"
+    }
+  }
 }

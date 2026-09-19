@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+# claude-local — run Claude Code against a local LM Studio server.
+#
+# Points the API at LM Studio's Anthropic-compatible endpoint (default
+# http://localhost:1234), disables the attribution header sent with API
+# requests, and selects the local Qwen3.8 27B model. ANTHROPIC_AUTH_TOKEN
+# is a placeholder that satisfies clients requiring a bearer token; change
+# it if you have a custom token configured in LM Studio.
+#
+# The variables are applied via env(1), so they reach claude and its child
+# processes (MCP servers, Bash tool commands) but never your shell — the
+# same is true if you source this file. Pre-existing ANTHROPIC_API_KEY and
+# ANTHROPIC_CUSTOM_HEADERS from a normal Anthropic setup are dropped, so
+# real credentials are not sent to the local server.
+#
+# Usage: claude-local [claude args...]
+# Model override: CLAUDE_LOCAL_MODEL=vendor/model claude-local
+set -euo pipefail
+
+if ! command -v claude >/dev/null 2>&1; then
+  echo "claude-local: 'claude' not found in PATH" >&2
+  exit 1
+fi
+
+model="${CLAUDE_LOCAL_MODEL:-qwen/qwen3.8-27b}"
+
+env \
+  -u ANTHROPIC_API_KEY \
+  -u ANTHROPIC_CUSTOM_HEADERS \
+  ANTHROPIC_BASE_URL=http://localhost:1234 \
+  ANTHROPIC_AUTH_TOKEN=lmstudio \
+  CLAUDE_CODE_ATTRIBUTION_HEADER=0 \
+  claude --model "$model" "$@"
