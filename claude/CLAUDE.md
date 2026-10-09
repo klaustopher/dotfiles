@@ -55,10 +55,30 @@ When writing anything that touches the system (paths, packages, services, users/
 
 ## General code principles
 
-- Prefer simple solutions over clever abstractions; don't build things that aren't needed yet
-- A little duplication is fine if it keeps things straightforward and avoids premature abstraction
-- Focus on readability and maintainability over micro-optimizations or "clever" code
-- When in doubt, choose the option that will be easier for another developer to understand and work with in the future, even if it means writing a bit more code or being more explicit
+The best code is code that doesn't need to be written.
+
+Before writing code, read the code the change touches. Then go through these options in order and stop at the first one that solves it:
+1. Does this need to exist? Can the change be a deletion?
+2. Does the codebase already have it? (helpers, concerns, services, components)
+3. Does the framework or stdlib cover it? (Ruby stdlib, ActiveSupport/Rails, React built-ins, the component library)
+4. Does an already-installed dependency cover it?
+5. Only then write new code, as the smallest complete version. No new dependency for something small.
+
+- Be minimal in the solution, not in the scope: update every caller, spec, fixture and config the change touches. Grep callers before changing shared code, and fix bugs at the root cause.
+- No unrequested options, config flags, wrappers, base classes or "for later" extension points. A little duplication beats a premature abstraction.
+- No defensive code for impossible states. Validate at trust boundaries (params, external APIs, user input), not internally.
+- Prefer deletion over addition. Remove code that the change makes dead.
+- Focus on readability and maintainability over micro-optimizations or "clever" code.
+- When in doubt, choose the option that will be easier for another developer to understand.
+- Less code means less surface (fewer methods, layers, options), not denser lines. Writing a line twice beats an indirection the reader has to decode:
+  ```ruby
+  # prefer
+  do_stuff(:foo, foo_value)
+  do_stuff(:bar, bar_value)
+
+  # over
+  [:foo, :bar].zip(values).each { |field, value| do_stuff(field, value) }
+  ```
 
 ## Code comments
 
@@ -86,9 +106,10 @@ I want to actively watch the work happen in the main thread, step by step. Visib
 
 ## Workflow
 
-- Discuss architecture and approach before writing code
-- When asked to look at existing code, give an honest opinion on what could be improved — don't just describe what's there
-- Iterate: propose, get feedback, refine
+- For anything beyond a trivial change (more than one file, new classes or modules, schema or API changes, new dependencies), don't edit files yet. Reply with a short plan: the approach, the files you'd touch, and open questions. Then stop. Implement only after I explicitly say go.
+- Trivial changes (a typo, a one-line fix, something I spelled out exactly) can be done directly.
+- A question ("what do you think?", "how would you…?") is never a go-ahead to edit.
+- When asked to look at existing code, give an honest opinion on what could be improved — don't just describe what's there.
 
 ## Communication
 
