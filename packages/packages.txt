@@ -5,7 +5,6 @@ MySQL
 PostgreSQL
 TimescaleDB
 Google Gemini
-OpenAI Codex
 Claude Code
 Oh My Pi
 LM Studio

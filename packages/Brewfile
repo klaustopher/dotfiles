@@ -173,13 +173,10 @@ if CRATES.include?('Private Communication')
 end
 
 # ── AI Development Tools ────────────────────────────────────────────────────────────
+brew "nono"
 
 if CRATES.include?('Google Gemini')
   brew 'gemini-cli'
-end
-
-if CRATES.include?('OpenAI Codex')
-  cask "codex"
 end
 
 if CRATES.include?("Oh My Pi")
