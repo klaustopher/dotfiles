@@ -1,6 +1,6 @@
 {
   "includeCoAuthoredBy": false,
-  "model": "opus[1m]",
+  "model": "opus",
   "statusLine": {
     "type": "command",
     "command": "~/.claude/statusline.sh"
@@ -10,11 +10,14 @@
     "ruby-lsp@claude-plugins-official": false
   },
   "effortLevel": "high",
-  "tui": "fullscreen",
-  "theme": "auto",
   "modelSettings": {
     "qwen/qwen3.8-27b": {
       "effortLevel": "medium"
+    },
+    "claude-opus-5-5": {
+      "effortLevel": "medium"
     }
-  }
+  },
+  "tui": "fullscreen",
+  "theme": "auto"
 }

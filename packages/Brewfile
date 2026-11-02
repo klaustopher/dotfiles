@@ -49,6 +49,7 @@ brew 'rg'
 brew 'lazygit'
 # cask 'neovide-app'
 # cask 'zed'
+cask 'syntax-highlight'
 
 # ── Git ───────────────────────────────────────────────────────────────────────
 
