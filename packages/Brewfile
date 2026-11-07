@@ -112,7 +112,6 @@ end
 
 if CRATES.include?('Ruby')
   brew 'rbenv'
-  brew 'ruby-build'
   # Build dependencies
   brew 'openssl@3'
   brew 'readline'

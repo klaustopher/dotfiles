@@ -11,3 +11,6 @@
 [submodule "dotbot-ifplatform"]
 	path = dotbot-ifplatform
 	url = git@github.com:klaustopher/dotbot-ifplatform.git
+[submodule "ruby/rbenv.symlink/plugins/ruby-build"]
+	path = ruby/rbenv.symlink/plugins/ruby-build
+	url = https://github.com/rbenv/ruby-build.git

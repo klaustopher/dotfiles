@@ -1,0 +1,14 @@
+#!/usr/bin/env zsh
+set -e
+
+submodule=ruby/rbenv.symlink/plugins/ruby-build
+
+cd ~/.dotfiles
+git submodule update --init --remote "$submodule"
+
+if git diff --quiet -- "$submodule"; then
+  print -- "ruby-build is already up to date"
+  exit 0
+fi
+
+git commit -m "Update ruby-build" -- "$submodule"

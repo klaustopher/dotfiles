@@ -71,7 +71,6 @@ fi
 
 if selected "Ruby"; then
   pkg rbenv
-  pkg ruby-build
 fi
 
 if selected "Node"; then
