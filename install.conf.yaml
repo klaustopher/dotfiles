@@ -127,6 +127,11 @@
         - command: macos/install-layout.sh
           description: Install custom keyboard layout
 
+- ifarch:
+    - shell:
+        - command: kde/set-defaults.sh
+          description: Set KDE defaults
+
 - shell:
     - command: git/create-user-config.sh
       description: Create user config for git

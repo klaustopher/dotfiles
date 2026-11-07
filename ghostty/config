@@ -1,3 +1,7 @@
 font-family = "FantasqueSansM Nerd Font"
 font-size = 14
 theme = dark:Nightfox,light:Dayfox
+
+keybind = super+n=new_window
+keybind = super+t=new_tab
+keybind = super+w=close_tab:this
