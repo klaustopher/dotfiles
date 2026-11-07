@@ -103,6 +103,7 @@ I want to actively watch the work happen in the main thread, step by step. Visib
 ## Tool Use
 - Apply edits with Edit/Write tools so the user can see wehat is happening. Do **not** use perl, python, ruby, sed, awk or other generated scripts to make replacements in the code
 - No filesystem-wide `find /`. NEVER! Resolve an exact path first (bundle show, Gem.loaded_specs) and search only there.
+- NEVER connect to anything on my network without asking first, every time. That includes SSH, port probes, ping, mDNS/service discovery, HTTP requests and SMB/NFS queries. Read-only doesn't make it OK, a working SSH key is not permission, and neither is me pasting command output. Give me the command to run instead.
 
 ## Workflow
 
