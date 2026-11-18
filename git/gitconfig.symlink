@@ -85,3 +85,5 @@
 
 [diff "sqldiff"]
   command = ~/.dotfiles/bin/git-sqldiff
+[checkout]
+	defaultRemote = origin

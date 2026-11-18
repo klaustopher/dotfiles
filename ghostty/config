@@ -5,3 +5,5 @@ theme = dark:Nightfox,light:Dayfox
 keybind = super+n=new_window
 keybind = super+t=new_tab
 keybind = super+w=close_tab:this
+
+shell-integration-features = ssh-env
