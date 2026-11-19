@@ -58,7 +58,10 @@ elif [[ $(uname) == "Linux" ]]; then
   fi
 fi
 
-# ── Rubygems ──────────────────────────────────────────────────────────────────
+# ── Ruby ──────────────────────────────────────────────────────────────────────
+section "Updating  ruby-build"
+~/.dotfiles/bin/update-ruby-build
+
 if has_cmd gem; then
   section "Updating \ue739 Rubygems ($(ruby --version | cut -d' ' -f2))"
   gem update --system
